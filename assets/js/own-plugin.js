@@ -1,7 +1,7 @@
 $.fn.nextStep = function() {
 
 	if ( !this.nextStepEl().length ) {
-		alert("undefined");
+		alert("finished"); 
 		return false;
 	}
 

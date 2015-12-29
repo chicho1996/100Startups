@@ -2,6 +2,8 @@
 var el = {};
 el.stepsParrent = $('#steps');
 el.step = $('.step');
+el.butt = $('#button');
+el.current = $('#current');
 
 // ste[s]
 var step ={};
@@ -10,7 +12,24 @@ step.set = function(n) {
 	step.get = Number(n);
 };
 
+countSteps();
 keepCurrent();
+
+el.butt.on('click', function(e) {
+	e.preventDefault();
+
+	nextStep();
+
+	el.current.text( step.get );
+
+});
+
+function countSteps()
+{
+	el.step.each(function(key, el) {
+		$(el).attr('step', key+1);
+	});
+}
 
 function nextStep()
 {
@@ -28,6 +47,7 @@ function keepCurrent()
 		}
 	});
 }
+
 
 function getStepIdent(n) {
 	return '.step[step='+Number(n)+']';
