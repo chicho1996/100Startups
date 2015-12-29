@@ -14,7 +14,7 @@
 	
 	<div id="steps">
 		
-		<div class="step" step="1">
+		<div class="step" step="1" visible>
 			hello world1
 		</div>
 
@@ -30,6 +30,7 @@
 
 </div>
 
+<script src="assets/js/own-plugin.js"></script>
 <script src="assets/js/script.js"></script>
 </body>
 </html>
