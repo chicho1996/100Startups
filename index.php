@@ -16,6 +16,8 @@
 
 		<div class="stepsNum">
 			<span id="current">1</span> / 10
+			<!--<a href="#" id="prev" class="changeStep">Prev</a>-->
+			<a href="#" id="next" class="changeStep">Next</a>
 		</div>
 		
 		<div class="step" visible>
@@ -26,18 +28,15 @@
 		</div>
 
 		<div class="step">
-			<label>
-				<span>როდის დაიწყეთ ფუნქციონირება</span>
-				<select>
-					<option>2010</option>
-					<option>2011</option>
-					<option>2012</option>
-					<option>2013</option>
-					<option>2014</option>
-					<option>2015</option>
-					<option>2016</option>
-				</select>
-			</label>
+			<span>როდის დაიწყეთ ფუნქციონირება</span>
+			<br>
+			<label> <input type="radio" name="year" value="2010" checked> 2010 </label>
+			<label> <input type="radio" name="year" value="2011"> 2011 </label>
+			<label> <input type="radio" name="year" value="2012"> 2012 </label>
+			<label> <input type="radio" name="year" value="2013"> 2013 </label>
+			<label> <input type="radio" name="year" value="2014"> 2014 </label>
+			<label> <input type="radio" name="year" value="2015"> 2015 </label>
+			<label> <input type="radio" name="year" value="2016"> 2016 </label>
 		</div>
 
 		<div class="step">
@@ -105,6 +104,7 @@
 		</div>
 		
 
+		<input type="button" value="წინა" id="prev" class="changeStep">
 		<input type="button" value="შემდეგი" id="button">
 
 	</div>
