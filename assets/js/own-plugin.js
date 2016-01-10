@@ -5,8 +5,8 @@ $.fn.nextStep = function() {
 		return false;
 	}
 
-	this.currentStrepEl().fadeOut('fast').removeAttr('visible'); // hide current
-	this.nextStepEl().fadeIn(120).attr('visible', true); // show next
+	this.currentStrepEl().hide().removeAttr('visible'); // hide current
+	this.nextStepEl().show().attr('visible', true); // show next
 	keepCurrent();
 
 	displayPrevNexBtns();
@@ -22,8 +22,8 @@ $.fn.prevStep = function() {
 		return false;
 	}
 
-	this.currentStrepEl().fadeOut('fast').removeAttr('visible'); // hide current
-	this.prevStepEl().fadeIn(120).attr('visible', true); // show next
+	this.currentStrepEl().hide().removeAttr('visible'); // hide current
+	this.prevStepEl().show().attr('visible', true); // show next
 	keepCurrent();
 
 	displayPrevNexBtns();

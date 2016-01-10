@@ -21,6 +21,13 @@ var startup = {};
 resetStartupObj();
 
 
+$('#startButton').on('click', function(e) {
+	e.preventDefault();
+
+	$('#start').slideUp('slow');
+	$('#steps').show();
+});
+
 el.butt.on('click', function(e) {
 	e.preventDefault();
 
@@ -92,6 +99,15 @@ Object.observe(startup, function(changes) {
 	console.log( changes[0].name + ' update to: ' + changes[0].object[changes[0].name] );
 });
 
+css();
+$(window).resize(function() {
+	css();
+});
+function css()
+{
+	//$('#startButton').css('top', (window.innerHeight / 2 + 170)+'px');
+}
+
 function resetStartupObj()
 {
 	startup = {};
@@ -161,8 +177,8 @@ function isAllowable(key)
 
 function displayPrevNexBtns()
 {
-	if( isAllowable(step.get-1) ) $('#prev').show();
-	else $('#prev').hide();
+	if( isAllowable(step.get-1) ) $('#prev').removeClass('disabled');
+	else $('#prev').addClass('disabled');
 
 
 	//if( isAllowable(step.get) ) $('#next').show();

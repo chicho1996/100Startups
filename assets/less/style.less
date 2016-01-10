@@ -1,27 +1,110 @@
-html { 
-  background: url(../img/bg.png) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+@font-face {
+    font-family: defaultFamily;
+    src: url(../fonts/bpg_nino_mtavruli_normal.ttf);
 }
 
 #wrapper {
 	font: normal 16px arial,verdana;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	font-family: defaultFamily;
+}
+
+@button_collor: #c0392b;
+
+#start {
+	position: inherit;
+	width: inherit;
+	height: inherit;
+	background: url(../img/bg.png) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+
+	z-index: 99;
 
 	display: none;
+}
+#startButton {
+	.button;
+	position: relative;
+	left: 50%;
+	top: 50%;
+
+	transform: translate(-50%);
+	margin-top: 170px;
+}
+#startButton:hover {
+	.button-hover;
+}
+
+.header {
+	background: url(../img/header.png) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	position: absolute;
+	width: 100%;
+	height: 40%;
+	left: 0;
+	top: 0;
 }
 
 #steps {
-	max-width: 500px;
-	margin: 0 auto;
-	border: 1px solid rgba(0, 0, 0, .3);
-	padding: 20px;
-	margin-top: 8%;
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: 55%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	
+
+	.directions {
+		
+		margin: 0 auto;
+		text-align: center;
+		margin-top: 20px;
+
+		input[type=button] {
+			.button;
+			font-size: 14px;
+			padding: 8px 18px 3px;
+			&:hover {
+				.button-hover;
+			}
+		}
+	}
 }
+
 
 .step {
 	display: none;
+	height: inherit;
+	text-align: center;
+	.stepNandName;
+	span {
+		display: block;
+		margin-bottom: 5px;
+		&.three {
+			margin-top: 5px;
+			margin-bottom: 2px;
+		}
+	}
+	label {
+		input[type=text] {
+			background-color: rgba(0, 0, 0, .1);
+			border: 0;
+			outline: none;
+			padding: 5px 8px;
+			color: rgba(0, 0, 0, .7);
+			font-family: defaultFamily;
+			font-size: 18px;
+			width: 200px;
+		}
+	}
 
 	&[visible] {
 		display: block;
@@ -29,3 +112,38 @@ html {
 }
 
 .changeStep {display: none;}
+
+.stepNandName {
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0, 0, 0, .6);
+}
+.button {
+	border: 0;
+    color: #FFF;
+    background-color: @button_collor;
+    padding: 12px 25px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 17px;
+    display: inline-block;
+    font-family: defaultFamily;
+
+	transition: all .2s ease;
+	cursor: pointer;
+	outline: none;
+}
+.button-hover {
+	background-color: #A02518;
+}
+#prev.disabled {
+	background: fade(@button_collor, 50%) !important;
+}
+
+.stepsNum {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
+	top: -40px;
+	.stepNandName;
+}

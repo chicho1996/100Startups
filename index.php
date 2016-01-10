@@ -12,13 +12,17 @@
 <body>
 
 <div id="wrapper">
+
+	<div id="start">
+		<div id="startButton">დაწყება</div>
+	</div>
+
+	<div class="header"></div>	
 	
 	<div id="steps">
 
 		<div class="stepsNum">
 			<span id="current">1</span> / 10
-			<!--<a href="#" id="prev" class="changeStep">Prev</a>-->
-			<a href="#" id="next" class="changeStep">Next</a>
 		</div>
 		
 		<div class="step" visible>
@@ -44,13 +48,13 @@
 			<label>
 				<span>ვინ არიან დამფუძვნებლები?</span>
 				<br>
-				<span>სახელი</span>
+				<span class="three">სახელი</span>
 				<input type="text">
 				<br>
-				<span>გვარი</span>
+				<span class="three">გვარი</span>
 				<input type="text">
 				<br>
-				<span>ასაკი</span>
+				<span class="three">ასაკი</span>
 				<input type="text">
 			</label>
 		</div>
@@ -104,9 +108,10 @@
 			</label>
 		</div>
 		
-
-		<input type="button" value="წინა" id="prev" class="changeStep">
-		<input type="button" value="შემდეგი" id="button">
+		<div class="directions">
+			<input type="button" value="წინა" id="prev" class="changeStep">
+			<input type="button" value="შემდეგი" id="button">
+		</div>
 
 	</div>
 
