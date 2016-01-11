@@ -8,6 +8,8 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.form.js"></script> 
+	<script src="assets/js/jquery.mask.js"></script>
 </head>
 <body>
 
@@ -45,17 +47,26 @@
 		</div>
 
 		<div class="step">
-			<label>
-				<span>ვინ არიან დამფუძვნებლები?</span>
-				<br>
-				<span class="three">სახელი</span>
-				<input type="text">
-				<br>
-				<span class="three">გვარი</span>
-				<input type="text">
-				<br>
-				<span class="three">ასაკი</span>
-				<input type="text">
+			<span class="titleStep">ვინ არიან დამფუძვნებლები?</span>
+			<label class="foundersLBL">
+				
+				<div class="cont">
+					<span class="three nmlbl">სახელი</span>
+					<input type="text">
+				</div>
+				
+				<div class="cont">
+					<span class="three">გვარი</span>
+					<input type="text">
+				</div>
+				
+				<div class="cont">
+					<span class="three">ასაკი</span>
+					<input type="text">
+				</div>
+				
+				<div class="add">+</div>
+			
 			</label>
 		</div>
 
@@ -69,7 +80,7 @@
 		<div class="step">
 			<label>
 				<span>რამდენი წევრია გუნდში?</span>
-				<input type="text">
+				<input type="number" class="members">
 			</label>
 		</div>
 
@@ -97,14 +108,14 @@
 		<div class="step">
 			<label>
 				<span>რამდენი იყო სტარტაპის კაპიტალი 2015 წლის ბოლოს?</span>
-				<input type="text">
+				<input type="number" class="members">
 			</label>
 		</div>
 
 		<div class="step">
 			<label>
 				<span>მობილური ტელეფონი ვერიფიკაცია</span>
-				<input type="text">
+				<input type="tel" id="phone">
 			</label>
 		</div>
 		

@@ -45,3 +45,7 @@ $.fn.prevStepEl = function() {
 $.fn.nextStepEl = function() {
 	return this.getByStep(step.get+1);
 }
+
+$.fn.outerHTML = function() {
+	return $(this).clone().wrap('<div></div>').parent().html();
+};

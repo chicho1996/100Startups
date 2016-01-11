@@ -67,8 +67,16 @@ el.butt.on('click', function(e) {
 		break;
 		case 10:
 			startup.phone = input.val();
-			alert("თქვენ წარმატების გაიარეთ რეგისტრაცია \n" + JSON.stringify( startup ));
-			window.location.reload();
+			$.ajax({
+				type: 'POST',
+				url: 'http://shavidzet.com/100Startups/lib/reg.php',
+				data: {getData: JSON.stringify(startup) },
+				success: function(data) {
+					console.log( data );
+					alert("თქვენ წარმატების გაიარეთ რეგისტრაცია");
+					window.location.reload();
+				}
+			});
 		break;
 
 	};
@@ -192,3 +200,37 @@ function nextBtnText()
 	else
 		el.butt.val('შემდეგი');
 }
+
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    return !(charCode > 31 && (charCode < 48 || charCode > 57));
+}
+
+
+var phonePH = "5**  - **  - ** - **";
+$("#phone").mask("500 - 00 - 00 - 00", {placeholder: phonePH} );
+
+$('input[type=number]').on('keypress', function(e) {
+	return isNumberKey(e);
+});
+
+$('.step').hide();
+$('.foundersLBL').parent().show();
+
+$('.foundersLBL .add').css('left', $('.nmlbl').offset().left+'px');
+
+var founderHTML = '';
+
+$('.step').on('click', '.add', function(e) {
+	e.preventDefault();
+	
+	var that = this;
+	
+	var html = $(this).parent().parent().find('.foundersLBL').outerHTML();
+	$(this).parent().parent().append( html );
+	
+	setTimeout(function() {
+		
+	}, 50);
+	
+});

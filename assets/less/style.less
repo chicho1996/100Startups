@@ -30,8 +30,8 @@
 #startButton {
 	.button;
 	position: relative;
-	left: 50%;
-	top: 50%;
+	left: 51.5%;
+	top: 55%;
 
 	transform: translate(-50%);
 	margin-top: 170px;
@@ -81,9 +81,15 @@
 
 
 .step {
-	display: none;
+	display: block;
 	height: inherit;
 	text-align: center;
+	min-height: 150px;
+	
+	display: block;
+	max-height: 400px;
+	overflow-y: auto;
+	
 	.stepNandName;
 	span {
 		display: block;
@@ -94,7 +100,7 @@
 		}
 	}
 	label {
-		input[type=text] {
+		input[type=text], input[type=number], input[type=tel] {
 			background-color: rgba(0, 0, 0, .1);
 			border: 0;
 			outline: none;
@@ -103,6 +109,19 @@
 			font-family: defaultFamily;
 			font-size: 18px;
 			width: 200px;
+		}
+		textarea {
+			background-color: rgba(0, 0, 0, .1);
+			border: 0;
+			outline: none;
+			padding: 5px 8px;
+			color: rgba(0, 0, 0, .7);
+			font-family: defaultFamily;
+			font-size: 18px;
+			width: 200px;
+			resize: none;
+			min-width: 300px;
+			min-height: 100px;
 		}
 	}
 
@@ -146,4 +165,32 @@
 	transform: translate(-50%);
 	top: -40px;
 	.stepNandName;
+}
+
+.members {
+	width: 100px !important;
+}
+
+.foundersLBL {
+	display: block;
+	position: relative;
+	& > .cont {
+		display: inline-block;
+		margin-bottom: 30px;
+	}
+	& > .title {
+		
+	}
+	& input {
+		margin-left: 10px;	
+	}
+	& .add {
+		position: absolute;
+    margin-left: 13px;
+    font-size: 23px;
+    background-color: rgba(0,0,0,0.1);
+    padding: 0 11px;
+		cursor: pointer;
+		margin-top: -15px;
+	}
 }
