@@ -3,6 +3,11 @@
     src: url(../fonts/bpg_nino_mtavruli_normal.ttf);
 }
 
+@font-face {
+   font-family: Lari;
+   src: url(../fonts/Lari.ttf);
+}
+
 #wrapper {
 	font: normal 16px arial,verdana;
 	position: fixed;
@@ -25,7 +30,7 @@
 
 	z-index: 99;
 
-	display: none;
+	display: block;
 }
 #startButton {
 	.button;
@@ -54,7 +59,7 @@
 }
 
 #steps {
-	display: block;
+	display: none;
 	position: absolute;
 	left: 50%;
 	top: 55%;
@@ -81,13 +86,10 @@
 
 
 .step {
-	display: block;
+	display: none;
 	height: inherit;
 	text-align: center;
-	min-height: 150px;
 	
-	display: block;
-	max-height: 400px;
 	overflow-y: auto;
 	
 	.stepNandName;
@@ -130,6 +132,11 @@
 	}
 }
 
+[step="3"] {
+	height: 200px !important;
+	max-width: 750px;
+	margin: 0 auto;
+}
 .changeStep {display: none;}
 
 .stepNandName {
@@ -155,7 +162,7 @@
 .button-hover {
 	background-color: #A02518;
 }
-#prev.disabled {
+input.disabled {
 	background: fade(@button_collor, 50%) !important;
 }
 
@@ -176,7 +183,6 @@
 	position: relative;
 	& > .cont {
 		display: inline-block;
-		margin-bottom: 30px;
 	}
 	& > .title {
 		
@@ -186,11 +192,75 @@
 	}
 	& .add {
 		position: absolute;
-    margin-left: 13px;
+    margin-left: 42px;
     font-size: 23px;
     background-color: rgba(0,0,0,0.1);
     padding: 0 11px;
 		cursor: pointer;
-		margin-top: -15px;
+		margin-top: 10px;
+	}
+}
+
+.lari {
+	font-family: Lari;
+	display: inline-block !important;
+	font-size: 33px;
+	vertical-align: sub;
+}
+
+.code {
+	&.disabled {
+		display: none;
+	}
+	> span {
+		display: inline-block !important;
+		margin-bottom: 0 !important;
+		margin-top: 20px;
+		font-size: 20px;
+		vertical-align: text-bottom;
+		font-weight: bold;
+		&.repeat {
+			font-size: 15px;
+			vertical-align: baseline;
+			cursor: pointer;
+		}
+	}
+		
+	> input {
+		width: 77px !important;
+		text-align: center;
+		padding-top: 8px !important;
+	}
+}
+
+#num-send {
+	.button;
+	font-size: 14px;
+	padding: 6px 10px 3px;
+	border-radius: 0;
+	&:hover {
+		.button-hover;
+	}
+}
+
+.complete {
+	display: none;
+	text-align: center;
+	& > .finished {
+		display: block;
+		color: #0DCC54;
+		font-size: 24px;
+	}
+}
+
+#home {
+	.button;
+	font-size: 14px;
+	padding: 8px 18px 3px;
+	display: block;
+	margin: 0 auto;
+	margin-top: 10px;
+	&:hover {
+		.button-hover;
 	}
 }
