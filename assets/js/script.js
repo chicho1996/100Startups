@@ -77,7 +77,7 @@ el.butt.on('click', function(e) {
 		
 			$.ajax({
 				type: 'POST',
-				url: 'http://shavidzet.com/100Startups/lib/code_act.php',
+				url: '/lib/code_act.php',
 				data: {getData: JSON.stringify(startup), code:$('#code').val()},
 				success: function(data) {
 					console.log(data);
@@ -303,7 +303,7 @@ $('#num-send').on('click', function(e) {
 	if ( startup.phone.replace(/ - /g, '').length == 9 ) {
 		$.ajax({
 			type: 'POST',
-			url: 'http://shavidzet.com/100Startups/lib/reg.php',
+			url: '/lib/reg.php',
 			data: {getData: JSON.stringify(startup), found: JSON.stringify(founders), phone: startup.phone.replace(/ - /g, '')  },
 			success: function(data) {
 				console.log( data );
@@ -336,7 +336,7 @@ $('.step').find('input').on('keyup', function(e) {
 $('.repeat').on('click', function(e) {
 	$.ajax({
 		type: 'POST',
-		url: 'http://shavidzet.com/100Startups/lib/reg.php',
+		url: '/lib/reg.php',
 		data: {getData: JSON.stringify(startup), found: JSON.stringify(founders), phone: startup.phone.replace(/ - /g, '')  },
 		success: function(data) {
 			console.log( data );
