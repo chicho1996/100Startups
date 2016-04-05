@@ -13,6 +13,8 @@
 </head>
 <body>
 
+<div id="loading"></div>
+
 <div id="wrapper">
 
 	<div id="start">

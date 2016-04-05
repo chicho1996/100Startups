@@ -1,3 +1,12 @@
+$('#loading').addClass('active');
+
+$("#loading").bind('oanimationend animationend webkitAnimationEnd', function() { 
+   $('#loading').hide('slow', function() {
+   	$('#wrapper').addClass('active');
+   });
+});
+
+
 // elements
 var el = {};
 el.stepsParrent = $('#steps');

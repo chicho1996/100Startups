@@ -8,12 +8,73 @@
    src: url(../fonts/Lari.ttf);
 }
 
+#loading {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	width: 200px;
+	height: 200px;
+	border: 20px solid #FFF;
+	border-radius: 100%;
+	//background-color: green;
+	&.active {
+		-webkit-animation:  animix .7s 1;
+		-webkit-animation-fill-mode: forwards;
+		-moz-animation:  animix .7s 1;
+		-moz-animation-fill-mode: forwards;
+		animation:  animix .7s 1;
+		animation-fill-mode: forwards;
+	}
+}
+
+@border_fill_color: #4fdb13;
+    @keyframes animix {
+    0% { 
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+     25% { 
+       border-top-color: @border_fill_color;
+       border-right-color: transparent;
+       border-bottom-color: transparent;
+       border-left-color: transparent;
+     }
+     50% { 
+       border-top-color: @border_fill_color;
+       border-right-color: @border_fill_color;
+       border-bottom-color: transparent;
+       border-left-color: transparent;
+     }
+     75% { 
+       border-top-color: @border_fill_color;
+       border-right-color: @border_fill_color;
+       border-bottom-color: @border_fill_color;
+       border-left-color: transparent;
+     }
+     100% { 
+       border-top-color: @border_fill_color;
+       border-right-color: @border_fill_color;
+       border-bottom-color: @border_fill_color;
+       border-left-color: @border_fill_color;
+   	}
+   }
+
 #wrapper {
 	font: normal 16px arial,verdana;
 	position: fixed;
 	height: 100%;
 	width: 100%;
 	font-family: defaultFamily;
+	visibility: hidden;
+	transform: scale(0);
+	transition: all .5s ease;
+	&.active {
+		visibility: visible;
+		transform: scale(1);
+	}
 }
 
 @button_collor: #c0392b;
