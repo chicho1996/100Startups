@@ -35,20 +35,23 @@
 				<div id="current">1</div> / 10
 			</div>
 
-			<div class="step active">
+			<div id="steps">
+				<div class="step active">
 
-				<label class="group">
-					<span>სტარტაპის სახელი</span>
-					<input type="input" class="input">
-				</label>
+					<label class="group active">
+						<span>სტარტაპის სახელი</span>
+						<input type="input" class="input">
+					</label>
 
+				</div>
+				<div class="step">hello2</div>
+				<div class="step">hello3</div>
 			</div>
 
 			<div class="directions">
-				<div class="button">წინა</div>
-				<div class="button">შემდეგი</div>
+				<div class="button prev">წინა</div>
+				<div class="button next">შემდეგი</div>
 			</div>
-			<div class="step">hello2</div>
 		</div>
 	</div>
 
