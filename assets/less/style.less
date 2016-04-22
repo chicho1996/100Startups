@@ -128,9 +128,14 @@
 		background-position: center;
 	}
 	.step {
-		display: none;
+		visibility: hidden;
+
+		transition: all .5s ease;
+		transform: scale(0);
 		&.active {
-			display: block;
+			visibility: visible;
+
+			transform: scale(1);
 		}
 	}
 	color: rgba(0,0,0,0.5);
@@ -158,6 +163,10 @@
 				background: fade(#c0392b, 50%) !important;
 			}
 		}
+	}
+	#steps {
+		margin: 0 auto;
+		text-align: center;
 	}
 }
 

@@ -8,48 +8,100 @@ btn.dir = $('.directions .button');
 btn.dir_prev = btn.dir.filter('.prev');
 btn.dir_next = btn.dir.filter('.next');
 
+var input = {};
+input.all = $('.input');
+
 var step = {};
 step.content = $('#content');
 step.all = $('.step');
 step.value = 1;
+
+
+init();
 
 btn.start.on('click', function() {
 	greeting.addClass('hide_');
 	step.content.addClass('active');
 });
 
-
-btn.dir_next.on('click', function() {
-	var current = step.value;
-	var next = step.value + 1;
-
-	var nextEl = getStepElByIndex(next);
-
-
-	if (nextEl.length) {
-		step.value++;
-		getStepElByIndex(current).removeClass('active');
-		getStepElByIndex(next).addClass('active');
+input.all.on('keypress', function(e) {
+	if (e.keyCode == 13) {
+		changeStep('next');
 	}
-
-	if (!getStepElByIndex(next+1).length)
-		$(this).addClass('disabled');
-
-	//step.all.filter(':nth-child('+current+')').hide();
-	
 });
 
+
+btn.dir_next.on('click', function() {
+	changeStep('next');
+});
+
+btn.dir_prev.on('click', function() {
+	changeStep('prev');
+});
+
+
+function init() {
+	changeStep('prev');
+	setTimeout(function() {
+		input.all.get(0).focus();
+	}, 500);
+}
+function changeStep(direction)
+{
+	console.log(direction);
+	var next;
+	if (direction == 'next')
+		next = true;
+	else if (direction == 'prev')
+		next = false;
+	else {
+		alert('undefined direction');
+		return false;
+	}
+
+	var current = step.value;
+	var nextStep = step.value + 1;
+	var nextNext = nextStep + 1;
+	if (!next) {
+		nextStep -= 2;
+		nextNext -= 4;
+	}
+
+	var nextEl = getStepElByIndex(nextStep);
+
+	// check if next step
+	if (nextEl.length) {
+		if (next) step.value++;
+		else step.value--;
+		getStepElByIndex(current).removeClass('active');
+		nextEl.addClass('active');
+	}
+
+	// disable buttons
+	if (!getStepElByIndex(nextNext).length) 
+		btn['dir_'+direction].addClass('disabled');
+	else
+		btn['dir_'+direction].removeClass('disabled');
+
+	// undisable buttons
+	if (next)
+		btn.dir_prev.removeClass('disabled');
+	else
+		btn.dir_next.removeClass('disabled');
+
+	nextEl.find('.input').focus();
+}
 
 function getStepElByIndex(index) {
 	return step.all.filter(':nth-child('+index+')');
 }
 
 
-loading.removeClass('active');
+/*loading.removeClass('active');
 wrapper.addClass('active');
 
 greeting.addClass('hide_');
-step.content.addClass('active');
+step.content.addClass('active');*/
 
 loading.bind('oanimationend animationend webkitAnimationEnd', function() { 
 	loading.hide('slow', function() {

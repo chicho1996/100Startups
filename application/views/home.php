@@ -44,8 +44,18 @@
 					</label>
 
 				</div>
-				<div class="step">hello2</div>
-				<div class="step">hello3</div>
+				<div class="step">
+					<label class="group active">
+						<span>რომელ ქალაქში მოღვაწეობთ</span>
+						<input type="input" class="input">
+					</label>
+				</div>
+				<div class="step">
+					<label class="group active">
+						<span>რამდენი წევრია გუნდში</span>
+						<input type="input" class="input">
+					</label>
+				</div>
 			</div>
 
 			<div class="directions">
