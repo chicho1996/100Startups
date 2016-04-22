@@ -5,6 +5,6 @@ class Nav extends CI_Controller {
 
 	public function home()
 	{
-		var_dump(21);
+		$this->load->view('home');
 	}
 }
