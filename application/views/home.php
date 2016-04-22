@@ -9,6 +9,7 @@
 
 	<!-- Bootstrap -->
 	<link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/style.css">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,11 +20,33 @@
 </head>
 <body>
 
-	<div class="welcome"></div>
+	<div class="loading active" id="loading"></div>
+
+	<div id="wrapper">
+		<div class="welcome" id="greeting">
+			<div id="start" class="startBTN">დაწყება</div>
+		</div>
+
+		<div class="steps-cont" id="content">
+
+			<div class="header"></div>
+
+			<div class="step active">
+
+				<label>
+					<span>სტარტაპის სახელი</span>
+					<input type="input">
+				</label>
+
+			</div>
+			<div class="step">hello2</div>
+		</div>
+	</div>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="<?=base_url()?>assets/js/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
+	<script src="<?=base_url()?>assets/js/script.js"></script>
 </body>
 </html>
