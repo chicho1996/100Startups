@@ -21,6 +21,9 @@ btn.start.on('click', function() {
 loading.removeClass('active');
 wrapper.addClass('active');
 
+greeting.addClass('hide_');
+step.content.addClass('active');
+
 loading.bind('oanimationend animationend webkitAnimationEnd', function() { 
 	loading.hide('slow', function() {
 		wrapper.addClass('active');

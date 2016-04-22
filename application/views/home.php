@@ -31,13 +31,22 @@
 
 			<div class="header"></div>
 
+			<div class="stepNum">
+				<div id="current">1</div> / 10
+			</div>
+
 			<div class="step active">
 
-				<label>
+				<label class="group">
 					<span>სტარტაპის სახელი</span>
-					<input type="input">
+					<input type="input" class="input">
 				</label>
 
+			</div>
+
+			<div class="directions">
+				<div class="button">წინა</div>
+				<div class="button">შემდეგი</div>
 			</div>
 			<div class="step">hello2</div>
 		</div>
