@@ -43,8 +43,11 @@ btn.dir_prev.on('click', function() {
 });
 
 // swipe listener for mobile
-$("body").on("swipeleft",function(){
-	alert('hi');
+$(document).on("swipeleft",function(){
+	changeStep('prev');
+});
+$(document).on("swiperight",function(){
+	changeStep('next');
 });
 
 
