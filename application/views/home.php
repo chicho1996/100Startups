@@ -151,11 +151,13 @@
 
 				<div class="step">
 					<label class="group">
+					<img src="" id="img">
 						<span>ატვირთეთ თქვენი ლოგო</span>
 						<div class="logoClone">
 							<div class="lbl">აირჩიე</div>
 						</div>
-						<input type="file" class="logoFile">
+						<input type="file" class="logoFile" id="logoFile" accept="image/x-png, image/gif, image/jpeg">
+
 					</label>
 				</div>
 

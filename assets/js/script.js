@@ -102,6 +102,7 @@ function init() {
 
 function collectData()
 {
+	return false;
 	var current_step_index = step.value-1;
 	var currentEl = getStepElByIndex(current_step_index);
 	var value = null;
@@ -164,10 +165,14 @@ function collectData()
 			value = currentEl.find('.input').val();
 			data.capital = value;
 			break;
+		default:
+
 	}
 }
 
-debug(9);
+//debug(8);
+
+
 
 function changeStep(direction)
 {
