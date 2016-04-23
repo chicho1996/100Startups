@@ -235,63 +235,111 @@ function avoidSpaceKey(value) {
 	return test;
 }
 function dataValidation() {
+	var errors = {};
+	errors.name = 0;
 	if (!data.name.length) {
-		console.log('სტარტაპის სახელი!');
+		//console.log('სტარტაპის სახელი!');
+		errors.name = 1;
 	} else if ( avoidSpaceKey(data.name).length < 2 ) {
-		console.log('სახელი ნაკლებია 2ზე!');
+		//console.log('სახელი ნაკლებია 2ზე!');
+		errors.name = 2;
 	} else {
-		console.log(avoidSpaceKey(data.name));
+		errors.name = 0;
+		//console.log(avoidSpaceKey(data.name));
 	}
 
+	errors.year = 0;
 	if (!data.year.length) {
-		console.log('წელი!');
+		errors.year = 1;
+	} else {
+		errors.year = 0;
 	}
 
+	errors.founder = 0;
 	if (!data.founder.length) {
-		console.log('დამარსებელი!');
+		errors.founder = 1;
 	} else {
+		errors.founder = 99999999;
+		errors.founder = {};
 		for (var key=0;key<data.founder.length;key++) {
 			var arr = data.founder[key];
 			var fName = arr.fName;
 			var lName = arr.lName;
 			var age = arr.age;
-			if (fName.length && lName.length && age.length) {
-				//console.log('--'+fName+'---');
+			errors.founder[key] = [];
+			if ( data.founder.length > 1 && !fName.length 
+				&& !lName.length
+				&& !age.length ) {
+				errors.founder[key] = 0;
+				console.log(2555555555, key, errors.founder);
 			} else {
-				console.log();
+				if (!fName.length) {
+					errors.founder[key] = 2;
+				} else if(!lName.length) {
+					errors.founder[key] = 3;
+				} else if (!age.length) {
+					errors.founder[key] = 4;
+				} else {
+					errors.founder[key] = 0;
+				}
 			}
-			//console.log('-----', arr.fName,arr.lName,arr.age, '------');
 		}
 	}
+	// '----'+JSON.stringify(errors.founder)
+	console.log( JSON.stringify(errors.founder) );
+	
 
+	errors.city = 0;
 	if (!data.city.length) {
-		console.log('ქალაქი!');
+		errors.city = 1;
+	} else {
+		errors.city = 0;
 	}
 
+	errors.memberNum = 0;
 	if (!data.memberNum.length) {
-		console.log('გუნდის წევრები!');
+		errors.memberNum = 1;
+	} else {
+		errors.memberNum = 0;
 	}
 
+	errors.industry = 0;
 	if (!data.industry.length) {
-		console.log('ინდუსტრია!');
+		errors.industry = 1;
+	} else {
+		errors.industry = 0;
 	}
 
+	errors.desc = 0;
 	if (!data.desc.length) {
-		console.log('აღწერა!');
+		errors.desc = 1;
+	} else {
+		errors.desc = 0;
 	}
 
+	errors.email = 0;
 	if (!data.email.length) {
-		console.log('ელ-ფოსტა!');
+		errors.email = 1;
+	} else {
+		errors.email = 0;
 	}
 
+	errors.logo = 0;
 	if (typeof data.logo == 'undefined' 
 		|| typeof data.logo.name == 'undefined') {
-		console.log('ლოგო!');
+		errors.logo = 1;
+	} else {
+		errors.logo = 0;
 	}
 
+	errors.capital = 0;
 	if (!data.capital.length) {
-		console.log('კაპიტალი!');
+		errors.capital = 1;
+	} else {
+		errors.capital = 0;
 	}
+
+	console.log(errors);
 
 }
 
