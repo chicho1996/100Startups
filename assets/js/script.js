@@ -136,7 +136,6 @@ function init() {
 
 function collectData()
 {
-	return false;
 	var current_step_index = step.value-1;
 	var currentEl = getStepElByIndex(current_step_index);
 	var value = null;
@@ -152,23 +151,25 @@ function collectData()
 		case 3:
 			var founderEl = currentEl.find('.founder');
 			data.founder = [];
-			error = true;
+			var error;
 			for (var i = 0; i < founderEl.length; i++) {
 				value =  $(founderEl[i]);
+				error = 0;
 				//console.log( value.find('.fname').val() );
 				if ( typeof(value.find('.fname').val()) != 'undefined') {
 					var fname = value.find('.fname').val();
-					var error = false;
-				} else error = true;
+					if (error > 0) error--;
+				} else error++;
 				if ( typeof(value.find('.lname').val()) != 'undefined') {
 					var lname = value.find('.lname').val();
-					var error = false;
-				} else error = true;
+					if (error > 0) error--;
+				} else error++;
 				if ( typeof(value.find('.age').val()) != 'undefined') {
 					var age = value.find('.age').val();
-					var error = false;
-				} else error = true;
+					if (error > 0) error--;
+				} else error++;
 				
+				console.log(error);
 				if (!error) {	
 					var FounderData = {
 						'fName': fname,
@@ -178,6 +179,7 @@ function collectData()
 					data.founder.push(FounderData);
 				}
 			}
+			console.log(JSON.stringify(data), data);
 			break;
 		case 4:
 			value = currentEl.find('.input').val();
@@ -195,7 +197,15 @@ function collectData()
 			value = currentEl.find('.input').val();
 			data.desc = value;
 			break;
+		case 8:
+			value = currentEl.find('.input').val();
+			data.email = value;
+			break;
 		case 9:
+			value = currentEl.find('.input').val();
+			data.logo = value;
+			break;
+		case 10:
 			value = currentEl.find('.input').val();
 			data.capital = value;
 			break;
@@ -204,7 +214,10 @@ function collectData()
 	}
 }
 
-debug(1);
+debug(9);
+
+var phonePH = "5**  - **  - ** - **";
+$("#phone").mask("500 - 00 - 00 - 00", {placeholder: phonePH} );
 
 $('.input').on('focus', function() {
 	setTimeout(function() {

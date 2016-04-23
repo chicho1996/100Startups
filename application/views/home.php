@@ -158,9 +158,9 @@
 				<div class="step">
 					<label class="group">
 					<img src="" id="img">
-						<span>ატვირთეთ თქვენი ლოგო</span>
+						<span></span>
 						<div class="logoClone">
-							<div class="lbl">აირჩიე</div>
+							<div class="lbl">ატვირთეთ თქვენი ლოგო</div>
 						</div>
 						<input type="file" class="logoFile" id="logoFile" accept="image/x-png, image/gif, image/jpeg">
 
@@ -176,8 +176,8 @@
 
 				<div class="step">
 					<label class="group">
-						<span>რამდენი იყო სტარტაპის კაპიტალი 2015 წლის ბოლოს?</span>
-						<input type="number" class="input">
+						<span>მობილური ტელეფონის ვერიფიკაცია</span>
+						<input type="tel" class="input" id="phone">
 					</label>
 				</div>
 
@@ -193,6 +193,7 @@
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="<?=base_url()?>assets/js/jquery.min.js"></script>
 	<script src="<?=base_url()?>assets/js/jquery.mobile.min.js"></script>
+	<script src="<?=base_url()?>assets/js/jquery.mask.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
 	<script src="<?=base_url()?>assets/js/script.js"></script>
