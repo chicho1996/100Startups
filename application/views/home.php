@@ -44,7 +44,7 @@
 					</label>
 
 				</div>
-				<div class="step active">
+				<div class="step">
 					<label class="group">
 						<span class="title">როდის დაიწყეთ ფუნქციონირება</span>
 						<div class="year">
@@ -91,34 +91,69 @@
 						</div>
 					</label>
 				</div>
+
 				<div class="step">
-					<label class="group active">
-						<span>რამდენი წევრია გუნდში</span>
-						<input type="input" class="input">
+					<label class="group">
+						<span class="title">ვინ არიან დამფუძნებლები?</span>
+						<div class="founder-cont">
+							<div class="founder">
+								
+								<div class="lbl-group">
+									<!--<div class="lbl">სახელი</div>-->
+									<input type="input" class="input name" placeholder="სახელი">
+								</div>
+
+								<div class="lbl-group">
+									<!--<div class="lbl">გვარი</div>-->
+									<input type="input" class="input name" placeholder="გვარი">
+								</div>
+
+								<div class="lbl-group">
+									<!--<div class="lbl">ასაკი</div>-->
+									<input type="input" class="input age" placeholder="ასაკი">
+								</div>
+								<div class="lbl-group">
+									<div class="add addFounderColumn">+</div>
+								</div>
+								<div class="lbl-group">
+									<div class="add delete deleteFounderColumn">-</div>
+								</div>
+
+							</div>
+						</div>
 					</label>
 				</div>
-								<div class="step">
-					<label class="group active">
-						<span>რომელ ქალაქში მოღვაწეობთ</span>
+				
+				<div class="step">
+					<label class="group">
+						<span class="title">რომელ ქალაქში მოღვაწეობთ?</span>
 						<input type="input" class="input">
 					</label>
 				</div>
 				<div class="step">
-					<label class="group active">
-						<span>რამდენი წევრია გუნდში</span>
-						<input type="input" class="input">
-					</label>
-				</div>
-								<div class="step">
-					<label class="group active">
-						<span>რომელ ქალაქში მოღვაწეობთ</span>
-						<input type="input" class="input">
+					<label class="group">
+						<span>რამდენი წევრია გუნდში?</span>
+						<input type="number" class="input">
 					</label>
 				</div>
 				<div class="step">
-					<label class="group active">
-						<span>რამდენი წევრია გუნდში</span>
-						<input type="input" class="input">
+					<label class="group">
+						<span>რამელია თქვენი ინდუსტრია?</span>
+						<input type="text" class="input">
+					</label>
+				</div>
+				<div class="step">
+					<label class="group">
+						<span>20 სიტყვით აღწერეთ თქვენი პროდუქტი</span>
+						<textarea class="input desc"></textarea>
+					</label>
+				</div>
+
+				<div class="step active">
+					<label class="group">
+						<span>ატვირთეთ თქვენი ლოგო</span>
+						<div class="logoClone"></div>
+						<input type="file" hidden="">
 					</label>
 				</div>
 			</div>

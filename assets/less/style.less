@@ -235,6 +235,46 @@
 	}
 }
 
+
+// founders
+.founder-cont {
+	//margin-top: 40px;
+	position: relative;
+	.founder {
+		&:first-child .delete {
+			display: none;
+		}
+		.add {
+			background-color: #E6E6E6;
+			width: 40px;
+			font-size: 34px;
+			padding-top: 4px;
+			cursor: pointer;
+		}
+		.delete {
+
+		}
+	}
+	.lbl-group {
+		display: inline-block;
+	}
+	.input {
+		&.name {
+			width: 200px;
+			text-align: center;
+		}
+		&.age {
+			width: 100px;
+			text-align: center;
+		}
+	}
+}
+
+// logo clone 
+
+
+
+
 .input {
 	display: block;
 	margin: 10px auto;
@@ -246,6 +286,12 @@
 	font-family: defaultFamily;
 	font-size: 28px;
 	width: 300px;
+}
+textarea.input {
+	display: block;
+	height: 100px !important;
+	font-size: 17px;
+	resize: none;
 }
 
 .button {

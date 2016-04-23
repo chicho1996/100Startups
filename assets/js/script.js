@@ -27,6 +27,15 @@ $('.year').on('click', function() {
 	$(this).addClass('active');
 });
 
+//btn.dir.hide();
+
+$(document).on('click', '.deleteFounderColumn', function() {
+	$(this).parent().parent().html('');
+});
+$(document).on('click', '.addFounderColumn', function() {
+	$('.founder-cont').append('<div class="founder">'+$(this).parent().parent().html()+'</div>');
+});
+
 
 init();
 
@@ -36,7 +45,7 @@ btn.start.on('click', function() {
 });
 
 input.all.on('keypress', function(e) {
-	if (e.keyCode == 13) {
+	if (e.keyCode == 13 && !$(this).hasClass('desc')) {
 		changeStep('next');
 	}
 });
@@ -65,6 +74,7 @@ function init() {
 	setTimeout(function() {
 		input.all.get(0).focus();
 	}, 500);
+	$.mobile.loading().hide();
 }
 function changeStep(direction)
 {
@@ -138,6 +148,7 @@ wrapper.addClass('active');
 
 greeting.addClass('hide_');
 step.content.addClass('active');
+
 
 loading.bind('oanimationend animationend webkitAnimationEnd', function() { 
 	loading.hide('slow', function() {
