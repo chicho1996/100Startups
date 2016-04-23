@@ -259,7 +259,6 @@ function dataValidation() {
 	if (!data.founder.length) {
 		errors.founder = 1;
 	} else {
-		errors.founder = 99999999;
 		errors.founder = {};
 		for (var key=0;key<data.founder.length;key++) {
 			var arr = data.founder[key];
