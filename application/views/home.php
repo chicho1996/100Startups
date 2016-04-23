@@ -32,7 +32,7 @@
 			<div class="header"></div>
 
 			<div class="stepNum">
-				<div id="current">1</div> / 10
+				<div id="current">1</div> / <div id="maxStep"></div>
 			</div>
 
 			<div id="steps">
@@ -45,6 +45,30 @@
 
 				</div>
 				<div class="step">
+					<label class="group active">
+						<span>რომელ ქალაქში მოღვაწეობთ</span>
+						<input type="input" class="input">
+					</label>
+				</div>
+				<div class="step">
+					<label class="group active">
+						<span>რამდენი წევრია გუნდში</span>
+						<input type="input" class="input">
+					</label>
+				</div>
+								<div class="step">
+					<label class="group active">
+						<span>რომელ ქალაქში მოღვაწეობთ</span>
+						<input type="input" class="input">
+					</label>
+				</div>
+				<div class="step">
+					<label class="group active">
+						<span>რამდენი წევრია გუნდში</span>
+						<input type="input" class="input">
+					</label>
+				</div>
+								<div class="step">
 					<label class="group active">
 						<span>რომელ ქალაქში მოღვაწეობთ</span>
 						<input type="input" class="input">

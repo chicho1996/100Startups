@@ -14,7 +14,10 @@ input.all = $('.input');
 var step = {};
 step.content = $('#content');
 step.all = $('.step');
+step.current = $('#current');
+step.maxEl = $('#maxStep');
 step.value = 1;
+step.limit = 0;
 
 
 init();
@@ -41,6 +44,7 @@ btn.dir_prev.on('click', function() {
 
 
 function init() {
+	computeStepLimit();
 	changeStep('prev');
 	setTimeout(function() {
 		input.all.get(0).focus();
@@ -48,7 +52,6 @@ function init() {
 }
 function changeStep(direction)
 {
-	console.log(direction);
 	var next;
 	if (direction == 'next')
 		next = true;
@@ -73,8 +76,14 @@ function changeStep(direction)
 	if (nextEl.length) {
 		if (next) step.value++;
 		else step.value--;
-		getStepElByIndex(current).removeClass('active');
-		nextEl.addClass('active');
+		if (next) {
+			getStepElByIndex(current).addClass('goLeft').removeClass('active goRight fromLeft fromRight');
+			nextEl.addClass('fromRight active');
+		} else {
+			getStepElByIndex(current).addClass('goRight').removeClass('active goLeft goRight fromLeft fromRight');
+			nextEl.addClass('fromLeft active');
+		}
+		updateStepDOM();
 	}
 
 	// disable buttons
@@ -92,16 +101,27 @@ function changeStep(direction)
 	nextEl.find('.input').focus();
 }
 
+function computeStepLimit()
+{
+	step.limit = step.all.length;
+	step.maxEl.text(step.limit);
+}
+
+function updateStepDOM()
+{
+	step.current.text( step.value );
+}
+
 function getStepElByIndex(index) {
 	return step.all.filter(':nth-child('+index+')');
 }
 
 
-/*loading.removeClass('active');
+loading.removeClass('active');
 wrapper.addClass('active');
 
 greeting.addClass('hide_');
-step.content.addClass('active');*/
+step.content.addClass('active');
 
 loading.bind('oanimationend animationend webkitAnimationEnd', function() { 
 	loading.hide('slow', function() {
