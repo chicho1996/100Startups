@@ -246,13 +246,21 @@
 	//margin-top: 40px;
 	max-height: 300px;
 	position: relative;
-	max-height: 180px;
+	//max-height: 180px;
     overflow: hidden;
-    overflow-y: scroll;
-	//border: 1px solid red;
+    overflow-y: auto;
+    max-height: 250px;
 	.founder {
-		&:first-child .delete {
-			display: none;
+		&.visible {
+			padding: 10px 0;
+			border-bottom: 1px solid #E6E6E6;
+		}
+		&:first-child {
+			padding-top: 0;
+			border-top: none;
+			.delete {
+				display: none;
+			}
 		}
 		.add {
 			background-color: #E6E6E6;
@@ -260,6 +268,8 @@
 			font-size: 34px;
 			padding-top: 4px;
 			cursor: pointer;
+
+
 		}
 		.delete {
 
@@ -357,4 +367,35 @@ textarea.input {
 	&:hover {
 		background-color: #A02518;
 	}
+}
+
+
+// fix some responsive 
+@media screen and (max-height: 500px) {
+	.directions {
+		display: none;
+	}
+}
+@media screen and (max-width: 600px) {
+	.header {
+		height: 50px !important;
+	}
+	.stepNum {
+		margin-top: 18px !important;
+	}
+	.founder {
+		.lbl-group {
+			display: block !important;
+		}
+		.helpBTN {
+			display: inline-block !important;
+		}
+		.age {
+			width: 200px !important;
+		}
+	}
+}
+
+.year {
+   margin-top: 35px !important; 
 }

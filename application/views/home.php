@@ -97,7 +97,9 @@
 						<span class="title">ვინ არიან დამფუძნებლები?</span>
 						<div class="founder-cont">
 							<div class="founder">
-								
+								<div class="lbl-group helpBTN">
+									<div class="add delete deleteFounderColumn">-</div>
+								</div>
 								<div class="lbl-group">
 									<!--<div class="lbl">სახელი</div>-->
 									<input type="input" class="input name fname" placeholder="სახელი">
@@ -110,13 +112,10 @@
 
 								<div class="lbl-group">
 									<!--<div class="lbl">ასაკი</div>-->
-									<input type="input" class="input age" placeholder="ასაკი">
+									<input type="number" class="input age" placeholder="ასაკი">
 								</div>
-								<div class="lbl-group">
+								<div class="lbl-group helpBTN">
 									<div class="add addFounderColumn">+</div>
-								</div>
-								<div class="lbl-group">
-									<div class="add delete deleteFounderColumn">-</div>
 								</div>
 
 							</div>
@@ -163,7 +162,7 @@
 						<div class="logoClone">
 							<div class="lbl">აირჩიე</div>
 						</div>
-						<input type="file" class="logoFile" id="logoFile">
+						<input type="file" class="logoFile" id="logoFile" accept="image/x-png, image/gif, image/jpeg">
 
 					</label>
 				</div>
