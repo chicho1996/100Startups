@@ -19,10 +19,12 @@ step.maxEl = $('#maxStep');
 step.value = 1;
 step.limit = 0;
 
+var data = {};
 
 
-debug(3);
+
 function debug(index) {
+	step.value = index;
 	preDebug();
 	step.all.filter('.active').removeClass('active');
 	$(step.all[index-1]).addClass('active');
@@ -71,10 +73,12 @@ input.all.on('keypress', function(e) {
 // direction on click
 btn.dir_next.on('click', function() {
 	changeStep('next');
+	collectData();
 });
 
 btn.dir_prev.on('click', function() {
 	changeStep('prev');
+	collectData();
 });
 
 // swipe listener for mobile
@@ -94,6 +98,77 @@ function init() {
 	}, 500);
 	$.mobile.loading().hide();
 }
+
+
+function collectData()
+{
+	var current_step_index = step.value-1;
+	var currentEl = getStepElByIndex(current_step_index);
+	var value = null;
+	switch (current_step_index) {
+		case 1:
+			value = currentEl.find('.input').val();
+			data.name = value;
+			break;
+		case 2:
+			value = currentEl.find('.year.active .lbl').text();
+			data.year = value;
+			break;
+		case 3:
+			var founderEl = currentEl.find('.founder');
+			data.founder = [];
+			error = true;
+			for (var i = 0; i < founderEl.length; i++) {
+				value =  $(founderEl[i]);
+				//console.log( value.find('.fname').val() );
+				if ( typeof(value.find('.fname').val()) != 'undefined') {
+					var fname = value.find('.fname').val();
+					var error = false;
+				} else error = true;
+				if ( typeof(value.find('.lname').val()) != 'undefined') {
+					var lname = value.find('.lname').val();
+					var error = false;
+				} else error = true;
+				if ( typeof(value.find('.age').val()) != 'undefined') {
+					var age = value.find('.age').val();
+					var error = false;
+				} else error = true;
+				
+				if (!error) {	
+					var FounderData = {
+						'fName': fname,
+						'lName': lname,
+						'age': age
+					}
+					data.founder.push(FounderData);
+				}
+			}
+			break;
+		case 4:
+			value = currentEl.find('.input').val();
+			data.city = value;
+			break;
+		case 5:
+			value = currentEl.find('.input').val();
+			data.memberNum = value;
+			break;
+		case 6:
+			value = currentEl.find('.input').val();
+			data.industry = value;
+			break;
+		case 7:
+			value = currentEl.find('.input').val();
+			data.desc = value;
+			break;
+		case 9:
+			value = currentEl.find('.input').val();
+			data.capital = value;
+			break;
+	}
+}
+
+debug(9);
+
 function changeStep(direction)
 {
 	var next;

@@ -100,12 +100,12 @@
 								
 								<div class="lbl-group">
 									<!--<div class="lbl">სახელი</div>-->
-									<input type="input" class="input name" placeholder="სახელი">
+									<input type="input" class="input name fname" placeholder="სახელი">
 								</div>
 
 								<div class="lbl-group">
 									<!--<div class="lbl">გვარი</div>-->
-									<input type="input" class="input name" placeholder="გვარი">
+									<input type="input" class="input name lname" placeholder="გვარი">
 								</div>
 
 								<div class="lbl-group">
