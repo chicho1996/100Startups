@@ -20,6 +20,14 @@ step.value = 1;
 step.limit = 0;
 
 
+
+
+$('.year').on('click', function() {
+	$('.year').removeClass('active');
+	$(this).addClass('active');
+});
+
+
 init();
 
 btn.start.on('click', function() {

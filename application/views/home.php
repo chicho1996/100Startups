@@ -36,18 +36,59 @@
 			</div>
 
 			<div id="steps">
-				<div class="step active">
+				<div class="step">
 
-					<label class="group active">
-						<span>სტარტაპის სახელი</span>
+					<label class="group">
+						<span class="title">სტარტაპის სახელი</span>
 						<input type="input" class="input">
 					</label>
 
 				</div>
-				<div class="step">
-					<label class="group active">
-						<span>რომელ ქალაქში მოღვაწეობთ</span>
-						<input type="input" class="input">
+				<div class="step active">
+					<label class="group">
+						<span class="title">როდის დაიწყეთ ფუნქციონირება</span>
+						<div class="year">
+							<div class="radio">
+								<div class="child"></div>
+							</div>
+							<div class="lbl">2010</div>
+						</div>
+						<div class="year">
+							<div class="radio">
+								<div class="child"></div>
+							</div>
+							<div class="lbl">2011</div>
+						</div>
+						<div class="year">
+							<div class="radio">
+								<div class="child"></div>
+							</div>
+							<div class="lbl">2012</div>
+						</div>
+						<div class="year">
+							<div class="radio">
+								<div class="child"></div>
+							</div>
+							<div class="lbl">2013</div>
+						</div>
+						<div class="year">
+							<div class="radio">
+								<div class="child"></div>
+							</div>
+							<div class="lbl">2014</div>
+						</div>
+						<div class="year">
+							<div class="radio">
+								<div class="child"></div>
+							</div>
+							<div class="lbl">2015</div>
+						</div>
+						<div class="year">
+							<div class="radio">
+								<div class="child"></div>
+							</div>
+							<div class="lbl">2016</div>
+						</div>
 					</label>
 				</div>
 				<div class="step">

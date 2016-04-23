@@ -134,6 +134,7 @@
 		transition: all .5s ease;
 		left: 100%;
 		transform: translate(-50%) scale(0);
+		width: 100%;
 		&.goLeft {
 			visibility: hidden !important;
 			left: 0% !important;
@@ -160,6 +161,41 @@
 			visibility: visible;
 			transform: translate(-50%) scale(1);
 		}
+
+		.year {
+			margin-top: 10px;
+			display: inline-block;
+			cursor: pointer;
+			.radio {
+				width: 20px;
+				height: 20px;
+				border-radius: 100%;
+				border: 2px solid rgba(0,0,0,.3);
+				display: inline-block;
+				vertical-align: bottom;
+				margin-left: 20px;
+				.child {
+					border-radius: inherit;
+					width: 10px;
+					height: 10px;
+
+					background-color: #FFF;
+					margin: 3px auto 0;
+					visibility: hidden;
+					transition: all .5s ease;
+				}
+			}
+			.lbl {
+				display: inline-block;
+			}
+			&.active .radio {
+
+			}
+			&.active .radio .child {
+				visibility: visible;
+				background-color: rgba(0,0,0,.4);
+			}
+		}
 	}
 	color: rgba(0,0,0,0.5);
 	.stepNum {
@@ -179,6 +215,9 @@
 		text-align: center;
 		display: block;
 		font-size: 25px;
+		.title {
+			display: block;
+		}
 	}
 	.directions {
 		margin: 180px auto;
