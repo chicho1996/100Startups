@@ -35,11 +35,11 @@ input.all.on('keypress', function(e) {
 
 // direction on click
 btn.dir_next.on('click', function() {
-	btn.dir_next.trigger('click');
+	changeStep('next');
 });
 
 btn.dir_prev.on('click', function() {
-	btn.dir_prev.trigger('click');
+	changeStep('prev');
 });
 
 // swipe listener for mobile
