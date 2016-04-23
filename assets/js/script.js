@@ -21,7 +21,14 @@ step.limit = 0;
 
 
 
-function debug() {
+debug(3);
+function debug(index) {
+	preDebug();
+	step.all.filter('.active').removeClass('active');
+	$(step.all[index-1]).addClass('active');
+}
+
+function preDebug() {
 	//btn.dir.hide();
 	loading.removeClass('active');
 	wrapper.addClass('active');
