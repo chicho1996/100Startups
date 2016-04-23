@@ -204,7 +204,7 @@ function collectData()
 	}
 }
 
-//debug(2);
+debug(1);
 
 $('.input').on('focus', function() {
 	setTimeout(function() {

@@ -174,6 +174,13 @@
 					</label>
 				</div>
 
+				<div class="step">
+					<label class="group">
+						<span>რამდენი იყო სტარტაპის კაპიტალი 2015 წლის ბოლოს?</span>
+						<input type="number" class="input">
+					</label>
+				</div>
+
 			</div>
 
 			<div class="directions">
