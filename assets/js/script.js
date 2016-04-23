@@ -33,13 +33,18 @@ input.all.on('keypress', function(e) {
 	}
 });
 
-
+// direction on click
 btn.dir_next.on('click', function() {
 	changeStep('next');
 });
 
 btn.dir_prev.on('click', function() {
 	changeStep('prev');
+});
+
+// swipe listener for mobile
+$("body").on("swipeleft",function(){
+	alert('hi');
 });
 
 
