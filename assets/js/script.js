@@ -21,13 +21,21 @@ step.limit = 0;
 
 
 
+function debug() {
+	//btn.dir.hide();
+	loading.removeClass('active');
+	wrapper.addClass('active');
+
+	greeting.addClass('hide_');
+	step.content.addClass('active');
+}
 
 $('.year').on('click', function() {
 	$('.year').removeClass('active');
 	$(this).addClass('active');
 });
 
-//btn.dir.hide();
+
 
 $(document).on('click', '.deleteFounderColumn', function() {
 	$(this).parent().parent().html('');
@@ -145,12 +153,6 @@ function getStepElByIndex(index) {
 	return step.all.filter(':nth-child('+index+')');
 }
 
-
-loading.removeClass('active');
-wrapper.addClass('active');
-
-greeting.addClass('hide_');
-step.content.addClass('active');
 
 
 loading.bind('oanimationend animationend webkitAnimationEnd', function() { 
