@@ -44,10 +44,10 @@ btn.dir_prev.on('click', function() {
 
 // swipe listener for mobile
 $(document).on("swipeleft",function(){
-	changeStep('prev');
+	changeStep('next');
 });
 $(document).on("swiperight",function(){
-	changeStep('next');
+	changeStep('prev');
 });
 
 
