@@ -256,7 +256,9 @@ function dataValidation() {
 			var lName = arr.lName;
 			var age = arr.age;
 			if (fName.length && lName.length && age.length) {
-				console.log('--'+fName+'---');
+				//console.log('--'+fName+'---');
+			} else {
+				console.log();
 			}
 			//console.log('-----', arr.fName,arr.lName,arr.age, '------');
 		}
