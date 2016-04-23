@@ -36,6 +36,9 @@ $(document).on('click', '.addFounderColumn', function() {
 	$('.founder-cont').append('<div class="founder">'+$(this).parent().parent().html()+'</div>');
 });
 
+$('.group').on('click', function(e) {
+	e.preventDefault();
+});
 
 init();
 

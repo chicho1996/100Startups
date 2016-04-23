@@ -220,7 +220,11 @@
 		}
 	}
 	.directions {
-		margin: 180px auto;
+		position: fixed;
+		left: 50%;
+		transform: translate(-50%);
+		bottom: 0;
+		margin-bottom: 5%;
 		text-align: center;
 		* {
 			width: 150px;
@@ -271,7 +275,24 @@
 }
 
 // logo clone 
-
+.logoFile {
+	display: none !important;
+}
+.logoClone {
+	width: 200px;
+	height: 200px;
+	border: 2px solid rgba(0, 0, 0, .1);
+	border-radius: 10px;
+	margin: 15px auto;
+	position: relative;
+	.lbl {
+		position: absolute;
+		text-align: center;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+	}
+}
 
 
 

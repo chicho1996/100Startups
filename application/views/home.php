@@ -36,7 +36,7 @@
 			</div>
 
 			<div id="steps">
-				<div class="step">
+				<div class="step active">
 
 					<label class="group">
 						<span class="title">სტარტაპის სახელი</span>
@@ -149,13 +149,23 @@
 					</label>
 				</div>
 
-				<div class="step active">
+				<div class="step">
 					<label class="group">
 						<span>ატვირთეთ თქვენი ლოგო</span>
-						<div class="logoClone"></div>
-						<input type="file" hidden="">
+						<div class="logoClone">
+							<div class="lbl">აირჩიე</div>
+						</div>
+						<input type="file" class="logoFile">
 					</label>
 				</div>
+
+				<div class="step">
+					<label class="group">
+						<span>რამდენი იყო სტარტაპის კაპიტალი 2015 წლის ბოლოს?</span>
+						<input type="number" class="input">
+					</label>
+				</div>
+
 			</div>
 
 			<div class="directions">
