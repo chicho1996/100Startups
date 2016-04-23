@@ -56,6 +56,12 @@ $(document).on('click', '.addFounderColumn', function() {
 $('.group').on('click', function(e) {
 	e.preventDefault();
 });
+$('#logoFile').on('click', function(e) {
+	e.stopPropagation();
+});
+$('.logoClone').on('click', function() {
+	$('#logoFile').trigger('click');
+});
 
 init();
 
@@ -165,14 +171,27 @@ function collectData()
 			value = currentEl.find('.input').val();
 			data.capital = value;
 			break;
-		default:
+		
 
 	}
 }
 
 //debug(8);
 
+$('#logoFile').on('change', function(e) {
+	openFile( $(this) );
+});
 
+var openFile = function(el) {
+	var file = el.get(0).files[0];
+	var reader = new FileReader();
+
+	reader.readAsDataURL(file);
+	reader.onload = function(){
+		var dataURL = reader.result;
+		$('.logoClone').css('background-image', 'url("'+dataURL+'")');
+	};
+};
 
 function changeStep(direction)
 {

@@ -151,12 +151,19 @@
 
 				<div class="step">
 					<label class="group">
+						<span>კომპანიის ელ.ფოსტა</span>
+						<input type="email" class="input" placeholder="example@domain.com">
+					</label>
+				</div>
+
+				<div class="step">
+					<label class="group">
 					<img src="" id="img">
 						<span>ატვირთეთ თქვენი ლოგო</span>
 						<div class="logoClone">
 							<div class="lbl">აირჩიე</div>
 						</div>
-						<input type="file" class="logoFile" id="logoFile" accept="image/x-png, image/gif, image/jpeg">
+						<input type="file" class="logoFile" id="logoFile">
 
 					</label>
 				</div>
