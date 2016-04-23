@@ -20,6 +20,17 @@ step.value = 1;
 step.limit = 0;
 
 var data = {};
+data.name = '',
+data.year = '',
+data.founder = '',
+data.city = '',
+data.memberNum = '',
+data.industry = '',
+data.desc = '',
+data.email = '',
+data.logo = '',
+data.capital = '';
+
 
 
 
@@ -202,19 +213,85 @@ function collectData()
 			data.email = value;
 			break;
 		case 9:
-			value = currentEl.find('.input').val();
+			value = $('#logoFile').get(0).files[0];
 			data.logo = value;
 			break;
 		case 10:
 			value = currentEl.find('.input').val();
 			data.capital = value;
+			dataValidation();
 			break;
-		
-
 	}
+	dataValidation();
 }
 
-debug(9);
+debug(3);
+
+function avoidSpaceKey(value) {
+	var test = value.replace(/\s\s+/g, ' ');
+	if (test[0] == ' ')
+		test = test.substr(1);
+
+	return test;
+}
+function dataValidation() {
+	if (!data.name.length) {
+		console.log('სტარტაპის სახელი!');
+	} else if ( avoidSpaceKey(data.name).length < 2 ) {
+		console.log('სახელი ნაკლებია 2ზე!');
+	} else {
+		console.log(avoidSpaceKey(data.name));
+	}
+
+	if (!data.year.length) {
+		console.log('წელი!');
+	}
+
+	if (!data.founder.length) {
+		console.log('დამარსებელი!');
+	} else {
+		for (var key=0;key<data.founder.length;key++) {
+			var arr = data.founder[key];
+			var fName = arr.fName;
+			var lName = arr.lName;
+			var age = arr.age;
+			if (fName.length && lName.length && age.length) {
+				console.log('--'+fName+'---');
+			}
+			//console.log('-----', arr.fName,arr.lName,arr.age, '------');
+		}
+	}
+
+	if (!data.city.length) {
+		console.log('ქალაქი!');
+	}
+
+	if (!data.memberNum.length) {
+		console.log('გუნდის წევრები!');
+	}
+
+	if (!data.industry.length) {
+		console.log('ინდუსტრია!');
+	}
+
+	if (!data.desc.length) {
+		console.log('აღწერა!');
+	}
+
+	if (!data.email.length) {
+		console.log('ელ-ფოსტა!');
+	}
+
+	if (typeof data.logo == 'undefined' 
+		|| typeof data.logo.name == 'undefined') {
+		console.log('ლოგო!');
+	}
+
+	if (!data.capital.length) {
+		console.log('კაპიტალი!');
+	}
+
+}
 
 var phonePH = "5**  - **  - ** - **";
 $("#phone").mask("500 - 00 - 00 - 00", {placeholder: phonePH} );
