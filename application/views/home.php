@@ -183,6 +183,8 @@
 
 			</div>
 
+			<div id="validationMSG">sss</div>
+
 			<div class="directions">
 				<div class="button prev">წინა</div>
 				<div class="button next">შემდეგი</div>

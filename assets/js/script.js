@@ -268,9 +268,13 @@ function dataValidation() {
 			errors.founder[key] = [];
 			if ( data.founder.length > 1 && !fName.length 
 				&& !lName.length
-				&& !age.length ) {
+				&& !age.length 
+				&& data.founder[0].fName.length
+				&& data.founder[0].lName.length
+				&& data.founder[0].age.length
+				) {
 				errors.founder[key] = 0;
-				console.log(2555555555, key, errors.founder);
+				//console.log(2555555555, key, errors.founder);
 			} else {
 				if (!fName.length) {
 					errors.founder[key] = 2;
@@ -285,7 +289,7 @@ function dataValidation() {
 		}
 	}
 	// '----'+JSON.stringify(errors.founder)
-	console.log( JSON.stringify(errors.founder) );
+	//console.log( JSON.stringify(errors.founder) );
 	
 
 	errors.city = 0;
@@ -338,7 +342,7 @@ function dataValidation() {
 		errors.capital = 0;
 	}
 
-	console.log(errors);
+	//console.log(errors);
 
 }
 
