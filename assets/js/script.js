@@ -120,6 +120,19 @@ input.all.on('keypress', function(e) {
 btn.dir_next.on('click', function() {
 	changeStep('next');
 	collectData();
+
+
+	if (!loading.hasClass('active')) {
+		wrapper.removeClass('active');
+		loading.addClass('active');
+		loading.bind('oanimationend animationend webkitAnimationEnd', function() { 
+			loading.hide('slow', function() {
+				wrapper.addClass('active');
+				loading.removeClass('active');
+				loading.css('display','block');
+			});
+		});
+	}
 });
 
 btn.dir_prev.on('click', function() {
@@ -344,12 +357,12 @@ function dataValidation() {
 
 
 	
-	msgErrorAlert();
+	//msgErrorAlert();
 
 }
 
 
-//debug(11);
+debug(11);
 
 function msgErrorAlert()
 {
