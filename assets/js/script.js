@@ -112,6 +112,7 @@ btn.start.on('click', function() {
 input.all.on('keypress', function(e) {
 	if (e.keyCode == 13 && !$(this).hasClass('desc')) {
 		changeStep('next');
+		collectData();
 	}
 });
 
@@ -219,13 +220,12 @@ function collectData()
 		case 10:
 			value = currentEl.find('.input').val();
 			data.capital = value;
-			dataValidation();
+			//dataValidation();
 			break;
 	}
 	dataValidation();
 }
 
-debug(3);
 
 function avoidSpaceKey(value) {
 	var test = value.replace(/\s\s+/g, ' ');
@@ -235,7 +235,7 @@ function avoidSpaceKey(value) {
 	return test;
 }
 function dataValidation() {
-	var errors = {};
+	errors = {};
 	errors.name = 0;
 	if (!data.name.length) {
 		//console.log('სტარტაპის სახელი!');
@@ -342,8 +342,73 @@ function dataValidation() {
 		errors.capital = 0;
 	}
 
-	//console.log(errors);
+	if ( step.limit == step.value ) {
+		msgErrorAlert();
+	} else {
+		errorMSG_el.parent().fadeOut(0);
+	}
 
+}
+
+
+//debug(11);
+
+function msgErrorAlert()
+{
+	errorMSG_el = $('#validationMSG .errors');
+	errorMSG_el.html('');
+	errorMSG_el.parent().fadeOut(0);
+
+	if (errors.name) {
+		addErrorTXT('სტარტაპის სახელი არასწორია');
+	}
+
+	if (errors.year) {
+		addErrorTXT('წელი არასწორია');
+	}
+
+	countFounderError = 0;
+	for (var x = 0; x < Object.keys(errors.founder).length; x++) {
+		var err = errors.founder[x];
+		if (err) countFounderError++;
+		else if (countFounderError > 0) countFounderError--;
+	}
+	if (countFounderError) {
+		addErrorTXT('დამფუძნებლები არასწორია');
+	}
+	if (errors.city) {
+		addErrorTXT('ქალაქი არასწორია');
+	}
+	if (errors.memberNum) {
+		addErrorTXT('წევრები არასწორია');
+	}
+	if (errors.memberNum) {
+		addErrorTXT('ინდუსტრია არასწორია');
+	}
+	if (errors.desc) {
+		addErrorTXT('აღწერა არასწორია');
+	}
+	if (errors.email) {
+		addErrorTXT('ელფოსტა არასწორია');
+	}
+	if (errors.logo) {
+		addErrorTXT('ლოგო არასწორია');
+	}
+	if (errors.capital) {
+		addErrorTXT('კაპიტალი არასწორია');
+	}
+
+	var lastErrors = errorMSG_el.children().length;
+	console.log(lastErrors);
+	if (!lastErrors) {
+		$('.step.active').fadeIn('slow');
+	} else $('.step.active').hide(0);
+
+}
+
+function addErrorTXT(txt) {
+	errorMSG_el.parent().fadeIn(500);
+	errorMSG_el.append('<li>'+txt+'</li>');
 }
 
 var phonePH = "5**  - **  - ** - **";

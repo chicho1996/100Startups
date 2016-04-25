@@ -174,7 +174,7 @@
 					</label>
 				</div>
 
-				<div class="step">
+				<div class="step last">
 					<label class="group">
 						<span>მობილური ტელეფონის ვერიფიკაცია</span>
 						<input type="tel" class="input" id="phone">
@@ -183,7 +183,12 @@
 
 			</div>
 
-			<div id="validationMSG">sss</div>
+			<div id="validationMSG">
+				<div class="alert alert-danger">
+				  <strong class="displayBlock">დაფიქსირდა შეცდომა!</strong>
+				  <ul class="errors"></ul>
+				</div>
+			</div>
 
 			<div class="directions">
 				<div class="button prev">წინა</div>
