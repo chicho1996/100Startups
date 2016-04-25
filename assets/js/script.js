@@ -342,11 +342,9 @@ function dataValidation() {
 		errors.capital = 0;
 	}
 
-	if ( step.limit == step.value ) {
-		msgErrorAlert();
-	} else {
-		errorMSG_el.parent().fadeOut(0);
-	}
+
+	
+	msgErrorAlert();
 
 }
 
@@ -355,9 +353,9 @@ function dataValidation() {
 
 function msgErrorAlert()
 {
+
 	errorMSG_el = $('#validationMSG .errors');
 	errorMSG_el.html('');
-	errorMSG_el.parent().fadeOut(0);
 
 	if (errors.name) {
 		addErrorTXT('სტარტაპის სახელი არასწორია');
@@ -398,16 +396,38 @@ function msgErrorAlert()
 		addErrorTXT('კაპიტალი არასწორია');
 	}
 
+	//errorMSG_el.parent().parent().css('display','none');
+
+
+
+
 	var lastErrors = errorMSG_el.children().length;
-	console.log(lastErrors);
+	
+
 	if (!lastErrors) {
-		$('.step.active').fadeIn('slow');
-	} else $('.step.active').hide(0);
+		$('.step.last').fadeIn('slow');
+	} else {
+		$('.step.last').hide(0);
+	}
+
+	if ( step.limit == step.value ) {
+		if (lastErrors && (!btn.dir_next.hasClass('disabled')) ) display(true);
+	} else {
+		display(false);
+	}
+
+	function display(bool) {
+		if (bool) {
+			errorMSG_el.parent().parent().hide(0).fadeIn(350);
+		} else {
+			errorMSG_el.parent().parent().hide(0);
+		}
+	}
 
 }
 
 function addErrorTXT(txt) {
-	errorMSG_el.parent().fadeIn(500);
+	//errorMSG_el.parent().parent().fadeIn(300);
 	errorMSG_el.append('<li>'+txt+'</li>');
 }
 
@@ -474,8 +494,11 @@ function changeStep(direction)
 	}
 
 	// disable buttons
-	if (!getStepElByIndex(nextNext).length) 
-		btn['dir_'+direction].addClass('disabled');
+	if (!getStepElByIndex(nextNext).length) {
+		setTimeout(function() {
+			btn['dir_'+direction].addClass('disabled');
+		}, 100);
+	}
 	else
 		btn['dir_'+direction].removeClass('disabled');
 
