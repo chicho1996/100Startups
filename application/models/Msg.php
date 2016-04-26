@@ -6,9 +6,9 @@ class Msg extends CI_Model {
 		if (count($_POST)) {
 			$phone = isset($_POST['phone']) ? $_POST['phone'] : '';
 			if ( $this->isGeoPhoneNum($phone) ) {
-				$sent = $this->send_msg($phone,'100Startups','hello');
+				$sent = $this->send_msg($phone,'100startups','hello');
 				if ($sent) {
-					echo 1;
+					echo 0;
 				} else {
 					echo 99;
 				}

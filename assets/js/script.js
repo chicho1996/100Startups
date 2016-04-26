@@ -138,7 +138,7 @@ $(document).on("swiperight",function(){
 });
 
 
-function reloadLoading() {
+function reloadLoading(callback) {
 	wrapper.removeClass('active');
 	loading.addClass('active');
 	loading.css('display','block')//.loading.addClass('active');
@@ -146,6 +146,7 @@ function reloadLoading() {
 		loading.hide('slow', function() {
 			wrapper.addClass('active');
 			loading.removeClass('active');
+			if (callback) callback();
 		});
 	});
 }
@@ -543,6 +544,34 @@ function getStepElByIndex(index) {
 }
 
 
+$('#sendMSG').on('click', function(e) {
+	var phone = $('#phone').val();
+	var phoneFiltered = phone.replace(/ - /gi, '');
+	
+	var phoneMSG = '';
+
+	if (phoneFiltered.length == 9 && phoneFiltered[0] == 5) {
+		reloadLoading(function() {
+			alert(phoneMSG);
+		});
+		$.post(window.location.href + 'send/msg', {phone: phoneFiltered}, function(data) {
+			var status = Number(data);
+			switch (status) {
+				case 0:
+					phoneMSG = "სწორია!";
+					break;
+				case 9:
+					phoneMSG = 'არასწორია!';
+				case 99:
+					phoneMSG = 'დაუკავშირდი დეველოპერს!';
+			};
+			console.log(data);
+		});
+	}
+	$(this).parent().slideUp('slow', function() {
+		$('.phoneMSG_status').slideDown(200);
+	});
+});
 
 loading.bind('oanimationend animationend webkitAnimationEnd', function() { 
 	loading.hide('slow', function() {

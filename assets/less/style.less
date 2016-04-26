@@ -19,7 +19,7 @@
 	height: 200px;
 	border: 20px solid #FFF;
 	border-radius: 100%;
-	z-index: 999999;
+	//z-index: 999999;
 	&.active {
 		-webkit-animation:  animix .7s 1;
 		-webkit-animation-fill-mode: forwards;
@@ -377,6 +377,9 @@ textarea.input {
 	&:hover {
 		background-color: #A02518;
 	}
+	&:active {
+		background-color: #c0392b;
+	}
 }
 
 
@@ -408,4 +411,42 @@ textarea.input {
 
 .year {
    margin-top: 35px !important; 
+}
+
+#sendMSG {
+	.button;
+}
+.phoneCont {
+	display: none;
+}
+.phoneMSG_status {
+	.alert {
+		font-size: 20px;
+	}
+	margin-top: 20px;
+	//display: none;
+}
+#verCode {
+	text-align: center;
+	width: 100px;	
+	display: inline-block;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+
+.codeForm {
+	max-width: 500px;
+	margin: 0 auto;
+}
+.editPhone {
+	display: block;
+	position: absolute;
+}
+.repeat {
+	display: none;
 }

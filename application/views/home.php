@@ -176,8 +176,30 @@
 
 				<div class="step last">
 					<label class="group">
-						<span>მობილური ტელეფონის ვერიფიკაცია</span>
-						<input type="tel" class="input" id="phone">
+						<div class="phoneCont">
+							<span>მობილური ტელეფონის ვერიფიკაცია</span>
+							<input type="tel" class="input" id="phone">
+
+							<button type="button" id="sendMSG">გაგზავნა</button>
+						</div>
+
+						<div class="phoneMSG_status">
+							<div class="alert alert-success">
+								<strong class="displayBlock">შეტყობინება წარმატებით გამოიგზავნა!</strong>
+								<p>დაელოდეთ 2 წუთი და შეიყვანეთ მიღებული ოთხნიშნა კოდი: 
+
+								<div class="codeForm">
+								<span class="editPhone">ნომრის შესწორება</span>
+								<input type="number" class="input" id="verCode" placeholder="****" onkeypress="if(this.value.length==4) return false;">
+								<span class="repeat">ხელახლა გაგზავნა</span>
+								<input type="button" class="button" id="codeBTN" value="რეგისტრაცია"> 
+								</div>
+								</p>
+							</div>
+						</div>
+
+
+
 					</label>
 				</div>
 
