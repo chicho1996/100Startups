@@ -117,22 +117,11 @@ input.all.on('keypress', function(e) {
 });
 
 // direction on click
+var numCheck = true;
 btn.dir_next.on('click', function() {
 	changeStep('next');
 	collectData();
-
-
-	if (!loading.hasClass('active')) {
-		wrapper.removeClass('active');
-		loading.addClass('active');
-		loading.bind('oanimationend animationend webkitAnimationEnd', function() { 
-			loading.hide('slow', function() {
-				wrapper.addClass('active');
-				loading.removeClass('active');
-				loading.css('display','block');
-			});
-		});
-	}
+	//reloadLoading();	
 });
 
 btn.dir_prev.on('click', function() {
@@ -148,6 +137,18 @@ $(document).on("swiperight",function(){
 	changeStep('prev');
 });
 
+
+function reloadLoading() {
+	wrapper.removeClass('active');
+	loading.addClass('active');
+	loading.css('display','block')//.loading.addClass('active');
+	loading.bind('oanimationend animationend webkitAnimationEnd', function() { 
+		loading.hide('slow', function() {
+			wrapper.addClass('active');
+			loading.removeClass('active');
+		});
+	});
+}
 
 function init() {
 	computeStepLimit();
@@ -357,12 +358,14 @@ function dataValidation() {
 
 
 	
-	//msgErrorAlert();
+	msgErrorAlert();
 
 }
 
 
 debug(11);
+$('.step.last').removeClass()
+
 
 function msgErrorAlert()
 {

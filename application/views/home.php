@@ -174,7 +174,7 @@
 					</label>
 				</div>
 
-				<div class="step">
+				<div class="step last">
 					<label class="group">
 						<span>მობილური ტელეფონის ვერიფიკაცია</span>
 						<input type="tel" class="input" id="phone">
