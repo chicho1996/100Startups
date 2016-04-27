@@ -573,6 +573,12 @@ $('#sendMSG').on('click', function(e) {
 	});
 });
 
+$('.editPhone').on('click', function(e) {
+	$('.phoneMSG_status').slideUp('slow', function() {
+		$('.phoneCont').slideDown(200);
+	});
+});
+
 loading.bind('oanimationend animationend webkitAnimationEnd', function() { 
 	loading.hide('slow', function() {
 		wrapper.addClass('active');
