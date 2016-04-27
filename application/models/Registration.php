@@ -2,8 +2,14 @@
 
 class Registration extends CI_Model {
 
+	private $table = 'users';
+	private $insertData = array();
+
 	public function saveDataInDB()
 	{
+
+		var_dump($_POST);
+		die();
 		if (!count($_POST)) show_404();
 
 		$name = $_POST['name'];
@@ -14,12 +20,24 @@ class Registration extends CI_Model {
 		$industry = $_POST['industry'];
 		$desc = $_POST['desc'];
 		$email = $_POST['email'];
-		$logo = $_POST['logo'];
+		//$logo = $_POST['logo'];
 		$capital = $_POST['capital'];
 
 		//
 		$yearList = array('2010','2011','2012','2013','2014','2015','201');
 
+		$this->insertData = array(
+			'name'		=>		$name,
+			'year'		=>		$year,
+			'city'		=>		$city,
+			'members'	=>		$members,
+			'industry'	=> 		$industry,
+			'desc'		=>		$desc,
+			'email'		=>		$email,
+			'capital'	=>		$capital,
+			'IP'		=>		$_SERVER['REMOTE_ADDR']
+		);
+		$this->insert();
 
 		// debug
 
@@ -33,6 +51,11 @@ class Registration extends CI_Model {
 			var_dump(25);
 		}
 
+	}
+
+	public function insert()
+	{
+		$this->db->insert($this->table, $this->insertData);
 	}
 
 	private function httpPost($url, $data)

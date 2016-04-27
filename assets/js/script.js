@@ -442,7 +442,15 @@ function msgErrorAlert()
 	}
 
 	if (step.value == 11) {
-		console.log(data);
+		form_data = new FormData();
+		for (var key in data) {
+			if (key != 'logo')
+				form_data.append(key, data[key]);
+		}
+		$.post(window.location.href + 'send/data', form_data, function(data) {
+			console.log(data);
+		});
+		return false;
 		$.post(window.location.href + 'send/data', data, function(data) {
 			console.log(data);
 		});
