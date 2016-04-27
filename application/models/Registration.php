@@ -4,6 +4,8 @@ class Registration extends CI_Model {
 
 	private $table = 'users';
 
+	private $thisID = 0;
+
 	// logo data
 	private $logoInput = 'logo';
 	private $logoData = '';
@@ -15,7 +17,11 @@ class Registration extends CI_Model {
 	private $updateData = array();
 	private $updateWhere = array();
 
-	public function saveDataInDB()
+	// time
+	private $time = 0;
+
+
+	public function init()
 	{
 
 		if (!count($_POST)) show_404();
@@ -31,9 +37,9 @@ class Registration extends CI_Model {
 		//$logo = $_POST['logo'];
 		$capital = $_POST['capital'];
 
-		//
 		$yearList = array('2010','2011','2012','2013','2014','2015','201');
 
+		//
 		$this->insertData = array(
 			'name'		=>		$name,
 			'year'		=>		$year,
@@ -46,30 +52,28 @@ class Registration extends CI_Model {
 			'IP'		=>		$_SERVER['REMOTE_ADDR']
 		);
 
+		var_dump($founder);
+		if ( strlen($name) >= 2 && in_array($year, $yearList) && strlen($city) >= 2 
+			&& strlen($desc) > 10 && $this->emailIsValid($email) && $this->logoIsAvailable() ) {
+			
+		}
+
+	}
+
+	public function storeData()
+	{
 
 		$this->insert();
-
-		$insert_id = $this->db->insert_id();
 		
 		$this->logo_upload();
 
 		$this->updateData = array(
-			'logo'	=>		$this->logodata['raw_name'] . $insert_id . $this->logodata['ext_name'];
+			'logo'	=>		$this->logoData['file_name']
 		);
 		$this->updateWhere = array(
-			'id'	=>		$insert_id
+			'id'	=>		$this->thisID
 		);
 		$this->update();
-
-		die();
-
-		var_dump($founder);
-		if ( strlen($name) >= 2 && in_array($year, $yearList) && strlen($city) >= 2 
-			&& strlen($desc) > 10 && $this->emailIsValid($email) && $this->logoIsAvailable() ) {
-			$this->logo_upload();
-			$this->insert();
-		}
-
 	}
 
 	public function logoIsAvailable()
@@ -88,6 +92,12 @@ class Registration extends CI_Model {
 	{
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
+
+		$this->time = time();
+
+		$name = $_FILES[$this->logoInput]['name'];
+
+		$config['file_name'] = $this->time.$name;
 
 		$this->load->library('upload', $config);
 
@@ -110,6 +120,7 @@ class Registration extends CI_Model {
 	public function insert()
 	{
 		$this->db->insert($this->table, $this->insertData);
+		$this->thisID = $this->db->insert_id();
 	}
 
 	private function httpPost($url, $data)

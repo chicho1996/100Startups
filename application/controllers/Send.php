@@ -11,7 +11,7 @@ class Send extends CI_Controller {
 
 	public function data() {
 		$this->load->model('registration');
-		$this->registration->saveDataInDB();
+		$this->registration->init();
 	}
 
 }
