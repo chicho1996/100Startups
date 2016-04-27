@@ -444,16 +444,20 @@ function msgErrorAlert()
 	if (step.value == 11) {
 		form_data = new FormData();
 		for (var key in data) {
-			if (key != 'logo')
-				form_data.append(key, data[key]);
+			form_data.append(key, data[key]);
 		}
-		$.post(window.location.href + 'send/data', form_data, function(data) {
-			console.log(data);
-		});
-		return false;
-		$.post(window.location.href + 'send/data', data, function(data) {
-			console.log(data);
-		});
+
+		$.ajax({
+			type: 'POST',               
+			processData: false,
+			contentType: false,
+			data: form_data,
+			url: window.location.href + 'send/data',
+			dataType : 'json',
+			complete: function(data){
+				console.log(data.responseText);
+			}
+		}); 
 	}
 
 }

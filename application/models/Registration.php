@@ -3,13 +3,21 @@
 class Registration extends CI_Model {
 
 	private $table = 'users';
+
+	// logo data
+	private $logoInput = 'logo';
+	private $logoData = '';
+
+	// insert
 	private $insertData = array();
+
+	// update 
+	private $updateData = array();
+	private $updateWhere = array();
 
 	public function saveDataInDB()
 	{
 
-		var_dump($_POST);
-		die();
 		if (!count($_POST)) show_404();
 
 		$name = $_POST['name'];
@@ -37,20 +45,66 @@ class Registration extends CI_Model {
 			'capital'	=>		$capital,
 			'IP'		=>		$_SERVER['REMOTE_ADDR']
 		);
+
+
 		$this->insert();
 
-		// debug
+		$insert_id = $this->db->insert_id();
+		
+		$this->logo_upload();
+
+		$this->updateData = array(
+			'logo'	=>		$this->logodata['raw_name'] . $insert_id . $this->logodata['ext_name'];
+		);
+		$this->updateWhere = array(
+			'id'	=>		$insert_id
+		);
+		$this->update();
 
 		die();
-		//
-
 
 		var_dump($founder);
 		if ( strlen($name) >= 2 && in_array($year, $yearList) && strlen($city) >= 2 
-			&& strlen($desc) > 10) {
-			var_dump(25);
+			&& strlen($desc) > 10 && $this->emailIsValid($email) && $this->logoIsAvailable() ) {
+			$this->logo_upload();
+			$this->insert();
 		}
 
+	}
+
+	public function logoIsAvailable()
+	{
+		return (!empty($_FILES) );
+	}
+
+	public function emailIsValid($email)
+	{
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			$emailErr = "Invalid email format"; 
+		}
+	}
+
+	public function logo_upload()
+	{
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload($this->logoInput))
+		{
+			echo 1;
+		}
+		else
+		{
+			$this->logoData = $this->upload->data();
+			echo 0;
+		}
+	}
+
+	public function update()
+	{
+		$this->db->update($this->table, $this->updateData, $this->updateWhere);
 	}
 
 	public function insert()
