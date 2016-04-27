@@ -442,7 +442,8 @@ function msgErrorAlert()
 	}
 
 	if (step.value == 11) {
-		$.post(window.location.href + 'send/data', {'data': data}, function(data) {
+		console.log(data);
+		$.post(window.location.href + 'send/data', data, function(data) {
 			console.log(data);
 		});
 	}
