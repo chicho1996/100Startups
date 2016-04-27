@@ -9,4 +9,9 @@ class Send extends CI_Controller {
 		$this->msg->send();
 	}
 
+	public function data() {
+		$this->load->model('registration');
+		$this->registration->saveDataInDB();
+	}
+
 }

@@ -364,8 +364,8 @@ function dataValidation() {
 }
 
 
-debug(11);
-$('.step.last').removeClass()
+debug(10);
+//$('.step.last').removeClass()
 
 
 function msgErrorAlert()
@@ -439,6 +439,12 @@ function msgErrorAlert()
 		} else {
 			errorMSG_el.parent().parent().hide(0);
 		}
+	}
+
+	if (step.value == 11) {
+		$.post(window.location.href + 'send/data', {'data': data}, function(data) {
+			console.log(data);
+		});
 	}
 
 }
@@ -575,8 +581,14 @@ $('#sendMSG').on('click', function(e) {
 
 $('.editPhone').on('click', function(e) {
 	$('.phoneMSG_status').slideUp('slow', function() {
-		$('.phoneCont').slideDown(200);
+		$('.phoneCont').slideDown(200, function() {
+			$('#phone').focus();
+		});
 	});
+});
+
+$('.repeat').on('click', function(e) {
+
 });
 
 loading.bind('oanimationend animationend webkitAnimationEnd', function() { 
