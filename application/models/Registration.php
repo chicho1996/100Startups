@@ -2,7 +2,7 @@
 
 class Registration extends CI_Model {
 
-	private $table = 'users';
+	public $table = 'users';
 
 	private $thisID = 0;
 
@@ -11,7 +11,7 @@ class Registration extends CI_Model {
 	private $logoData = '';
 
 	// insert
-	private $insertData = array();
+	public $insertData = array();
 
 	// update 
 	private $updateData = array();
@@ -19,7 +19,6 @@ class Registration extends CI_Model {
 
 	// time
 	private $time = 0;
-
 
 	public function init()
 	{
@@ -52,7 +51,7 @@ class Registration extends CI_Model {
 			'IP'		=>		$_SERVER['REMOTE_ADDR']
 		);
 
-		var_dump($founder);
+		$this->storeData();
 		if ( strlen($name) >= 2 && in_array($year, $yearList) && strlen($city) >= 2 
 			&& strlen($desc) > 10 && $this->emailIsValid($email) && $this->logoIsAvailable() ) {
 			

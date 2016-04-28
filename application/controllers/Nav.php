@@ -7,4 +7,8 @@ class Nav extends CI_Controller {
 	{
 		$this->load->view('home');
 	}
+
+	public function tornike() {
+		echo 'gamarjoba';
+	}
 }
