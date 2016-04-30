@@ -142,7 +142,7 @@ function reloadLoading(callback) {
 	wrapper.removeClass('active');
 	loading.addClass('active');
 	loading.css('display','block')//.loading.addClass('active');
-	loading.bind('oanimationend animationend webkitAnimationEnd', function() { 
+	loading.off().bind('oanimationend animationend webkitAnimationEnd', function() { 
 		loading.hide('slow', function() {
 			wrapper.addClass('active');
 			loading.removeClass('active');
