@@ -364,7 +364,7 @@ function dataValidation() {
 }
 
 
-debug(10);
+debug(11);
 //$('.step.last').removeClass()
 
 
@@ -583,6 +583,8 @@ $('#sendMSG').on('click', function(e) {
 					phoneMSG = 'არასწორია!';
 				case 99:
 					phoneMSG = 'დაუკავშირდი დეველოპერს!';
+				case 503:
+					phoneMSG = 'ახალი კოდის მიღება შეგიძლიათ ყოველ 1 წუთში!';
 			};
 			console.log(data);
 		});
@@ -601,7 +603,7 @@ $('.editPhone').on('click', function(e) {
 });
 
 $('.repeat').on('click', function(e) {
-
+	$('#sendMSG').trigger('click');
 });
 
 loading.bind('oanimationend animationend webkitAnimationEnd', function() { 

@@ -10,18 +10,21 @@ class Msg extends CI_Model {
 
 	private $selectWhere = array();
 
+	private $secondLimit = 60;
+
 	public function dateLimitReached($db_date, $secLimit) {
 		$format = 'Y-m-d H:i:s';
 		$current = date($format);
 		$limit = date( $format, strtotime("+$secLimit seconds", strtotime($db_date)) );
 		$diff = strtotime($current) - strtotime($limit);
-		if ($diff < 0 && $diff >= -$secLimit) return true;
-		return false;
+		//var_dump($diff, $diff < 0, $diff >= -$secLimit);
+		if ($diff < 0 && $diff >= -$secLimit) return false;
+		return true;
 	}
 
 	public function send() {
 		$this->phone = isset($_POST['phone']) ? $_POST['phone'] : '';
-		$this->phone = '551721521'; ///
+		//$this->phone = '551721521'; ///
 		$code = $this->n_digit_random(4);
 		//$sent = $this->send_msg($phone,'100startups', (String)($code) );
 		
@@ -32,13 +35,17 @@ class Msg extends CI_Model {
 			'IP'		=>		$_SERVER['REMOTE_ADDR']
 		);
 
-		if (55) { //count($_POST)
+		if (count($_POST)) {
 			if ( $this->isGeoPhoneNum() ) {
 
-				//var_dump( $this->canIsendCode() );
 				if ($this->canIsendCode()) {
-					
+					$this->registration->insert();
+					echo 0;
+				} else {
+					echo 503;
 				}
+
+				die();
 
 
 				//$sent = $this->send_msg($phone,'100startups','hello');
@@ -60,15 +67,19 @@ class Msg extends CI_Model {
 
 	public function canIsendCode() 
 	{
-		$this->db->select('*');
-		$this->db->select_max('id');
+		//$this->db->select('*');
+		$this->db->select_max('date');
 		$this->selectWhere = array(
 			'phone' 	=>		$this->phone,
 			'IP'		=>		$_SERVER['REMOTE_ADDR']
 		);
-		$data = $this->select()->result()[0];
+		$data = $this->select()->row();
 
-		var_dump($data->date);
+		if (!isset($data->date)) return true;
+		$limitDate = $this->dateLimitReached($data->date, $this->secondLimit);
+ 
+
+		return $limitDate;
 	}
 
 	public function select() {
