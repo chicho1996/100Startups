@@ -20,9 +20,7 @@ class Registration extends CI_Model {
 	// time
 	private $time = 0;
 
-	public function checkCOde() {
-		
-	}
+	private $founders = null;
 
 	public function init()
 	{
@@ -43,7 +41,7 @@ class Registration extends CI_Model {
 		$yearList = array('2010','2011','2012','2013','2014','2015','2016');
 
 
-		var_dump( $founder );
+		$this->founders = $founder;
 		//
 		$this->insertData = array(
 			'name'		=>		$name,
@@ -58,7 +56,6 @@ class Registration extends CI_Model {
 			'status'	=>		1
 		);
 
-		var_dump($_FILES);
 		if ( strlen($name) >= 2 && in_array($year, $yearList) && strlen($city) >= 2 
 			&& strlen($desc) > 10 && $this->emailIsValid($email) && $this->logoIsAvailable() ) {
 			$this->storeData();
@@ -83,6 +80,27 @@ class Registration extends CI_Model {
 			'id'	=>		$this->thisID
 		);
 		$this->update();
+
+		$this->insertFounders();
+	}
+
+	public function insertFounders()
+	{
+
+		foreach ($this->founders as $key => $data) {
+			if (!empty($data->fName) && !empty($data->lName) && !empty($data->age)) {
+				$data = array(
+					'firstname'		=>		$data->fName,
+					'lastname'		=>		$data->lName,
+					'age'			=>		$data->age,
+					'user_id'		=>		$this->thisID
+				);
+				$this->db->insert('founders', $data);
+			}
+		}
+
+		//$this->insert();
+
 	}
 
 	public function logoIsAvailable()

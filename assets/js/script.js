@@ -326,7 +326,7 @@ function dataValidation() {
 	}
 
 	errors.desc = 0;
-	if (!data.desc.length) {
+	if (!data.desc.length || data.desc.length < 10) {
 		errors.desc = 1;
 	} else {
 		errors.desc = 0;
