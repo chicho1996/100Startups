@@ -29,19 +29,21 @@ class Registration extends CI_Model {
 
 		if (!count($_POST)) show_404();
 
-		$name = $_POST['name'];
-		$year = $_POST['year'];
-		$founder = $_POST['founder'];
-		$city = $_POST['city'];
-		$members = $_POST['memberNum'];
-		$industry = $_POST['industry'];
-		$desc = $_POST['desc'];
-		$email = $_POST['email'];
+		$name = json_decode($_POST['name']);
+		$year = json_decode($_POST['year']);
+		$founder = json_decode($_POST['founder']);
+		$city = json_decode($_POST['city']);
+		$members = json_decode($_POST['memberNum']);
+		$industry = json_decode($_POST['industry']);
+		$desc = json_decode($_POST['desc']);
+		$email = json_decode($_POST['email']);
 		//$logo = $_POST['logo'];
-		$capital = $_POST['capital'];
+		$capital = json_decode($_POST['capital']);
 
 		$yearList = array('2010','2011','2012','2013','2014','2015','2016');
 
+
+		var_dump( $founder );
 		//
 		$this->insertData = array(
 			'name'		=>		$name,
@@ -56,7 +58,7 @@ class Registration extends CI_Model {
 			'status'	=>		1
 		);
 
-		//$this->storeData();
+		var_dump($_FILES);
 		if ( strlen($name) >= 2 && in_array($year, $yearList) && strlen($city) >= 2 
 			&& strlen($desc) > 10 && $this->emailIsValid($email) && $this->logoIsAvailable() ) {
 			$this->storeData();

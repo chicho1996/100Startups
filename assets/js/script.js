@@ -660,7 +660,10 @@ function finish() {
 	if (step.value == 11) {
 		form_data = new FormData();
 		for (var key in data) {
-			form_data.append(key, data[key]);
+			if (key == 'logo')
+				form_data.append(key, data[key]);
+			else
+				form_data.append(key, JSON.stringify(data[key]) );
 		}
 
 		$.ajax({
@@ -671,7 +674,8 @@ function finish() {
 			url: window.location.href + 'send/data',
 			dataType : 'json',
 			complete: function(data){
-				//console.log(data);
+				console.log(data.responseText);
+				return false;
 
 				var success = (data.responseText == '89') ? true : false;
 				if (success) {
@@ -693,9 +697,21 @@ $(document).on('keypress', function(e) {
 });
 
 // swipe listener for mobile
-$('#greeting').on("swipeup",function(){
+$('body').on("swipeup",function(){
 	alert('yaa');
 });
+$('body').on("swipedown",function(){
+	alert('down');
+});
+
+
+ $( "body" ).on( "swipe", swipeHandler );
+
+    // Callback function references the event target and adds the 'swipe' class to it
+    function swipeHandler( event ){
+       console.log( event );
+    }
+
 $(document).on("swipeleft",function(){
 	changeStep('next');
 });
