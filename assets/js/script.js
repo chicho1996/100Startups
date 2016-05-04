@@ -141,7 +141,7 @@ function reloadLoading(callback) {
 	wrapper.removeClass('active');
 	loading.addClass('active');
 	loading.css('display','block')//.loading.addClass('active');
-	loading.bind('oanimationend animationend webkitAnimationEnd', function() { 
+	loading.off().bind('oanimationend animationend webkitAnimationEnd', function() { 
 		loading.hide('slow', function() {
 			wrapper.addClass('active');
 			loading.removeClass('active');
@@ -652,10 +652,8 @@ $('.repeat').on('click', function(e) {
 	$('#sendMSG').trigger('click');
 });
 
-loading.bind('oanimationend animationend webkitAnimationEnd', function() { 
-	loading.hide('slow', function() {
-		wrapper.addClass('active');
-	});
+reloadLoading(function() {
+	wrapper.addClass('active');
 });
 
 $('#codeBTN').on('click', function(e) {
@@ -692,7 +690,15 @@ function finish() {
 			else
 				form_data.append(key, JSON.stringify(data[key]) );
 		}
-
+		var success = null;
+		setTimeout(function() {
+			reloadLoading(function() {
+				//alert(success);
+				if (success) {
+					showUpFinished();
+				}
+			});
+		}, 0);
 		$.ajax({
 			type: 'POST',               
 			processData: false,
@@ -701,9 +707,9 @@ function finish() {
 			url: window.location.href + 'send/data',
 			dataType : 'json',
 			complete: function(data){
-				var success = (data.responseText == '089') ? true : false;
+				success = (data.responseText == '089') ? true : false;
 				if (success) {
-					showUpFinished();
+					
 				} else {
 					//alert('დაფიქსირდა შეცდომა!');
 				}
