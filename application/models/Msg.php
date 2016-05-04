@@ -43,24 +43,17 @@ class Msg extends CI_Model {
 			if ( $this->isGeoPhoneNum() ) {
 
 				if ($this->canIsendCode()) {
-					$this->registration->insert();
-					echo 0;
+					$sent = $this->send_msg($this->phone,'100startups',$code);
+					if ($sent) {
+						$this->registration->insert();
+						echo 0;
+					} else {
+						echo 99;
+					}
 				} else {
 					echo 503;
 				}
 
-				die();
-
-
-				//$sent = $this->send_msg($phone,'100startups','hello');
-				$sent = true; ///
-				if ($sent) {
-					//echo 0;
-					//$this->registration->insert();
-					//$this->thisID = $this->db->insert_id();
-				} else {
-					echo 99;
-				}
 			} else {
 				echo 9;
 			}

@@ -369,7 +369,7 @@ function dataValidation() {
 }
 
 
-//debug(11);
+debug(3);
 //$('.step.last').fadeIn('slow');
 //$('.step.last').removeClass()
 
@@ -534,8 +534,10 @@ function changeStep(direction)
 		btn.dir_prev.removeClass('disabled');
 	else
 		btn.dir_next.removeClass('disabled');
-
-	nextEl.find('.input').focus();
+	
+	setTimeout(function() {
+		$('.step.active input').eq(0).focus();
+	}, 100);
 }
 
 function computeStepLimit()
@@ -579,7 +581,7 @@ $('#sendMSG').on('click', function(e) {
 				case 0:
 					phoneMSG.title = "შეტყობინება წარმატების გაიგზავნა";
 					phoneMSG.alert = 'success';
-					phoneMSG.msg = 'შეამოწმეთ და ჩაწერეთ მიღებული შეტყობინ';
+					phoneMSG.msg = 'შეამოწმეთ და ჩაწერეთ მიღებული შეტყობინება';
 					break;
 				case 9:
 					phoneMSG.title = 'დაფიქსირდა შეცდომა!';
@@ -667,7 +669,11 @@ function finish() {
 		url: window.location.href + 'send/data',
 		dataType : 'json',
 		complete: function(data){
-			console.log(data.responseText);
+			var success = (data.responseText == 0) ? true : false;
+			if (success) {
+				alert('მშვენიერია!!!');
+				window.location.reload();
+			}
 		}
 	}); 
 	}

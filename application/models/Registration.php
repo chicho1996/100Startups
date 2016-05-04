@@ -52,13 +52,15 @@ class Registration extends CI_Model {
 			'desc'		=>		$desc,
 			'email'		=>		$email,
 			'capital'	=>		$capital,
-			'IP'		=>		$_SERVER['REMOTE_ADDR']
+			'IP'		=>		$_SERVER['REMOTE_ADDR'],
+			'status'	=>		1
 		);
 
-		$this->storeData();
+		//$this->storeData();
 		if ( strlen($name) >= 2 && in_array($year, $yearList) && strlen($city) >= 2 
 			&& strlen($desc) > 10 && $this->emailIsValid($email) && $this->logoIsAvailable() ) {
-			
+			$this->storeData();
+			echo 0;
 		}
 
 	}
