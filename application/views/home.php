@@ -17,6 +17,13 @@
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="<?=base_url()?>assets/js/jquery.min.js"></script>
+	<script src="<?=base_url()?>assets/js/jquery.mobile.min.js"></script>
+	<script src="<?=base_url()?>assets/js/jquery.mask.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -27,15 +34,199 @@
 			<div id="start" class="startBTN">დაწყება</div>
 		</div>
 
-		
+		<div class="steps-cont" id="content">
+
+			<div class="header"></div>
+
+			<div class="stepNum">
+				<div id="current">1</div> / <div id="maxStep"></div>
+			</div>
+
+			<div id="steps">
+				<div class="step active">
+
+					<label class="group">
+						<span class="title">სტარტაპის სახელი</span>
+						<input type="input" class="input">
+					</label>
+
+				</div>
+				<div class="step">
+					<label class="group">
+						<span class="title">როდის დაიწყეთ ფუნქციონირება</span>
+						<div class="year">
+							<div class="radio">
+								<div class="child"></div>
+							</div>
+							<div class="lbl">2010</div>
+						</div>
+						<div class="year">
+							<div class="radio">
+								<div class="child"></div>
+							</div>
+							<div class="lbl">2011</div>
+						</div>
+						<div class="year">
+							<div class="radio">
+								<div class="child"></div>
+							</div>
+							<div class="lbl">2012</div>
+						</div>
+						<div class="year">
+							<div class="radio">
+								<div class="child"></div>
+							</div>
+							<div class="lbl">2013</div>
+						</div>
+						<div class="year">
+							<div class="radio">
+								<div class="child"></div>
+							</div>
+							<div class="lbl">2014</div>
+						</div>
+						<div class="year">
+							<div class="radio">
+								<div class="child"></div>
+							</div>
+							<div class="lbl">2015</div>
+						</div>
+						<div class="year">
+							<div class="radio">
+								<div class="child"></div>
+							</div>
+							<div class="lbl">2016</div>
+						</div>
+					</label>
+				</div>
+
+				<div class="step">
+					<label class="group">
+						<span class="title">ვინ არიან დამფუძნებლები?</span>
+						<div class="founder-cont">
+							<div class="founder">
+								<div class="lbl-group helpBTN">
+									<div class="add delete deleteFounderColumn">-</div>
+								</div>
+								<div class="lbl-group">
+									<!--<div class="lbl">სახელი</div>-->
+									<input type="input" class="input name fname" placeholder="სახელი">
+								</div>
+
+								<div class="lbl-group">
+									<!--<div class="lbl">გვარი</div>-->
+									<input type="input" class="input name lname" placeholder="გვარი">
+								</div>
+
+								<div class="lbl-group">
+									<!--<div class="lbl">ასაკი</div>-->
+									<input type="number" class="input age" placeholder="ასაკი">
+								</div>
+								<div class="lbl-group helpBTN">
+									<div class="add addFounderColumn">+</div>
+								</div>
+
+							</div>
+						</div>
+					</label>
+				</div>
+				
+				<div class="step">
+					<label class="group">
+						<span class="title">რომელ ქალაქში მოღვაწეობთ?</span>
+						<input type="input" class="input">
+					</label>
+				</div>
+				<div class="step">
+					<label class="group">
+						<span>რამდენი წევრია გუნდში?</span>
+						<input type="number" class="input">
+					</label>
+				</div>
+				<div class="step">
+					<label class="group">
+						<span>რამელია თქვენი ინდუსტრია?</span>
+						<input type="text" class="input">
+					</label>
+				</div>
+				<div class="step">
+					<label class="group">
+						<span>20 სიტყვით აღწერეთ თქვენი პროდუქტი</span>
+						<textarea class="input desc"></textarea>
+					</label>
+				</div>
+
+				<div class="step">
+					<label class="group">
+						<span>კომპანიის ელ.ფოსტა</span>
+						<input type="email" class="input" placeholder="example@domain.com">
+					</label>
+				</div>
+
+				<div class="step">
+					<label class="group">
+					<img src="" id="img">
+						<span></span>
+						<div class="logoClone">
+							<div class="lbl">ატვირთეთ თქვენი ლოგო</div>
+						</div>
+						<input type="file" class="logoFile" id="logoFile" accept="image/x-png, image/gif, image/jpeg">
+
+					</label>
+				</div>
+
+				<div class="step">
+					<label class="group">
+						<span>რამდენი იყო სტარტაპის კაპიტალი 2015 წლის ბოლოს?</span>
+						<input type="number" class="input">
+					</label>
+				</div>
+
+				<div class="step last">
+					<label class="group">
+						<div class="phoneCont">
+							<span>მობილური ტელეფონის ვერიფიკაცია</span>
+							<input type="tel" class="input" id="phone">
+
+							<button type="button" id="sendMSG">გაგზავნა</button>
+						</div>
+
+						<div class="phoneMSG_status">
+							<div class="alert alert-success">
+								<strong class="displayBlock title">შეტყობინება წარმატებით გამოიგზავნა!</strong>
+								<p class="msg">დაელოდეთ 2 წუთი და შეიყვანეთ მიღებული ოთხნიშნა კოდი: 
+
+								<div class="codeForm">
+								<span class="editPhone">ნომრის შესწორება</span>
+								<input type="number" class="input" id="verCode" placeholder="****" onkeypress="if(this.value.length==4) return false;">
+								<span class="repeat">ხელახლა გაგზავნა</span>
+								<input type="button" class="button" id="codeBTN" value="რეგისტრაცია"> 
+								</div>
+								</p>
+							</div>
+						</div>
+
+
+
+					</label>
+				</div>
+
+			</div>
+
+			<div id="validationMSG">
+				<div class="alert alert-danger">
+				  <strong class="displayBlock">დაფიქსირდა შეცდომა!</strong>
+				  <ul class="errors"></ul>
+				</div>
+			</div>
+
+			<div class="directions">
+				<div class="button prev">წინა</div>
+				<div class="button next">შემდეგი</div>
+			</div>
+		</div>
 	</div>
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="<?=base_url()?>assets/js/jquery.min.js"></script>
-	
-	
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	
 
+	<script src="<?=base_url()?>assets/js/script.js"></script>
 </body>
 </html>
