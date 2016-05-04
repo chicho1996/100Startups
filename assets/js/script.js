@@ -370,11 +370,16 @@ function dataValidation() {
 
 
 debug(11);
+$('.step.last').fadeIn('slow');
 //$('.step.last').removeClass()
 
 
 function msgErrorAlert()
 {
+
+	$('.step.last').fadeIn('slow');
+	//$('.phoneMSG_status').slideDown(200);
+	return false;
 
 	errorMSG_el = $('#validationMSG .errors');
 	errorMSG_el.html('');
@@ -572,45 +577,48 @@ $('#sendMSG').on('click', function(e) {
 	var phone = $('#phone').val();
 	var phoneFiltered = phone.replace(/ - /gi, '');
 
+	var that = $(this);
+
 	data.phone = phoneFiltered;
 	
 	var phoneMSG = {};
 
 	if (phoneFiltered.length == 9 && phoneFiltered[0] == 5) {
+		that.parent().slideUp('slow', function() {
+			$('.phoneMSG_status').slideDown(200);
+		});
 		reloadLoading(function() {
 			//alert(phoneMSG);
 			changePhoneMSG(phoneMSG);
 		});
 		$.post(window.location.href + 'send/msg', {phone: phoneFiltered}, function(data) {
+			console.log(data);
 			var status = Number(data);
 			switch (status) {
 				case 0:
-					phoneMSG.title = "სწორია!";
+					phoneMSG.title = "შეტყობინება წარმატების გაიგზავნა";
 					phoneMSG.alert = 'success';
-					phoneMSG.msg = 'დაუკავშირდი!!!';
+					phoneMSG.msg = 'შეამოწმეთ და ჩაწერეთ მიღებული შეტყობინ';
 					break;
 				case 9:
-					phoneMSG.title = 'არასწორია!';
+					phoneMSG.title = 'დაფიქსირდა შეცდომა!';
 					phoneMSG.alert = 'danger';
-					phoneMSG.msg = 'დაუკავშირდი!!!';
+					phoneMSG.msg = 'შეასწორეთ მობილურის ნომერი';
 					break;
 				case 99:
-					phoneMSG.title = 'დაუკავშირდი დეველოპერს!';
+					phoneMSG.title = 'დაფიქსირდა შეცდომა!';
 					phoneMSG.alert = 'danger';
-					phoneMSG.msg = 'დაუკავშირდი!!!';
+					phoneMSG.msg = 'დაუკავშირდით დეველოპერს';
 					break;
 				case 503:
-					phoneMSG.title = 'ახალი კოდის მიღება შეგიძლიათ ყოველ 1 წუთში!';
+					phoneMSG.title = 'კოდი უკვე გამოგიზავნილიდა';
 					phoneMSG.alert = 'danger';
-					phoneMSG.msg = 'დაუკავშირდი!!!';
+					phoneMSG.msg = 'გთხოვთ, მოითხოვოთ ახლიდან 2 წუთში';
 					break;
 			};
 			console.log(data);
 		});
 	}
-	$(this).parent().slideUp('slow', function() {
-		$('.phoneMSG_status').slideDown(200);
-	});
 });
 
 function changePhoneMSG(cfg)
@@ -642,7 +650,7 @@ loading.bind('oanimationend animationend webkitAnimationEnd', function() {
 $('#codeBTN').on('click', function(e) {
 	var this_val = $('#verCode').val();
 	var ajaxData = {
-		phone: 551721521,
+		phone: data.phone,
 		code: this_val
 	};
 	var codeCheckerResponse;

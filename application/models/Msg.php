@@ -10,7 +10,7 @@ class Msg extends CI_Model {
 
 	private $selectWhere = array();
 
-	private $secondLimit = 60;
+	private $secondLimit = 120;
 
 	private $currentID = 0;
 
