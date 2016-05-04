@@ -116,7 +116,7 @@ btn.start.on('click', function() {
 input.all.on('keypress', function(e) {
 	if (e.keyCode == 13 && !$(this).hasClass('desc')) {
 		changeStep('next');
-		collectData();
+		//collectData();
 	}
 });
 
@@ -124,13 +124,13 @@ input.all.on('keypress', function(e) {
 var numCheck = true;
 btn.dir_next.on('click', function() {
 	changeStep('next');
-	collectData();
+	//collectData();
 	//reloadLoading();	
 });
 
 btn.dir_prev.on('click', function() {
 	changeStep('prev');
-	collectData();
+	//collectData();
 });
 
 
@@ -380,11 +380,11 @@ function msgErrorAlert()
 	errorMSG_el.html('');
 
 	if (errors.name) {
-		addErrorTXT('შეამოწმეთ სტარტაპის სახელი');
+		addErrorTXT('1. შეამოწმეთ სტარტაპის სახელი');
 	}
 
 	if (errors.year) {
-		addErrorTXT('მონიშნეთ დაფუძნების თარიღი');
+		addErrorTXT('2. მონიშნეთ დაფუძნების თარიღი');
 	}
 
 	countFounderError = 0;
@@ -394,28 +394,28 @@ function msgErrorAlert()
 		else if (countFounderError > 0) countFounderError--;
 	}
 	if (countFounderError) {
-		addErrorTXT('სრულად შეავსეთ დამფუძნებლების ინფორმაცია');
+		addErrorTXT('3. სრულად შეავსეთ დამფუძნებლების ინფორმაცია');
 	}
 	if (errors.city) {
-		addErrorTXT('მიუთითეთ ქალაქი');
+		addErrorTXT('4. მიუთითეთ ქალაქი');
 	}
 	if (errors.memberNum) {
-		addErrorTXT('მიუთითეთ გუნდის წევრების რაოდენობა');
+		addErrorTXT('5. მიუთითეთ გუნდის წევრების რაოდენობა');
 	}
 	if (errors.memberNum) {
-		addErrorTXT('ინდუსტრია არასწორია');
+		addErrorTXT('6. ინდუსტრია არასწორია');
 	}
 	if (errors.desc) {
-		addErrorTXT('აღწერეთ თქვენი პროდუქტი');
+		addErrorTXT('7. აღწერეთ თქვენი პროდუქტი');
 	}
 	if (errors.email) {
-		addErrorTXT('სწორად შეიყვანეთ ელ.ფოსტის მისამართი');
+		addErrorTXT('8. სწორად შეიყვანეთ ელ.ფოსტის მისამართი');
 	}
 	if (errors.logo) {
-		addErrorTXT('ატვირთეთ თქვენი ლოგო');
+		addErrorTXT('9. ატვირთეთ თქვენი ლოგო');
 	}
 	if (errors.capital) {
-		addErrorTXT('მიუთითეთ კაპიტალის მოცულობა');
+		addErrorTXT('10. მიუთითეთ კაპიტალის მოცულობა');
 	}
 
 	//errorMSG_el.parent().parent().css('display','none');
@@ -542,6 +542,8 @@ function changeStep(direction)
 			isTextArea.focus();
 		}
 	}, 100);
+
+	collectData();
 }
 
 function computeStepLimit()
