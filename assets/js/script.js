@@ -745,7 +745,7 @@ $(document).on("swiperight",function(){
 	changeStep('prev');
 });
 
-//debug(3);
+
 
 function showUpFinished() {
 	loading.removeClass('active');
@@ -759,3 +759,10 @@ function showUpFinished() {
 		$('#finished').addClass('active');
 	},50);
 }
+
+
+/*
+debug(11);
+$('.step').removeClass('last');
+$('.phoneCont').hide();
+$('.phoneMSG_status').show();*/
