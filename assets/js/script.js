@@ -111,10 +111,11 @@ init();
 btn.start.on('click', function() {
 	greeting.addClass('hide_');
 	step.content.addClass('active');
+	loading.removeClass('active');
 });
 
 input.all.on('keypress', function(e) {
-	if (e.keyCode == 13 && !$(this).hasClass('desc')) {
+	if (e.keyCode == 13 && !$(this).hasClass('desc') && !loading.hasClass('active')) {
 		changeStep('next');
 		//collectData();
 	}
@@ -701,21 +702,6 @@ $(document).on('keypress', function(e) {
 	}
 });
 
-// swipe listener for mobile
-$('body').on("swipeup",function(){
-	alert('yaa');
-});
-$('body').on("swipedown",function(){
-	alert('down');
-});
-
-
- $( "body" ).on( "swipe", swipeHandler );
-
-    // Callback function references the event target and adds the 'swipe' class to it
-    function swipeHandler( event ){
-       console.log( event );
-    }
 
 $(document).on("swipeleft",function(){
 	changeStep('next');
