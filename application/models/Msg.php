@@ -44,11 +44,11 @@ class Msg extends CI_Model {
 
 				if ($this->canIsendCode()) {
 					$sent = $this->send_msg($this->phone,'100startups',$code);
-					if ($sent) {
+					if ($sent == '01') {
 						$this->registration->insert();
 						echo 0;
 					} else {
-						echo 99;
+						echo 404;
 					}
 				} else {
 					echo 503;
@@ -103,7 +103,8 @@ class Msg extends CI_Model {
 		$this->db->select_max('date');
 		$this->selectWhere = array(
 			'phone' 	=>		$this->phone,
-			'IP'		=>		$_SERVER['REMOTE_ADDR']
+			'IP'		=>		$_SERVER['REMOTE_ADDR'],
+			'status'	=>		0
 		);
 		$data = $this->select()->row();
 
@@ -154,9 +155,12 @@ class Msg extends CI_Model {
 	public function send_msg($phone,$sender,$content)
 	{
 		$url = "http://smsoffice.ge/api/send.aspx?key=92f8f657cd3e46eb94157999366e958c&destination=$phone&sender=$sender&content=$content";
-		$response = file_get_contents($url);
-		return $response;
-
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$data = curl_exec($ch);
+		curl_close($ch);
+		return $data;
 	}
 
 }

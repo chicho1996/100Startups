@@ -40,7 +40,7 @@ class Registration extends CI_Model {
 		//$logo = $_POST['logo'];
 		$capital = $_POST['capital'];
 
-		$yearList = array('2010','2011','2012','2013','2014','2015','201');
+		$yearList = array('2010','2011','2012','2013','2014','2015','2016');
 
 		//
 		$this->insertData = array(
@@ -60,6 +60,8 @@ class Registration extends CI_Model {
 		if ( strlen($name) >= 2 && in_array($year, $yearList) && strlen($city) >= 2 
 			&& strlen($desc) > 10 && $this->emailIsValid($email) && $this->logoIsAvailable() ) {
 			$this->storeData();
+			echo 89;
+		} else {
 			echo 0;
 		}
 
@@ -88,15 +90,15 @@ class Registration extends CI_Model {
 
 	public function emailIsValid($email)
 	{
-		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			$emailErr = "Invalid email format"; 
-		}
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) return false;
+		return true;
 	}
 
 	public function logo_upload()
 	{
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
+		//$config['max_size'] = '99999999';
 
 		$this->time = time();
 

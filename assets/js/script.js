@@ -61,7 +61,6 @@ $('.year').on('click', function() {
 });
 
 
-
 setFounderFieldBtnAccess();
 function setFounderFieldBtnAccess() {
 	var n = 0;
@@ -134,13 +133,6 @@ btn.dir_prev.on('click', function() {
 	collectData();
 });
 
-// swipe listener for mobile
-$(document).on("swipeleft",function(){
-	changeStep('next');
-});
-$(document).on("swiperight",function(){
-	changeStep('prev');
-});
 
 
 function reloadLoading(callback) {
@@ -201,7 +193,7 @@ function collectData()
 					if (error > 0) error--;
 				} else error++;
 				
-				console.log(error);
+				//console.log(error);
 				if (!error) {	
 					var FounderData = {
 						'fName': fname,
@@ -211,7 +203,7 @@ function collectData()
 					data.founder.push(FounderData);
 				}
 			}
-			console.log(JSON.stringify(data), data);
+			//console.log(JSON.stringify(data), data);
 			break;
 		case 4:
 			value = currentEl.find('.input').val();
@@ -369,7 +361,7 @@ function dataValidation() {
 }
 
 
-debug(3);
+
 //$('.step.last').fadeIn('slow');
 //$('.step.last').removeClass()
 
@@ -385,11 +377,11 @@ function msgErrorAlert()
 	errorMSG_el.html('');
 
 	if (errors.name) {
-		addErrorTXT('სტარტაპის სახელი არასწორია');
+		addErrorTXT('შეამოწმეთ სტარტაპის სახელი');
 	}
 
 	if (errors.year) {
-		addErrorTXT('წელი არასწორია');
+		addErrorTXT('მონიშნეთ დაფუძნების თარიღი');
 	}
 
 	countFounderError = 0;
@@ -399,28 +391,28 @@ function msgErrorAlert()
 		else if (countFounderError > 0) countFounderError--;
 	}
 	if (countFounderError) {
-		addErrorTXT('დამფუძნებლები არასწორია');
+		addErrorTXT('სრულად შეავსეთ დამფუძნებლების ინფორმაცია');
 	}
 	if (errors.city) {
-		addErrorTXT('ქალაქი არასწორია');
+		addErrorTXT('მიუთითეთ ქალაქი');
 	}
 	if (errors.memberNum) {
-		addErrorTXT('წევრები არასწორია');
+		addErrorTXT('მიუთითეთ გუნდის წევრების რაოდენობა');
 	}
 	if (errors.memberNum) {
 		addErrorTXT('ინდუსტრია არასწორია');
 	}
 	if (errors.desc) {
-		addErrorTXT('აღწერა არასწორია');
+		addErrorTXT('აღწერეთ თქვენი პროდუქტი');
 	}
 	if (errors.email) {
-		addErrorTXT('ელფოსტა არასწორია');
+		addErrorTXT('სწორად შეიყვანეთ ელ.ფოსტის მისამართი');
 	}
 	if (errors.logo) {
-		addErrorTXT('ლოგო არასწორია');
+		addErrorTXT('ატვირთეთ თქვენი ლოგო');
 	}
 	if (errors.capital) {
-		addErrorTXT('კაპიტალი არასწორია');
+		addErrorTXT('მიუთითეთ კაპიტალის მოცულობა');
 	}
 
 	//errorMSG_el.parent().parent().css('display','none');
@@ -536,7 +528,16 @@ function changeStep(direction)
 		btn.dir_next.removeClass('disabled');
 	
 	setTimeout(function() {
-		$('.step.active input').eq(0).focus();
+		var active = $('.step.active');
+		var isInput = active.find('input').eq(0);
+		var isTextArea = active.find('textarea').eq(0);
+		//var logoClone = active.find('.logoClone').eq(0);
+
+		if (isInput.length) {
+			isInput.focus();
+		} else if (isTextArea.length) {
+			isTextArea.focus();
+		}
 	}, 100);
 }
 
@@ -575,7 +576,6 @@ $('#sendMSG').on('click', function(e) {
 			changePhoneMSG(phoneMSG);
 		});
 		$.post(window.location.href + 'send/msg', {phone: phoneFiltered}, function(data) {
-			console.log(data);
 			var status = Number(data);
 			switch (status) {
 				case 0:
@@ -589,6 +589,7 @@ $('#sendMSG').on('click', function(e) {
 					phoneMSG.msg = 'შეასწორეთ მობილურის ნომერი';
 					break;
 				case 99:
+				case 404:
 					phoneMSG.title = 'დაფიქსირდა შეცდომა!';
 					phoneMSG.alert = 'danger';
 					phoneMSG.msg = 'დაუკავშირდით დეველოპერს';
@@ -599,7 +600,7 @@ $('#sendMSG').on('click', function(e) {
 					phoneMSG.msg = 'გთხოვთ, მოითხოვოთ ახლიდან 2 წუთში';
 					break;
 			};
-			console.log(data);
+			//console.log(data);
 		});
 	}
 });
@@ -638,6 +639,7 @@ $('#codeBTN').on('click', function(e) {
 	};
 	var codeCheckerResponse;
 	$.post(window.location.href + 'send/checkCode', ajaxData, function(data) {
+		//console.log(data);
 		codeCheckerResponse = Number(data);
 	});
 	reloadLoading(function() {
@@ -656,25 +658,49 @@ $('#codeBTN').on('click', function(e) {
 
 function finish() {
 	if (step.value == 11) {
-	form_data = new FormData();
-	for (var key in data) {
-		form_data.append(key, data[key]);
-	}
-
-	$.ajax({
-		type: 'POST',               
-		processData: false,
-		contentType: false,
-		data: form_data,
-		url: window.location.href + 'send/data',
-		dataType : 'json',
-		complete: function(data){
-			var success = (data.responseText == 0) ? true : false;
-			if (success) {
-				alert('მშვენიერია!!!');
-				window.location.reload();
-			}
+		form_data = new FormData();
+		for (var key in data) {
+			form_data.append(key, data[key]);
 		}
-	}); 
+
+		$.ajax({
+			type: 'POST',               
+			processData: false,
+			contentType: false,
+			data: form_data,
+			url: window.location.href + 'send/data',
+			dataType : 'json',
+			complete: function(data){
+				//console.log(data);
+
+				var success = (data.responseText == '89') ? true : false;
+				if (success) {
+					alert('მშვენიერია!!!');
+					//window.location.reload();
+				} else {
+					alert('დაფიქსირდა შეცდომა!');
+				}
+			}
+		}); 
 	}
 }
+
+$(document).on('keypress', function(e) {
+	var code = e.keyCode;
+	if (code == 13) {
+		$('#start').trigger('click');
+	}
+});
+
+// swipe listener for mobile
+$('#greeting').on("swipeup",function(){
+	alert('yaa');
+});
+$(document).on("swipeleft",function(){
+	changeStep('next');
+});
+$(document).on("swiperight",function(){
+	changeStep('prev');
+});
+
+//debug(3);
