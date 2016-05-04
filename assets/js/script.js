@@ -749,7 +749,14 @@ $(document).on("swiperight",function(){
 
 //debug(3);
 
-loading.removeClass('active');
-wrapper.addClass('active');
-greeting.slideUp(0);
-$('#content').addClass('active');
+showUpFinished();
+function showUpFinished() {
+	loading.removeClass('active');
+	wrapper.addClass('active');
+	greeting.hide();
+	$('.stepNum').hide();
+	$('#content').addClass('active');
+	$('#steps').hide();
+	$('.directions').hide();
+	$('#finished').addClass('active');
+}

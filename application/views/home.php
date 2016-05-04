@@ -225,7 +225,8 @@
 			</div>
 
 			<div id="finished">
-				<div class=""></div>
+				<div class="msg">გილოცავთ, თქვენ წარმატებით გაიარეთ რეგისტრაცია!</div>
+				<div class="ct">კონტაქტი: <b>support@100startups.ge</b></div>
 			</div>
 
 		</div>
