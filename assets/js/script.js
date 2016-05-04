@@ -109,6 +109,7 @@ $('.logoClone').on('click', function() {
 init();
 
 btn.start.on('click', function() {
+	//changeStep('next');
 	greeting.addClass('hide_');
 	step.content.addClass('active');
 	loading.removeClass('active');
@@ -140,7 +141,7 @@ function reloadLoading(callback) {
 	wrapper.removeClass('active');
 	loading.addClass('active');
 	loading.css('display','block')//.loading.addClass('active');
-	loading.off().bind('oanimationend animationend webkitAnimationEnd', function() { 
+	loading.bind('oanimationend animationend webkitAnimationEnd', function() { 
 		loading.hide('slow', function() {
 			wrapper.addClass('active');
 			loading.removeClass('active');
@@ -457,6 +458,20 @@ function addErrorTXT(txt) {
 var phonePH = "5**  - **  - ** - **";
 $("#phone").mask("500 - 00 - 00 - 00", {placeholder: phonePH} );
 
+$('#phone').on('keypress', function(e) {
+	if (e.keyCode == 13) {
+		e.preventDefault();
+		e.stopPropagation();
+		$('#sendMSG').trigger('click');
+	}
+})
+
+$('#verCode').on('keypress', function(e) {
+	if (e.keyCode == 13) {
+		$('#codeBTN').trigger('click');
+	}
+})
+
 $('.input').on('focus', function() {
 	setTimeout(function() {
 		$('#wrapper').scrollTop($('#wrapper').get(0).scrollHeight);
@@ -482,6 +497,10 @@ var openFile = function(el) {
 
 function changeStep(direction)
 {
+	if (loading.hasClass('active')) {
+		$('#start').trigger('click');
+		return false;
+	}
 	var next;
 	if (direction == 'next')
 		next = true;
@@ -698,11 +717,7 @@ function finish() {
 $(document).on('keypress', function(e) {
 	var code = e.keyCode;
 	if (code == 13) {
-		if (loading.hasClass('active')) {
-			$('#start').trigger('click');
-		} else if(!$('.desc').parents('.step').hasClass('active')) {
-			changeStep('next');
-		}
+		changeStep('next');
 	}
 
 });
@@ -733,3 +748,8 @@ $(document).on("swiperight",function(){
 });
 
 //debug(3);
+
+loading.removeClass('active');
+wrapper.addClass('active');
+greeting.slideUp(0);
+$('#content').addClass('active');

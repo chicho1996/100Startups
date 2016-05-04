@@ -223,6 +223,11 @@
 				<div class="button prev">წინა</div>
 				<div class="button next">შემდეგი</div>
 			</div>
+
+			<div id="finished">
+				<div class=""></div>
+			</div>
+
 		</div>
 	</div>
 
