@@ -333,7 +333,7 @@ function dataValidation() {
 	}
 
 	errors.email = 0;
-	if (!data.email.length) {
+	if (!data.email.length || !validateEmail(data.email) ) {
 		errors.email = 1;
 	} else {
 		errors.email = 0;
@@ -360,7 +360,10 @@ function dataValidation() {
 
 }
 
-
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
 
 //$('.step.last').fadeIn('slow');
 //$('.step.last').removeClass()
