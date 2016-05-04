@@ -116,7 +116,7 @@ btn.start.on('click', function() {
 
 input.all.on('keypress', function(e) {
 	if (e.keyCode == 13 && !$(this).hasClass('desc') && !loading.hasClass('active')) {
-		changeStep('next');
+		//changeStep('next');
 		//collectData();
 	}
 });
@@ -601,7 +601,7 @@ $('#sendMSG').on('click', function(e) {
 					phoneMSG.msg = 'დაუკავშირდით დეველოპერს';
 					break;
 				case 503:
-					phoneMSG.title = 'კოდი უკვე გამოგიზავნილიდა';
+					phoneMSG.title = 'კოდი უკვე გამოგიზავნილია';
 					phoneMSG.alert = 'danger';
 					phoneMSG.msg = 'გთხოვთ, მოითხოვოთ ახლიდან 2 წუთში';
 					break;
@@ -698,14 +698,36 @@ function finish() {
 $(document).on('keypress', function(e) {
 	var code = e.keyCode;
 	if (code == 13) {
-		$('#start').trigger('click');
+		if (loading.hasClass('active')) {
+			$('#start').trigger('click');
+		} else if(!$('.desc').parents('.step').hasClass('active')) {
+			changeStep('next');
+		}
 	}
+
 });
 
+$(document).on('keydown', function(e) {
+	var code = e.keyCode;
+	if ( $('.year').hasClass('active')) {
+		var act = $('.year.active');
+		if (code == 39) {
+			if (!act.next().length) return false;
+			act.removeClass('active');
+			act.next().addClass('active');
+		} else if (code == 37) {
+			if (!act.prev().hasClass('year')) return false;
+			act.removeClass('active');
+			act.prev().addClass('active');
+		}
+	}
+
+});
 
 $(document).on("swipeleft",function(){
 	changeStep('next');
 });
+
 $(document).on("swiperight",function(){
 	changeStep('prev');
 });

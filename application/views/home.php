@@ -54,7 +54,7 @@
 				<div class="step">
 					<label class="group">
 						<span class="title">როდის დაიწყეთ ფუნქციონირება</span>
-						<div class="year">
+						<div class="year active">
 							<div class="radio">
 								<div class="child"></div>
 							</div>
