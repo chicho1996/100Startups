@@ -468,6 +468,8 @@ $('#phone').on('keypress', function(e) {
 
 $('#verCode').on('keypress', function(e) {
 	if (e.keyCode == 13) {
+		e.preventDefault();
+		e.stopPropagation();
 		$('#codeBTN').trigger('click');
 	}
 })
@@ -699,15 +701,11 @@ function finish() {
 			url: window.location.href + 'send/data',
 			dataType : 'json',
 			complete: function(data){
-				console.log(data.responseText);
-				return false;
-
-				var success = (data.responseText == '89') ? true : false;
+				var success = (data.responseText == '089') ? true : false;
 				if (success) {
-					alert('მშვენიერია!!!');
-					//window.location.reload();
+					showUpFinished();
 				} else {
-					alert('დაფიქსირდა შეცდომა!');
+					//alert('დაფიქსირდა შეცდომა!');
 				}
 			}
 		}); 
@@ -749,7 +747,6 @@ $(document).on("swiperight",function(){
 
 //debug(3);
 
-showUpFinished();
 function showUpFinished() {
 	loading.removeClass('active');
 	wrapper.addClass('active');
@@ -758,5 +755,7 @@ function showUpFinished() {
 	$('#content').addClass('active');
 	$('#steps').hide();
 	$('.directions').hide();
-	$('#finished').addClass('active');
+	setTimeout(function() {
+		$('#finished').addClass('active');
+	},50);
 }
