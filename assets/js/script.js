@@ -369,17 +369,17 @@ function dataValidation() {
 }
 
 
-debug(11);
-$('.step.last').fadeIn('slow');
+//debug(11);
+//$('.step.last').fadeIn('slow');
 //$('.step.last').removeClass()
 
 
 function msgErrorAlert()
 {
 
-	$('.step.last').fadeIn('slow');
+	//$('.step.last').fadeIn('slow');
 	//$('.phoneMSG_status').slideDown(200);
-	return false;
+	//return false;
 
 	errorMSG_el = $('#validationMSG .errors');
 	errorMSG_el.html('');
@@ -449,25 +449,6 @@ function msgErrorAlert()
 		} else {
 			errorMSG_el.parent().parent().hide(0);
 		}
-	}
-
-	if (step.value == 11) {
-		form_data = new FormData();
-		for (var key in data) {
-			form_data.append(key, data[key]);
-		}
-
-		$.ajax({
-			type: 'POST',               
-			processData: false,
-			contentType: false,
-			data: form_data,
-			url: window.location.href + 'send/data',
-			dataType : 'json',
-			complete: function(data){
-				console.log(data.responseText);
-			}
-		}); 
 	}
 
 }
@@ -664,6 +645,30 @@ $('#codeBTN').on('click', function(e) {
 				title: 'შეცდომა',
 				msg: 'შეიყვანეთ სწორი კოდი'
 			});
+		} else {
+			finish();
+			//window.location.reload();
 		}
 	});
 });
+
+function finish() {
+	if (step.value == 11) {
+	form_data = new FormData();
+	for (var key in data) {
+		form_data.append(key, data[key]);
+	}
+
+	$.ajax({
+		type: 'POST',               
+		processData: false,
+		contentType: false,
+		data: form_data,
+		url: window.location.href + 'send/data',
+		dataType : 'json',
+		complete: function(data){
+			console.log(data.responseText);
+		}
+	}); 
+	}
+}

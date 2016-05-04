@@ -11,7 +11,7 @@ class Send extends CI_Controller {
 	}
 
 	public function data() {
-		//$this->registration->init();
+		$this->registration->init();
 	}
 
 	public function checkCode()
