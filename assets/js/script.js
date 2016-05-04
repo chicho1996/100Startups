@@ -645,7 +645,17 @@ $('#codeBTN').on('click', function(e) {
 		phone: 551721521,
 		code: this_val
 	};
+	var codeCheckerResponse;
 	$.post(window.location.href + 'send/checkCode', ajaxData, function(data) {
-		alert(data);
+		codeCheckerResponse = Number(data);
+	});
+	reloadLoading(function() {
+		if (codeCheckerResponse == 1) {
+			changePhoneMSG({
+				alert: 'danger',
+				title: 'შეცდომა',
+				msg: 'შეიყვანეთ სწორი კოდი'
+			});
+		}
 	});
 });
