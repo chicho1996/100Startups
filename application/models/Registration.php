@@ -20,6 +20,10 @@ class Registration extends CI_Model {
 	// time
 	private $time = 0;
 
+	public function checkCOde() {
+		
+	}
+
 	public function init()
 	{
 

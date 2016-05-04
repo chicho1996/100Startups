@@ -31,7 +31,11 @@ data.email = '',
 data.logo = '',
 data.capital = '';
 
-
+var phoneMSG_el = {};
+phoneMSG_el.root = $('.phoneMSG_status');
+phoneMSG_el.alert = phoneMSG_el.root.find('.alert');
+phoneMSG_el.title = phoneMSG_el.root.find('.title');
+phoneMSG_el.msg = phoneMSG_el.root.find('.msg');
 
 
 function debug(index) {
@@ -567,24 +571,36 @@ $('#sendMSG').on('click', function(e) {
 	var phone = $('#phone').val();
 	var phoneFiltered = phone.replace(/ - /gi, '');
 	
-	var phoneMSG = '';
+	var phoneMSG = {};
 
 	if (phoneFiltered.length == 9 && phoneFiltered[0] == 5) {
 		reloadLoading(function() {
-			alert(phoneMSG);
+			//alert(phoneMSG);
+			changePhoneMSG(phoneMSG);
 		});
 		$.post(window.location.href + 'send/msg', {phone: phoneFiltered}, function(data) {
 			var status = Number(data);
 			switch (status) {
 				case 0:
-					phoneMSG = "სწორია!";
+					phoneMSG.title = "სწორია!";
+					phoneMSG.alert = 'success';
+					phoneMSG.msg = 'დაუკავშირდი!!!';
 					break;
 				case 9:
-					phoneMSG = 'არასწორია!';
+					phoneMSG.title = 'არასწორია!';
+					phoneMSG.alert = 'danger';
+					phoneMSG.msg = 'დაუკავშირდი!!!';
+					break;
 				case 99:
-					phoneMSG = 'დაუკავშირდი დეველოპერს!';
+					phoneMSG.title = 'დაუკავშირდი დეველოპერს!';
+					phoneMSG.alert = 'danger';
+					phoneMSG.msg = 'დაუკავშირდი!!!';
+					break;
 				case 503:
-					phoneMSG = 'ახალი კოდის მიღება შეგიძლიათ ყოველ 1 წუთში!';
+					phoneMSG.title = 'ახალი კოდის მიღება შეგიძლიათ ყოველ 1 წუთში!';
+					phoneMSG.alert = 'danger';
+					phoneMSG.msg = 'დაუკავშირდი!!!';
+					break;
 			};
 			console.log(data);
 		});
@@ -593,6 +609,14 @@ $('#sendMSG').on('click', function(e) {
 		$('.phoneMSG_status').slideDown(200);
 	});
 });
+
+function changePhoneMSG(cfg)
+{
+	if (typeof cfg == 'undefined') var cfg = {};
+	phoneMSG_el.alert.removeClass('alert-danger alert-success').addClass('alert-'+cfg.alert);
+	phoneMSG_el.title.text(cfg.title);
+	phoneMSG_el.msg.text(cfg.msg);
+}
 
 $('.editPhone').on('click', function(e) {
 	$('.phoneMSG_status').slideUp('slow', function() {

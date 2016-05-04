@@ -12,6 +12,10 @@ class Msg extends CI_Model {
 
 	private $secondLimit = 60;
 
+	private $currentID = 0;
+
+	private $tempCode = '';
+
 	public function dateLimitReached($db_date, $secLimit) {
 		$format = 'Y-m-d H:i:s';
 		$current = date($format);
@@ -63,6 +67,31 @@ class Msg extends CI_Model {
 		} else {
 			show_404();
 		}
+	}
+
+	public function checkCode() {
+		//
+		$this->phone = 551721521;
+		$this->tempCode = 5555;
+		$this->secondLimit = 55550;
+		//
+
+		$this->db->select('id,code');
+		$this->db->select_max('date');
+		$this->selectWhere = array(
+			'phone' 	=>		$this->phone,
+			'code' 		=>		$this->tempCode,
+			'IP'		=>		$_SERVER['REMOTE_ADDR'],
+			'status'	=>		0
+		);
+		$data = $this->select()->row();
+
+		$limitDate = $this->dateLimitReached($data->date, $this->secondLimit);
+ 
+		if (!$limitDate)
+			var_dump($data);
+		else
+			var_dump(false);
 	}
 
 	public function canIsendCode() 

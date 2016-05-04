@@ -185,8 +185,8 @@
 
 						<div class="phoneMSG_status">
 							<div class="alert alert-success">
-								<strong class="displayBlock">შეტყობინება წარმატებით გამოიგზავნა!</strong>
-								<p>დაელოდეთ 2 წუთი და შეიყვანეთ მიღებული ოთხნიშნა კოდი: 
+								<strong class="displayBlock title">შეტყობინება წარმატებით გამოიგზავნა!</strong>
+								<p class="msg">დაელოდეთ 2 წუთი და შეიყვანეთ მიღებული ოთხნიშნა კოდი: 
 
 								<div class="codeForm">
 								<span class="editPhone">ნომრის შესწორება</span>

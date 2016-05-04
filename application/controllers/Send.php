@@ -14,4 +14,10 @@ class Send extends CI_Controller {
 		//$this->registration->init();
 	}
 
+	public function code()
+	{
+		$this->load->model('msg');
+		$this->msg->checkCode();
+	}
+
 }
