@@ -70,11 +70,16 @@ class Msg extends CI_Model {
 	}
 
 	public function checkCode() {
-		//
+		/*
 		$this->phone = 551721521;
 		$this->tempCode = 5555;
 		$this->secondLimit = 55550;
-		//
+		*/
+
+		//if (!count($_POST)) show_404();
+
+		$this->phone = isset($_POST['phone']) ? $_POST['phone'] : '';
+		$this->tempCode = isset($_POST['code']) ? $_POST['code'] : '';
 
 		$this->db->select('id,code');
 		$this->db->select_max('date');
@@ -88,10 +93,15 @@ class Msg extends CI_Model {
 
 		$limitDate = $this->dateLimitReached($data->date, $this->secondLimit);
  
-		if (!$limitDate)
-			var_dump($data);
-		else
-			var_dump(false);
+		if (!$limitDate) {
+			$this->registration->table = $this->table;
+			$this->registration->updateData = array('status' 	=>	1);
+			$this->registration->updateWhere = array('id'		=>	$data->id);
+			$this->registration->update();
+			echo 0;
+		} else {
+			echo 1;
+		}
 	}
 
 	public function canIsendCode() 

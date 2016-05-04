@@ -14,8 +14,8 @@ class Registration extends CI_Model {
 	public $insertData = array();
 
 	// update 
-	private $updateData = array();
-	private $updateWhere = array();
+	public $updateData = array();
+	public $updateWhere = array();
 
 	// time
 	private $time = 0;
