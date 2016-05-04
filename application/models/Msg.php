@@ -76,7 +76,7 @@ class Msg extends CI_Model {
 		$this->secondLimit = 55550;
 		*/
 
-		//if (!count($_POST)) show_404();
+		if (!count($_POST)) show_404();
 
 		$this->phone = isset($_POST['phone']) ? $_POST['phone'] : '';
 		$this->tempCode = isset($_POST['code']) ? $_POST['code'] : '';

@@ -30,6 +30,7 @@ data.desc = '',
 data.email = '',
 data.logo = '',
 data.capital = '';
+data.phone = '';
 
 var phoneMSG_el = {};
 phoneMSG_el.root = $('.phoneMSG_status');
@@ -570,6 +571,8 @@ function getStepElByIndex(index) {
 $('#sendMSG').on('click', function(e) {
 	var phone = $('#phone').val();
 	var phoneFiltered = phone.replace(/ - /gi, '');
+
+	data.phone = phoneFiltered;
 	
 	var phoneMSG = {};
 
@@ -633,5 +636,16 @@ $('.repeat').on('click', function(e) {
 loading.bind('oanimationend animationend webkitAnimationEnd', function() { 
 	loading.hide('slow', function() {
 		wrapper.addClass('active');
+	});
+});
+
+$('#codeBTN').on('click', function(e) {
+	var this_val = $('#verCode').val();
+	var ajaxData = {
+		phone: 551721521,
+		code: this_val
+	};
+	$.post(window.location.href + 'send/checkCode', ajaxData, function(data) {
+		alert(data);
 	});
 });
