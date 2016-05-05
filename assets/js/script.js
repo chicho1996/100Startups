@@ -113,6 +113,7 @@ btn.start.on('click', function() {
 	greeting.addClass('hide_');
 	step.content.addClass('active');
 	loading.removeClass('active');
+	$('.step').eq(0).find('input').focus();
 });
 
 input.all.on('keypress', function(e) {
@@ -501,6 +502,8 @@ function changeStep(direction)
 {
 	if (!$('#content').hasClass('active')) {
 		$('#start').trigger('click');
+		return false;
+	} else if ( $('.desc').is(':focus') ) {
 		return false;
 	}
 	var next;
