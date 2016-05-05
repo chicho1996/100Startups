@@ -10,10 +10,6 @@ class Send extends CI_Controller {
 		$this->msg->send();
 	}
 
-	public function test(){
-		var_dump(25);
-	}
-
 	public function data() {
 		$this->registration->init();
 	}
