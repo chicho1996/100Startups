@@ -711,6 +711,7 @@ function finish() {
 			url: window.location.href + 'send/data',
 			dataType : 'json',
 			complete: function(data){
+				console.log(data, 555555555);
 				success = (data.responseText == '089') ? true : false;
 				if (success) {
 					
