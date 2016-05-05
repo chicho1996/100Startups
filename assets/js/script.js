@@ -694,11 +694,12 @@ function finish() {
 		setTimeout(function() {
 			reloadLoading(function() {
 				//alert(success);
+				console.log(success, 994949499494);
 				if (success) {
 					showUpFinished();
 				}
 			});
-		}, 0);
+		}, 50);
 		$.ajax({
 			type: 'POST',               
 			processData: false,
