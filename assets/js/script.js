@@ -499,7 +499,7 @@ var openFile = function(el) {
 
 function changeStep(direction)
 {
-	if (loading.hasClass('active')) {
+	if (!$('#content').hasClass('active')) {
 		$('#start').trigger('click');
 		return false;
 	}
