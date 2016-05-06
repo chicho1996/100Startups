@@ -423,6 +423,8 @@ function msgErrorAlert()
 
 	//errorMSG_el.parent().parent().css('display','none');
 
+	addErrorTXT('მოგვწერეთ: support@100startups.ge', 'msg_contact_val');
+
 
 
 
@@ -451,9 +453,14 @@ function msgErrorAlert()
 
 }
 
-function addErrorTXT(txt) {
+function addErrorTXT(txt, _class) {
 	//errorMSG_el.parent().parent().fadeIn(300);
-	errorMSG_el.append('<li>'+txt+'</li>');
+	if (typeof _class != 'undefined')
+		_class = ' class="'+_class+'"';
+	else
+		_class = '';
+
+	errorMSG_el.append('<li'+_class+'>'+txt+'</li>');
 }
 
 var phonePH = "5**  - **  - ** - **";
