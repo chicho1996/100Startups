@@ -58,8 +58,8 @@ class Registration extends CI_Model {
 
 		if ( strlen($name) >= 2 && in_array($year, $yearList) && strlen($city) >= 2 
 			&& strlen($desc) > 10 && $this->emailIsValid($email) && $this->logoIsAvailable() ) {
-			$this->storeData();
 			echo 89;
+			$this->storeData();
 		} else {
 			echo 0;
 		}

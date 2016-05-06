@@ -203,7 +203,7 @@
 						<div class="phoneMSG_status">
 							<div class="alert alert-success">
 								<strong class="displayBlock title">დაფიქსირდა შეცდომა!</strong>
-								<p class="msg">მოგვწერეთ support@100startups.ge
+								<p class="msg">მოგვწერეთ: support@100startups.ge
 
 								<div class="codeForm">
 								<span class="editPhone">ნომრის შესწორება</span>
