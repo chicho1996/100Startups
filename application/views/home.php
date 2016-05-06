@@ -7,6 +7,8 @@
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<title>100startups</title>
 
+	<meta name="google-site-verification" content="ks6wXc0m_6-1QKQYyVpJQ4fD6tZGS-k4LcFmodKB6dg" />
+
 	<meta name="description" content="100 ქართული სტარტაპი">
 	<meta name="author" content="Andromeda">
 
