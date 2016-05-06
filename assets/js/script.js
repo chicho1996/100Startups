@@ -711,7 +711,7 @@ function finish() {
 					showUpFinished();
 				}
 			});
-		}, 100);
+		}, 50);
 		$.ajax({
 			type: 'POST',               
 			processData: false,
