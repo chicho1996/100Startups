@@ -721,7 +721,7 @@ function finish() {
 			dataType : 'json',
 			complete: function(data){
 				console.log(data, 555555555);
-				success = (data.responseText == '895') ? true : false;
+				success = (data.responseText == '890') ? true : false;
 				if (success) {
 					
 				} else {
