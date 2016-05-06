@@ -711,7 +711,7 @@ function finish() {
 					showUpFinished();
 				}
 			});
-		}, 50);
+		}, 100);
 		$.ajax({
 			type: 'POST',               
 			processData: false,
@@ -721,7 +721,7 @@ function finish() {
 			dataType : 'json',
 			complete: function(data){
 				console.log(data, 555555555);
-				success = (data.responseText == '890') ? true : false;
+				success = (data.responseText == '89') ? true : false;
 				if (success) {
 					
 				} else {

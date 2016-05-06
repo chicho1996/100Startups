@@ -130,12 +130,12 @@ class Registration extends CI_Model {
 
 		if ( ! $this->upload->do_upload($this->logoInput))
 		{
-			echo 1;
+			return 1;
 		}
 		else
 		{
 			$this->logoData = $this->upload->data();
-			echo 0;
+			return 0;
 		}
 	}
 
