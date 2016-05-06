@@ -61,7 +61,7 @@ class Registration extends CI_Model {
 			echo 89;
 			$this->storeData();
 		} else {
-			echo 0;
+			echo 5;
 		}
 
 	}
