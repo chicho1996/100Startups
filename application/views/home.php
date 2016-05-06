@@ -202,8 +202,8 @@
 
 						<div class="phoneMSG_status">
 							<div class="alert alert-success">
-								<strong class="displayBlock title">შეტყობინება წარმატებით გამოიგზავნა!</strong>
-								<p class="msg">დაელოდეთ 2 წუთი და შეიყვანეთ მიღებული ოთხნიშნა კოდი: 
+								<strong class="displayBlock title">დაფიქსირდა შეცდომა!</strong>
+								<p class="msg">მოგვწერეთ support@100startups.ge
 
 								<div class="codeForm">
 								<span class="editPhone">ნომრის შესწორება</span>
@@ -236,7 +236,7 @@
 
 			<div id="finished">
 				<div class="msg">გილოცავთ, თქვენ წარმატებით გაიარეთ რეგისტრაცია!</div>
-				<div class="ct">კონტაქტი: <b>support@100startups.ge</b></div>
+				<div class="ct">მოგვწერეთ: <b>support@100startups.ge</b></div>
 			</div>
 
 		</div>

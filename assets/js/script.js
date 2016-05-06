@@ -423,12 +423,12 @@ function msgErrorAlert()
 
 	//errorMSG_el.parent().parent().css('display','none');
 
-	addErrorTXT('მოგვწერეთ: support@100startups.ge', 'msg_contact_val');
+	addErrorTXT('კონტაქტი: support@100startups.ge', 'msg_contact_val');
 
 
 
 
-	var lastErrors = errorMSG_el.children().length;
+	var lastErrors = errorMSG_el.find('li:not(.msg_contact_val)').length;
 	
 
 	if (!lastErrors) {
@@ -595,6 +595,7 @@ function getStepElByIndex(index) {
 
 
 $('#sendMSG').on('click', function(e) {
+
 	var phone = $('#phone').val();
 	var phoneFiltered = phone.replace(/ - /gi, '');
 
@@ -611,12 +612,13 @@ $('#sendMSG').on('click', function(e) {
 		reloadLoading(function() {
 			//alert(phoneMSG);
 			changePhoneMSG(phoneMSG);
+			$('#verCode').focus();
 		});
 		$.post(window.location.href + 'send/msg', {phone: phoneFiltered}, function(data) {
 			var status = Number(data);
 			switch (status) {
 				case 0:
-					phoneMSG.title = "შეტყობინება წარმატების გაიგზავნა";
+					phoneMSG.title = "შეტყობინება წარმატებით გაიგზავნა,";
 					phoneMSG.alert = 'success';
 					phoneMSG.msg = 'შეამოწმეთ და ჩაწერეთ მიღებული შეტყობინება';
 					break;
