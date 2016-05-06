@@ -10,6 +10,11 @@
 	<meta name="description" content="100 ქართული სტარტაპი">
 	<meta name="author" content="Andromeda">
 
+	<meta property="og:url"                content="<?=base_url()?>" />
+	<meta property="og:title"              content="100startups" />
+	<meta property="og:description"        content="100 ქართული სტარტაპი" />
+	<meta property="og:image"              content="<?=base_url('assets/img/bg.jpg')?>" />
+
 	<!-- Bootstrap -->
 	<link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/style.css">
