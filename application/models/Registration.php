@@ -8,7 +8,7 @@ class Registration extends CI_Model {
 
 	// logo data
 	private $logoInput = 'logo';
-	private $logoData = '';
+	private $logoData = array('file_name'=>'');
 
 	// insert
 	public $insertData = array();
