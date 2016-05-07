@@ -640,7 +640,7 @@ $('#sendMSG').on('click', function(e) {
 				case 0:
 					phoneMSG.title = "შეტყობინება წარმატებით გაიგზავნა,";
 					phoneMSG.alert = 'success';
-					phoneMSG.msg = 'შეამოწმეთ და ჩაწერეთ მიღებული შეტყობინება';
+					phoneMSG.msg = 'შეამოწმეთ და ჩაწერეთ მიღებული კოდი';
 					break;
 				case 9:
 					phoneMSG.title = 'დაფიქსირდა შეცდომა!';
