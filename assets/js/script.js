@@ -38,6 +38,8 @@ phoneMSG_el.alert = phoneMSG_el.root.find('.alert');
 phoneMSG_el.title = phoneMSG_el.root.find('.title');
 phoneMSG_el.msg = phoneMSG_el.root.find('.msg');
 
+var loadingTimer;
+
 
 function debug(index) {
 	step.value = index;
@@ -127,8 +129,7 @@ input.all.on('keypress', function(e) {
 var numCheck = true;
 btn.dir_next.on('click', function() {
 	changeStep('next');
-	//collectData();
-	//reloadLoading();	
+	//collectData();	
 });
 
 btn.dir_prev.on('click', function() {
@@ -137,18 +138,27 @@ btn.dir_prev.on('click', function() {
 });
 
 
+function stopLoading() {
+	loadingTimer = false;
+}
 
 function reloadLoading(callback) {
-	wrapper.removeClass('active');
-	loading.addClass('active');
-	loading.css('display','block')//.loading.addClass('active');
-	loading.off().bind('oanimationend animationend webkitAnimationEnd', function() { 
-		loading.hide('slow', function() {
-			wrapper.addClass('active');
-			loading.removeClass('active');
-			if (callback) callback();
+	if (loadingTimer) {
+		wrapper.removeClass('active');
+		loading.addClass('active');
+		loading.css('display','block')//.loading.addClass('active');
+		loading.off().bind('oanimationend animationend webkitAnimationEnd', function() { 
+			loading.hide('slow', function() {
+				wrapper.addClass('active');
+				loading.removeClass('active');
+				if (callback) callback();
+				console.log(loadingTimer);
+				setTimeout(function() {
+					reloadLoading(callback);
+				}, 20);
+			});
 		});
-	});
+	}
 }
 
 function init() {
@@ -609,6 +619,7 @@ $('#sendMSG').on('click', function(e) {
 		that.parent().slideUp('slow', function() {
 			$('.phoneMSG_status').slideDown(200);
 		});
+		reloadLoading = true;
 		reloadLoading(function() {
 			//alert(phoneMSG);
 			changePhoneMSG(phoneMSG);
@@ -664,8 +675,10 @@ $('.repeat').on('click', function(e) {
 	$('#sendMSG').trigger('click');
 });
 
-reloadLoading(function() {
-	wrapper.addClass('active');
+loadingTimer = true;
+reloadLoading();
+$(window).load(function() {
+	loadingTimer = false;
 });
 
 $('#codeBTN').on('click', function(e) {
