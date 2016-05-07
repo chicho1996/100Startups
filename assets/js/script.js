@@ -441,18 +441,24 @@ function msgErrorAlert()
 	var lastErrors = errorMSG_el.find('li:not(.msg_contact_val)').length;
 	
 
-	if (!lastErrors) {
-		if (step.limit == step.value) {
-			$('.step.last').addClass('fromRight active');
-		}
-	} else {
-		$('.step.last').hide(0);
-	}
+
 
 	if ( step.limit == step.value ) {
+
+		if (!lastErrors) {
+			$('.step.last').css('display','block').addClass('fromRight active');
+		} else {
+			$('.step.last').css('display','none');
+		}
+
 		if (lastErrors && (!btn.dir_next.hasClass('disabled')) ) display(true);
+
 	} else {
 		display(false);
+	}
+
+	if (step.limit-1 == step.value) {
+		$('.step.last').css('display','block');
 	}
 
 	function display(bool) {
