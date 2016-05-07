@@ -619,13 +619,14 @@ $('#sendMSG').on('click', function(e) {
 		that.parent().slideUp('slow', function() {
 			$('.phoneMSG_status').slideDown(200);
 		});
-		reloadLoading = true;
+		loadingTimer = true;
 		reloadLoading(function() {
 			//alert(phoneMSG);
 			changePhoneMSG(phoneMSG);
 			$('#verCode').focus();
 		});
 		$.post(window.location.href + 'send/msg', {phone: phoneFiltered}, function(data) {
+			loadingTimer = false;
 			var status = Number(data);
 			switch (status) {
 				case 0:
@@ -689,9 +690,14 @@ $('#codeBTN').on('click', function(e) {
 	};
 	var codeCheckerResponse;
 	$.post(window.location.href + 'send/checkCode', ajaxData, function(data) {
-		//console.log(data);
+		loadingTimer = false;
 		codeCheckerResponse = Number(data);
+
+		if (codeCheckerResponse != 1) {
+			finish();
+		}
 	});
+	loadingTimer = true;
 	reloadLoading(function() {
 		if (codeCheckerResponse == 1) {
 			changePhoneMSG({
@@ -700,7 +706,7 @@ $('#codeBTN').on('click', function(e) {
 				msg: 'შეიყვანეთ სწორი კოდი'
 			});
 		} else {
-			finish();
+			
 			//window.location.reload();
 		}
 	});
@@ -716,15 +722,14 @@ function finish() {
 				form_data.append(key, JSON.stringify(data[key]) );
 		}
 		var success = null;
-		setTimeout(function() {
-			reloadLoading(function() {
-				//alert(success);
-				console.log(success, 994949499494);
-				if (success) {
-					showUpFinished();
-				}
-			});
-		}, 50);
+		loadingTimer = true;
+		reloadLoading(function() {
+			//alert(success);
+			console.log(success, 994949499494);
+			if (success) {
+				showUpFinished();
+			}
+		});
 		$.ajax({
 			type: 'POST',               
 			processData: false,
@@ -733,13 +738,15 @@ function finish() {
 			url: window.location.href + 'send/data',
 			dataType : 'json',
 			complete: function(data){
-				console.log(data, 555555555);
 				success = (data.responseText == '89') ? true : false;
 				if (success) {
 					
 				} else {
 					//alert('დაფიქსირდა შეცდომა!');
 				}
+				setTimeout(function() {
+					loadingTimer = false;
+				}, 50);
 			}
 		}); 
 	}
