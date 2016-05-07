@@ -442,7 +442,9 @@ function msgErrorAlert()
 	
 
 	if (!lastErrors) {
-		$('.step.last').fadeIn('slow');
+		if (step.limit == step.value) {
+			$('.step.last').addClass('fromRight active');
+		}
 	} else {
 		$('.step.last').hide(0);
 	}
