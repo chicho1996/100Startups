@@ -63,7 +63,7 @@
 				</div>
 				<div class="step">
 					<label class="group">
-						<span class="title">როდის დაიწყეთ ფუნქციონირება</span>
+						<span class="title">როდის დაიწყეთ ფუნქციონირება?</span>
 						<div class="year active">
 							<div class="radio">
 								<div class="child"></div>
@@ -154,7 +154,7 @@
 				</div>
 				<div class="step">
 					<label class="group">
-						<span>რამელია თქვენი ინდუსტრია?</span>
+						<span>რომელია თქვენი ინდუსტრია?</span>
 						<input type="text" class="input">
 					</label>
 				</div>
