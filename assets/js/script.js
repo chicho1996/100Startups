@@ -807,7 +807,14 @@ function showUpFinished() {
 		$('#finished').addClass('active');
 	},50);
 }
+//disable spaces in email input
+$("#Emailinput").keypress(function (evt) {
 
+  var keycode = evt.charCode || evt.keyCode;
+  if (keycode  == 32) { 
+    return false;
+  }
+});
 
 /*
 debug(11);
