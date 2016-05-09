@@ -168,7 +168,7 @@
 				<div class="step">
 					<label class="group">
 						<span>კომპანიის ელ.ფოსტა</span>
-						<input type="email" class="input" placeholder="example@domain.com">
+						<input type="email" class="input" placeholder="example@domain.com" id="Emailinput">
 					</label>
 				</div>
 
