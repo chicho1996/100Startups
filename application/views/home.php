@@ -7,7 +7,6 @@
 
 	<link rel=icon href="<?=base_url()?>assets/img/favicon1.png">
 
-	<!--- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<title>100startups</title>
 
 	<meta name="google-site-verification" content="ks6wXc0m_6-1QKQYyVpJQ4fD6tZGS-k4LcFmodKB6dg" />
