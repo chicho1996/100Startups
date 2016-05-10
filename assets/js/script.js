@@ -815,22 +815,6 @@ $("#Emailinput").keypress(function (evt) {
     return false;
   }
 });
-//Disable numbers in inputs
-function isAlphabet(e) {
-    var _code = e.keyCode;
-    console.log(_code);
-    if (_code >= 65 && _code <= 90 || _code == 8)
-    	return true;
-  	else
-    	return false;
-}
-
-var i = document.getElementsByClassname('lettersonly');
-i.onkeydown = function(e) {
-	if ( !isAlphabet(e) ) {
-  	return false;
-  }
-};
 /*
 debug(11);
 $('.step').removeClass('last');
