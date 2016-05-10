@@ -5,7 +5,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	
+	<link rel=icon href="<?=base_url()?>assets/img/favicon1.png">
+
 	<title>100startups</title>
 
 	<meta name="google-site-verification" content="ks6wXc0m_6-1QKQYyVpJQ4fD6tZGS-k4LcFmodKB6dg" />
