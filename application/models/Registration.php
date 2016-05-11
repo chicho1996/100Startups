@@ -57,7 +57,7 @@ class Registration extends CI_Model {
 		);
 
 		if ( strlen($name) >= 2 && in_array($year, $yearList) && strlen($city) >= 2 
-			&& strlen($desc) > 10 && $this->emailIsValid($email) && $this->logoIsAvailable() ) {
+			&& strlen($desc) > 10 && $this->emailIsValid($email) ) {
 			echo 89;
 			$this->storeData();
 		} else {
@@ -122,7 +122,7 @@ class Registration extends CI_Model {
 
 		$this->time = time();
 
-		$name = $_FILES[$this->logoInput]['name'];
+		$name = isset($_FILES[$this->logoInput]) ? $_FILES[$this->logoInput]['name'] : '';
 
 		$config['file_name'] = $this->time.$name;
 

@@ -352,13 +352,13 @@ function dataValidation() {
 		errors.email = 0;
 	}
 
-	errors.logo = 0;
 	if (typeof data.logo == 'undefined' 
 		|| typeof data.logo.name == 'undefined') {
 		errors.logo = 1;
 	} else {
 		errors.logo = 0;
 	}
+	errors.logo = 0;
 
 	errors.capital = 0;
 	if (!data.capital.length) {
@@ -746,6 +746,7 @@ function finish() {
 			url: window.location.href + 'send/data',
 			dataType : 'json',
 			complete: function(data){
+				console.log(data.responseText);
 				success = (data.responseText == '89') ? true : false;
 				if (success) {
 					
