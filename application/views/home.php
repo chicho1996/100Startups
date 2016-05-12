@@ -113,7 +113,7 @@
 
 				<div class="step">
 					<label class="group">
-						<span class="title">ვინ არიან დამფუძნებლები?</span>
+						<span class="title founderTiTle">ვინ არიან დამფუძნებლები?</span>
 						<div class="founder-cont">
 							<div class="founder">
 								<div class="lbl-group helpBTN">
@@ -164,6 +164,7 @@
 					<label class="group">
 						<span>20 სიტყვით აღწერეთ თქვენი პროდუქტი</span>
 						<textarea class="input desc"></textarea>
+						<br><br><br>
 					</label>
 				</div>
 

@@ -399,7 +399,10 @@ textarea.input {
 // fix some responsive 
 @media screen and (max-height: 500px) {
 	.directions {
-		display: none;
+		//display: none;
+		&.hideDir {
+			display: none;
+		}
 	}
 }
 @media screen and (max-width: 600px) {

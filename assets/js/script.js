@@ -570,6 +570,7 @@ function changeStep(direction)
 		} else if (isTextArea.length) {
 			isTextArea.focus();
 		}
+		$('.input.name.fname, .input.name.lname').blur();
 	}, 100);
 
 	collectData();
@@ -809,9 +810,15 @@ function isAlphabet(evt) {
 }
 
 
+// founders event
 $(document).on('keyup', '.input.name.fname, .input.name.lname', function(event) {
-	//alert( !isAlphabet(e) );
 	$(this).val( $(this).val().replace(/[^a-z-A-Z-ა-ჰ]/g,'') );
+});
+$(document).on('focus', '.input.name.fname, .input.name.lname, .input.age', function(event) {
+	btn.dir.parent().addClass('hideDir');
+});
+$(document).on('blur', '.input.name.fname, .input.name.lname, .input.age', function(event) {
+	btn.dir.parent().removeClass('hideDir');
 });
 
 
@@ -899,3 +906,5 @@ $('.input').on('keydown', function(e) {
 		changeStep('next');
 	}
 });
+
+
