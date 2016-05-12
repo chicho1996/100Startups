@@ -809,14 +809,9 @@ function isAlphabet(evt) {
 }
 
 
-$(document).on('keypress', '.input.name.fname, .input.name.lname', function(event) {
+$(document).on('keyup', '.input.name.fname, .input.name.lname', function(event) {
 	//alert( !isAlphabet(e) );
-	var regex = new RegExp("^[a-zA-Z-ა-ჰ]+$");
-    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-    if (!regex.test(key)) {
-        event.preventDefault();
-        return false;
-    }
+	$(this).val( $(this).val().replace(/[^a-z-A-Z-ა-ჰ]/g,'') );
 });
 
 
