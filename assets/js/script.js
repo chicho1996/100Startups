@@ -798,7 +798,7 @@ $('.phoneMSG_status').show();*/
 function isAlphabet(e) {
     var _code = e.keyCode;
     console.log(_code);
-    if (_code >= 65 && _code <= 90 || _code == 8 || _code == 13)
+    if (_code >= 65 && _code <= 90 || _code == 8 || _code == 13 || _code == 9)
     	return true;
   	else
     	return false;
