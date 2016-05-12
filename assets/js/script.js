@@ -789,16 +789,34 @@ $('.phoneMSG_status').show();*/
 
 
 // allow only alphabet in founders f&lname
-function isAlphabet(e) {
-    var _code = e.keyCode;
-    console.log(_code);
-    if (_code >= 65 && _code <= 90 || _code == 8 || _code == 13 || _code == 9)
+/*function isAlphabet(e) {
+    var _code = 'which' in e ? e.which : e.keyCode;
+    //alert(_code);
+    if (_code >= 65 && _code <= 90 || _code == 8 || _code == 13 || _code == 9) 
     	return true;
   	else
     	return false;
+}*/
+
+
+function isAlphabet(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
+        return false;
+    }
+    return true;
 }
-$(document).on('keydown', '.input.name.fname, .input.name.lname', function(e) {
-	if ( !isAlphabet(e)) return false;
+
+
+$(document).on('keypress', '.input.name.fname, .input.name.lname', function(event) {
+	//alert( !isAlphabet(e) );
+	var regex = new RegExp("^[a-zA-Z-ა-ჰ]+$");
+    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+    if (!regex.test(key)) {
+        event.preventDefault();
+        return false;
+    }
 });
 
 
