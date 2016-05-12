@@ -109,12 +109,12 @@ $('.logoClone').on('click', function() {
 });
 
 
-input.all.on('keypress', function(e) {
+/*input.all.on('keypress', function(e) {
 	if (e.keyCode == 13 && !$(this).hasClass('desc') && !loading.hasClass('active')) {
 		//changeStep('next');
 		//collectData();
 	}
-});
+});*/
 
 // direction on click
 var numCheck = true;
@@ -507,7 +507,8 @@ function changeStep(direction)
 		$('#start').trigger('click');
 		return false;
 	} else if ( $('.desc').is(':focus') ) {
-		return false;
+		//$('.desc').blur();
+		//return false;
 	}
 	var next;
 	if (direction == 'next')
@@ -739,13 +740,6 @@ function finish() {
 	}
 }
 
-$(document).on('keypress', function(e) {
-	var code = e.keyCode;
-	if (code == 13) {
-		changeStep('next');
-	}
-
-});
 
 $(document).on('keydown', function(e) {
 	var code = e.keyCode;
@@ -822,12 +816,14 @@ function isMobileDevice(callback) {
 
 // mobile swipe detection
 $(document).on("swipeleft",function(){
+	//alert( $('.desc').is(':focus') )
 	isMobileDevice(function() {
 		changeStep('next');
 	});
 });
 
 $(document).on("swiperight",function(){
+	//alert( $('.desc').is(':focus') )
 	isMobileDevice(function() {
 		changeStep('prev');
 	});
@@ -863,9 +859,24 @@ $('.input').on('focus', function() {
 	}, 300);
 });
 
+// document on enter
+$(document).on('keypress', function(e) {
+	var code = e.keyCode;
+	if (code == 13 && !descHasFocus()) {
+		changeStep('next');
+	}
+
+});
+
+// desc not focused
+function descHasFocus() {
+	return $('.desc').is(':focus');
+}
 // keyboard pop up
 $('.input').on('keydown', function(e) {
-	if (isMobileDevice() &&  e.keyCode == 9 || !isMobileDevice() && e.keyCode == 13) {
+	if ( descHasFocus() ) {
+
+	} else if (isMobileDevice() &&  e.keyCode == 9 || !isMobileDevice() && e.keyCode == 13) {
 		e.preventDefault();
 		changeStep('next');
 	}
