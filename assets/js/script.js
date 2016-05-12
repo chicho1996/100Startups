@@ -108,15 +108,6 @@ $('.logoClone').on('click', function() {
 	$('#logoFile').trigger('click');
 });
 
-init();
-
-btn.start.on('click', function() {
-	//changeStep('next');
-	greeting.addClass('hide_');
-	step.content.addClass('active');
-	loading.removeClass('active');
-	$('.step').eq(0).find('input').focus();
-});
 
 input.all.on('keypress', function(e) {
 	if (e.keyCode == 13 && !$(this).hasClass('desc') && !loading.hasClass('active')) {
@@ -161,14 +152,6 @@ function reloadLoading(callback) {
 	}
 }
 
-function init() {
-	computeStepLimit();
-	changeStep('prev');
-	setTimeout(function() {
-		input.all.get(0).focus();
-	}, 500);
-	$.mobile.loading().hide();
-}
 
 
 function collectData()
@@ -500,11 +483,6 @@ $('#verCode').on('keypress', function(e) {
 	}
 })
 
-$('.input').on('focus', function() {
-	setTimeout(function() {
-		$('#wrapper').scrollTop($('#wrapper').get(0).scrollHeight);
-	}, 300);
-});
 
 
 $('#logoFile').on('change', function() {
@@ -853,4 +831,42 @@ $(document).on("swiperight",function(){
 	isMobileDevice(function() {
 		changeStep('prev');
 	});
+});
+
+
+// init starting script
+function init() {
+	computeStepLimit();
+	changeStep('prev');
+	setTimeout(function() {
+		//input.all.get(0).focus();
+	}, 500);
+	$.mobile.loading().hide();
+}
+
+init();
+
+btn.start.on('click', function() {
+	//changeStep('next');
+	greeting.addClass('hide_');
+	step.content.addClass('active');
+	loading.removeClass('active');
+	$('.step').eq(0).find('input').focus();
+});
+
+
+// input on focus
+$('.input').on('focus', function() {
+	//$(this).blur();
+	setTimeout(function() {
+		$('#wrapper').scrollTop($('#wrapper').get(0).scrollHeight);
+	}, 300);
+});
+
+// keyboard pop up
+$('.input').on('keydown', function(e) {
+	if (isMobileDevice() &&  e.keyCode == 9 || !isMobileDevice() && e.keyCode == 13) {
+		e.preventDefault();
+		changeStep('next');
+	}
 });
