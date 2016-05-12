@@ -872,9 +872,14 @@ $(document).on('keypress', function(e) {
 function descHasFocus() {
 	return $('.desc').is(':focus');
 }
+
+function regInputHasFocus() {
+	return $('#phone').is(':focus') || $('#verCode').is(':focus');
+}
+
 // keyboard pop up
 $('.input').on('keydown', function(e) {
-	if ( descHasFocus() ) {
+	if ( descHasFocus() || regInputHasFocus() ) {
 
 	} else if (isMobileDevice() &&  e.keyCode == 9 || !isMobileDevice() && e.keyCode == 13) {
 		e.preventDefault();
