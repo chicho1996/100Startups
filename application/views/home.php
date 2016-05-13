@@ -9,7 +9,7 @@
 
 	<title>100startups</title>
 
-	<meta name="google-site-verification" content="ks6wXc0m_6-1QKQYyVpJQ4fD6tZGS-k4LcFmodKB6dg" />
+	<meta name="google-site-verification" content="E3vNpVyhEngQZm-BdQvaaYjfvZQdvFqy-x2tvQ7pARg" />
 
 	<meta name="description" content="100 ქართული სტარტაპი - კონტაქტი: support@100startups.ge">
 	<meta name="author" content="Andromeda">
