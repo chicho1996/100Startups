@@ -9,6 +9,15 @@
 
 	<title>100startups</title>
 
+	<script>
+	{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"url": "<?=base_url()?>",
+		"logo": "<?=base_url()?>assets/img/bg.jpg"
+	}
+	</script>
+
 	<meta name="google-site-verification" content="E3vNpVyhEngQZm-BdQvaaYjfvZQdvFqy-x2tvQ7pARg" />
 
 	<meta name="keywords" content="100,ქართული,სტარტაპი,hundred,georgian,startups,lapptech,andromeda,projects,applicable,app,სტარტაპების,რეგისტრაცია,გამოყენებადი,ტექნელოგიების,ლაბორატორია,ანდრომედა">
