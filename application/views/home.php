@@ -11,6 +11,7 @@
 
 	<meta name="google-site-verification" content="E3vNpVyhEngQZm-BdQvaaYjfvZQdvFqy-x2tvQ7pARg" />
 
+	<meta name="keywords" content="100,ქართული,სტარტაპი,hundred,georgian,startups,lapptech,andromeda,projects,applicable,app,სტარტაპების,რეგისტრაცია,გამოყენებადი,ტექნელოგიების,ლაბორატორია,ანდრომედა">
 	<meta name="description" content="100 ქართული სტარტაპი - კონტაქტი: support@100startups.ge">
 	<meta name="author" content="Andromeda">
 
