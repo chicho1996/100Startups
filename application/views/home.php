@@ -48,6 +48,7 @@
 	<script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
 </head>
 <body>
+<?php include_once("analyticstracking.php") ?>
 
 	<div class="loading active" id="loading"></div>
 
