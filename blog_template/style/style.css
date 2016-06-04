@@ -79,7 +79,48 @@ body {
   @media (max-width: 480px) {
     .Blog-txt {
       height: 60px; } }
-
+.blog_info {
+	overflow:hidden;
+	width:100%;
+	height:auto;
+	position:relative;
+	max-height:455px;
+}
+.blog_info img {
+	display:block;
+	width:100%;
+	height:auto;
+}
+.blog_desc {
+	position:absolute;
+	left:0;
+	bottom:0;
+	background:rgba(0,0,0,.6);
+	padding:15px;
+	width:100%;
+}
+.blog_desc > h1{
+	font:20px sylfaen, arial;
+	font-weight:bold;
+	margin:0;
+	padding:0;
+	margin-bottom:5px;
+	margin-top:5px;
+}
+.blog_desc h1 a {
+	color:#FFF;
+}
+.blog_desc > h1 > a:hover {
+    color: #7f9b39;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.blog_desc p {
+	margin:0;
+	color:#eaeaea;
+	font:16px sylfaen, arial;
+	margin-bottom:5px;
+}
 .Name-block {
   width: 100%;
   height: 55px;

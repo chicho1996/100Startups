@@ -1,9 +1,9 @@
 <!-- header of Page -->
 <div class="Wrapper">
-	<div class="header">
+	<!--<div class="header">
 		<div class="header-image"></div>
 		<div class="Blog-info">
-		<img src="http://localhost/100startups2/image/blogInfo.jpg">
+		<img src="http://localhost/100startups/blog_template/image/blogInfo.jpg">
 			<div class="Blog-txt ">
 				<div class="txt-active ">
 					<h1><a href="?projectinfo">მწვანე სახლი</a></h1>
@@ -11,6 +11,17 @@
 					<h2>ნიკა ბერიძე , მარიამ ბერაძე</h2>
 				</div>
 				<div class="Name-block"></div>
+			</div>
+		</div>
+	</div>-->
+	<div class="header">
+		<div class="header-image"></div>
+		<div class="blog_info">
+			<img src="http://localhost/100startups/blog_template/image/blogInfo.jpg">
+			<div class="blog_desc">
+				<h1><a href="?projectinfo">მწვანე სახლი</a></h1>
+				<p>2013</p>
+				<p>ნიკა ბერიძე , მარიამ ბერაძე</p>
 			</div>
 		</div>
 	</div>
