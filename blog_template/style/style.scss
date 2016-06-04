@@ -1,0 +1,976 @@
+*
+{
+	margin:0px;
+	padding:0px;
+}
+/*------ Variables ---------- */
+$color:white;
+$color1:rgba(0,0,0,0.5);
+$color2:#eaeaea;
+$color3:#7f9b39;
+$max-width-lg:1276px;
+$min-width-lg:1200px;
+$max-width-md:1199px;
+$min-width-md:992px;
+$max-width-sm:991px;
+$min-width-sm:768px;
+$max-width-xs:767px;
+$max-width-xs1:480px;
+$width-for-Center:565px;
+
+
+
+/*------ Mixins --------- */
+ 
+ @mixin background-image($image)
+ {
+ 	background:{
+		image:url($image);
+		size:100% 100%;
+		repeat:no-repeat;
+	}
+ }
+ @mixin transform(){
+ 	ms-transform:translate(-50%,-50%);
+	-webkit-transform:translate(-50%,-50%);
+	transform:translate(-50%,-50%);
+ }
+ @mixin responsive($width){
+
+ 	@if $width== wide-screens{
+ 		@media (min-width: $min-width-lg) and(max-width:$max-width-lg)
+ 		{
+ 			@content;
+ 		}
+ 	}
+ 	@else if $width== medium-screens{
+ 		@media (min-width: $min-width-md) and (max-width: $max-width-md){
+ 			@content;
+ 		}
+ 	}
+ 	@else if $width== small-screen{
+ 		@media (min-width:$min-width-sm) and (max-width:$max-width-sm){
+ 			@content;
+ 		}
+ 	}
+ 	@else if $width== x-small-screen{
+ 		@media (max-width:$max-width-xs){
+ 			@content;
+ 		}
+ 	}
+ 	@else if $width== x1-small-screen{
+ 		@media (max-width:$max-width-xs1){
+ 			@content;
+ 		}
+ 	}
+ }
+
+/*-------> header styles <-------*/
+@font-face 
+{
+	family:Myfont;
+	src:url('../fonts/bpg_nino_mtavruli_normal.ttf');
+}
+// .Wrapper
+// {
+// 	height:auto;
+// 	position:relative
+
+// }
+.header
+{
+	width: 100%;
+	height: 643px;
+	float: left;
+	@include responsive(small-screen)
+	{
+		height:457px;
+	}
+	@include responsive(x-small-screen)
+	{
+		height:457px;
+	}
+	@media screen and(max-width:$width-for-Center)
+	{
+		height:354px;
+	}
+	@include responsive(x1-small-screen)
+	{
+		height:289px;
+	}
+	
+}
+.header-image
+{
+	width: 100%;
+	height: 107px;
+	float: left;
+	@include background-image('../image/header.jpg');
+}
+.Blog-info
+{
+	width: 100%;
+	position: relative;
+	@include responsive(small-screen)
+	{
+		background-size:100% auto;
+		height:350px;
+	}
+	@include responsive(x-small-screen)
+	{
+		background-size:100% auto;
+		height:350px;
+	}
+	@media screen and(max-width:$width-for-Center)
+	{
+		height:246px;
+	}
+	@include responsive(x1-small-screen)
+	{
+		
+		height:180px;
+	}
+	
+
+}
+.Blog-txt
+{
+	width:100%;
+	height:180px;
+	position: absolute;
+	background-color:$color1;
+	bottom:0%;
+	@include responsive(small-screen)
+	{
+		height:120px;
+	}
+	@include responsive(x-small-screen)
+	{
+		height:120px;
+	}
+	@media screen and(max-width:$width-for-Center)
+	{
+		height:85px;
+	}
+	@include responsive(x1-small-screen)
+	{
+		height:60px;
+	}
+	
+}
+.Name-block
+{
+	width: 100%;
+	height: 55px;
+	position: absolute;
+	bottom:0px;
+	background-color: rgba(255,255,255,0.2);
+	@include responsive (small-screen)
+	{
+		height:40px;
+	}
+	@include responsive (x-small-screen)
+	{
+		height:40px;
+	}
+	@media screen and(max-width:$width-for-Center)
+	{
+		height:26px;
+	}
+	@include responsive (x1-small-screen)
+	{
+		height:20px;
+	}
+	
+}
+.txt-active
+{
+	width: auto;
+	height: 100%;
+	float: left;
+	h1{
+		font:{
+			family:arial;
+			size:30px;
+			weight: bold;
+		}
+		text:{
+			align:left;
+			indent:70px;
+		}
+		color:$color;
+		padding-top:10px;
+		text-decoration: none;
+		
+		a
+		{
+			color:$color;
+			text-decoration: none;
+		}
+		@include responsive(small-screen)
+		{
+			font-size:24px;
+			padding-top:0px;
+			margin-top:13px;
+		}
+		@include responsive(x-small-screen)
+		{
+			font-size:24px;
+			padding-top:0px;
+			margin-top:13px;
+		}
+		@media screen and(max-width:$width-for-Center)
+		{
+			font-size:16px;
+			padding-top:0px;
+			margin-top:13px;
+		}
+		@include responsive(x1-small-screen)
+		{
+			font-size:12px;
+			padding-top:0px;
+			margin-top:0px;
+		}
+	}
+	h3
+	{
+		font:{
+			family:arial;
+			size:25px;
+			weight:none;
+		}
+		text:{
+			align:left;
+			indent:70px;
+		}
+		color:$color;
+		@include responsive(small-screen)
+		{
+			font-size:20px;
+			
+		}
+		@include responsive(x-small-screen)
+		{
+			font-size:20px;
+			
+		}
+		@media screen and(max-width:$width-for-Center)
+		{
+			font-size:14px;
+			margin-top:0px;
+			
+		}
+		@include responsive(x1-small-screen)
+		{
+			font-size:10px;
+			margin-top:0px;
+			
+		}
+		
+		
+	}
+	h2
+	{
+		font:{
+			family:arial;
+			size:25px;
+			weight:none;
+		}
+		text:{
+			align:left;
+			indent:70px;
+		}
+		color:$color;
+		
+		margin:0;
+		padding-top:17px;
+		@include responsive(small-screen)
+		{
+			font-size:20px;
+			padding-top:0px;
+		}
+		@include responsive(x-small-screen)
+		{
+			font-size:20px;
+			padding-top:0px;
+		}
+		@media screen and(max-width:$width-for-Center)
+		{
+			font-size:14px;
+			padding-top:0px;
+			
+		}
+		@include responsive(x1-small-screen)
+		{
+			font-size:10px;
+			padding-top:0px;
+		}
+	}
+}
+.txt-active>h1>a:hover
+{
+	color:$color3;
+	text-decoration:none;
+	transition:0.2s;
+}
+/* -------- projcet page styles -------- */
+.Projects
+{
+	width:100%;
+	height: 1180px;
+	float: left;
+	background-color: $color2;
+	position:relative;
+	overflow:hidden;
+	@include responsive(medium-screens)
+	{
+		height:1650px;
+	}
+	@include responsive(small-screen)
+	{
+		height:1070px;
+	}
+	@include responsive(x-small-screen)
+	{
+		height:1575px;
+	}
+	@include responsive(x1-small-screen)
+	{
+		height:3100px;
+	}
+}
+.Center
+{
+	width:1250px;
+	height:100%;
+	margin:auto;
+	position: relative;
+	@include responsive(wide-screens)
+	{
+		width:100% !important;
+	}
+	@include responsive(medium-screens)
+	{
+		width:100% !important;
+	}
+	@include responsive(small-screen)
+	{
+		width:100% !important;
+	}
+	@include responsive(x-small-screen)
+	{
+		width:100% !important;
+	}
+	@include responsive(x1-small-screen)
+	{
+		width:100% !important;
+	}
+}
+.All-projects
+{
+	width:100%;
+	height: 100%;
+	position: absolute;
+	transition:0.5s;
+	left:140%;
+	
+}
+.Project-active
+{
+	left:0% !important;
+}
+.Project-blocks
+{
+	width:100%;
+	height:483px;
+	float:left;
+	@include responsive(medium-screens)
+	{
+		margin-top: 0px !important;
+	}
+	@include responsive(small-screen)
+	{
+		margin-top: 0px !important;
+	}
+	@include responsive(x-small-screen)
+	{
+		margin-top: 0px !important;
+	}
+	
+}
+.Col-width
+{
+	@include responsive(x1-small-screen)
+	{
+		width:100% !important;
+		padding-right:0px !important;
+	}
+}
+.Project-image
+{
+	width:100%;
+	height:300px;
+	float:left;
+	@include background-image('../image/Projectpic.png');
+	@include responsive(x1-small-screen)
+	{
+		float:none;
+		margin:auto;
+		width:90%;
+	}
+}
+.row-margin
+{
+	margin-right:0px !important;
+}
+.Project-txt
+{
+	width:100%;
+	height:150px;
+	float:left;
+	background-color:$color;
+	p 
+	{
+		font:{
+			family:arial;
+			size:23px;
+		}
+		text:{
+			align:left;
+			indent:20px;
+		}
+		margin:0;
+		
+	}
+	@include responsive(x1-small-screen)
+	{
+		float:none;
+		margin:auto;
+		width:90%;
+	}
+}
+.Project-page-buttons
+{
+	width:200px;
+	height:20px;
+	position: absolute;
+	@include transform();
+	left:50%;
+	bottom:5%;
+	
+	
+}
+.Button-active
+{
+	background-color:#a3c848 !important;
+}
+.button-circle
+{
+	width:15px;
+	height:15px;
+	float:left;
+	background-color: $color3 ;
+	border-radius:100%;
+	margin-left:5px;
+}
+.button-circle:hover
+{
+	background-color:#a3c848;
+	cursor:pointer;
+}
+
+.Slide-left
+{
+	width:55px;
+	height:55px;
+	position:fixed;
+	top:50%;
+	background-color:rgba(0,0,0,0.3);
+	font:{
+		family:arial;
+		size:27px;
+	}
+	text:{
+		align:center;
+
+	}
+	line-height: 55px;
+	color:$color;
+	display:none;
+	@include responsive(medium-screens)
+	{
+		display: block;
+	}
+	@include responsive(small-screen)
+	{
+		display: block;
+	}
+	@include responsive(x-small-screen)
+	{
+		display: block;
+	}
+}
+.Slide-right
+{
+	width:55px;
+	height:55px;
+	position:fixed;
+	top:50%;
+	right:0%;
+	background-color:rgba(0,0,0,0.3);
+	font:{
+		family:arial;
+		size:27px;
+	}
+	text:{
+		align:center;
+
+	}
+	line-height: 55px;
+	color:$color;
+	display:none;
+	@include responsive(medium-screens)
+	{
+		display: block;
+	}
+	@include responsive(small-screen)
+	{
+		display: block;
+	}
+	@include responsive(x-small-screen)
+	{
+		display: block;
+	}
+}
+
+
+/* ------>> Footer styles <------w */
+.Blog-footer
+{
+	width:100%;
+	height:220px;
+	float:left;
+	@include background-image('../image/footer.jpg');
+	@include responsive(x-small-screen)
+	{
+		height:125px;
+	}
+	@include responsive(x1-small-screen)
+	{
+		height:125px;
+	}
+}
+.Footer-txt
+{
+	width:100%;
+	height:100%;
+	float:left;
+	h1
+	{
+		font:{
+			family:Myfont;
+			size:35px;
+			
+		}
+		text:{
+			align:center;
+		}
+		padding-top:10px;
+		color:$color;
+		margin:0;
+		@include responsive(small-screen)
+		{
+			font-size:3.5vw;
+		}
+		@include responsive(x-small-screen)
+		{
+			font-size:3.5vw;
+		}
+		@include responsive(x1-small-screen)
+		{
+			font-size:5.5vw;
+		}
+	}
+	h3
+	{
+		font:{
+			family:arial;
+			size:25px;
+			
+		}
+		text:{
+			transform:capitalize;
+			align:center;
+		}
+		padding-top:10px;
+		color:$color2;
+		margin:0;
+		@include responsive(x-small-screen)
+		{
+			font-size:2vw;
+		}
+		@include responsive(x1-small-screen)
+		{
+			font-size:3vw;
+		}
+		
+	}
+}
+.Three-txt
+{
+	width:100%;
+	height:135px;
+	float:left;
+	h2
+	{
+		
+
+		font:{
+			family:Myfont;
+			size:30px;
+			
+		}
+		text:{
+			align:left;
+		}
+		
+		color:$color2;
+		margin:0;
+		position:absolute;
+		top:39%;
+		left:15%;
+		@include responsive(small-screen)
+		{
+			font-size:3vw;
+		}
+		@include responsive(x-small-screen)
+		{
+			font-size:2.5vw;
+			top:43%;
+		}
+		@include responsive(x1-small-screen)
+		{
+			font-size:4vw;
+			left:1%;
+		}
+	
+	}
+	h3
+	{
+		
+
+		font:{
+			family:Myfont;
+			size:30px;
+			
+		}
+		text:{
+			align:left;
+		}
+		
+		color:$color2;
+		margin:0;
+		position:absolute;
+		top:34%;
+		right:13%;
+		@include responsive(small-screen)
+		{
+			font-size:3vw;
+		}
+		@include responsive(x-small-screen)
+		{
+			font-size:2.5vw;
+			top:37%;
+		}
+		@include responsive(x1-small-screen)
+		{
+			font-size:4vw;
+			right:1%;
+		}
+		
+	}
+	p 
+	{
+		
+		font:{
+			family:arial;
+			size:25px;
+			
+		}
+		text:{
+			align:center;
+		}
+		
+		color:$color;
+		margin:0;
+		padding-top:42px;
+		@include responsive(small-screen)
+		{
+			font-size:2vw;
+		}
+		@include responsive(x-small-screen)
+		{
+			padding-top:17px;
+			font-size:2vw;
+		}
+		@include responsive(x1-small-screen)
+		{
+			font-size:3vw;
+		}
+	}
+	@include responsive(x-small-screen)
+	{
+		height:71px;
+	}
+	@include responsive(x1-small-screen)
+	{
+		height:71px;
+	}
+}
+
+/* --------- Project info page ------------- */
+
+
+
+.Center1
+{
+	width:1100px;
+	height:100%;
+	margin:auto;
+	position:relative;
+	@include responsive(medium-screens)
+	{
+		width:900px;
+	}
+	@include responsive(small-screen)
+	{
+		width:750px;
+	}
+	@include responsive(x-small-screen)
+	{
+		width:100%;
+	}
+
+}
+.Project-info
+{
+	width:100%;
+	height:1400px;
+	float:left;
+	background-color:$color2;
+	h1
+	{
+		font:{
+			family:arial;
+			size:60px;
+			weight:normal;
+		}
+		text:{
+			align:left;
+			
+
+		}
+		padding-top:50px;
+		@include responsive(medium-screens)
+		{
+			font-size: 4vw;
+			
+		}
+		@include responsive(small-screen)
+		{
+			font-size: 4vw;
+			
+		}
+		@include responsive(x-small-screen)
+		{
+			font-size: 4vw;
+			
+		}
+		@include responsive(x1-small-screen)
+		{
+			font-size: 9vw;
+			text-align: center;
+			
+		}
+	}
+	h2
+	{
+		font:{
+			family:arial;
+			size:35px;
+			
+		}
+		text:{
+			align:left;
+			
+			
+		}
+		@include responsive(medium-screens)
+		{
+			font-size: 2.5vw;
+			
+		}
+		@include responsive(small-screen)
+		{
+			font-size: 2.5vw;
+			
+		}
+		@include responsive(x-small-screen)
+		{
+			font-size: 2.5vw;
+			
+		}
+		@include responsive(x1-small-screen)
+		{
+			font-size: 5.5vw;
+			text-align: center;
+			
+		}
+	}
+	p
+	{
+		font:{
+			family:arial;
+			size:28px;
+			
+		}
+		text:{
+			align:left;
+			
+			
+		}
+		padding-top:110px;
+		@include responsive(medium-screens)
+		{
+			font-size: 2vw;
+			
+		}
+		@include responsive(small-screen)
+		{
+			font-size: 2vw;
+			
+		}
+		@include responsive(x-small-screen)
+		{
+			font-size: 2vw;
+			
+		}
+		@include responsive(x1-small-screen)
+		{
+			font-size: 3vw;
+			padding-top:60px;
+			text-align: center;
+			
+		}
+	}
+	@include responsive(medium-screens)
+	{
+		height:auto;
+	}
+	@include responsive(small-screen)
+	{
+		height:auto;
+	}
+	@include responsive(x-small-screen)
+	{
+		height:auto;
+	}
+	@include responsive(x1-small-screen)
+	{
+		height:auto;
+	}
+}
+.Project-Picture
+{
+	width:100%;
+	height:400px;
+	float:left;
+	@include background-image('../image/BlogInfo.jpg');
+	margin-top:70px;
+}
+/* -------Lis page------ */
+@font-face {
+    font-family: 'Mainfont';
+    src: url('../fonts/bpg-nino-mtavruli-webfont.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/bpg-nino-mtavruli-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/bpg-nino-mtavruli-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/bpg-nino-mtavruli-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../fonts/bpg-nino-mtavruli-webfont.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/bpg-nino-mtavruli-webfont.svg#bpg_nino_mtavruliregular') format('svg'); /* Legacy iOS */
+}
+
+.wrapper {
+	width:100%;
+	float: left;
+}
+.wrapper-block
+{
+	width:980px;
+	margin:70px auto;
+}
+.list {
+	overflow:hidden;
+}
+.list-item {
+	width:100%;
+	background:#e0e0e0;
+	height:40px;
+	margin-bottom:10px;
+	border-radius:3px;
+	display:table;
+}
+.list-item div {
+	display:inline-block;
+	border-right:1px solid #eaeaea;
+	font:16px Mainfont;
+	color:#000;
+	line-height:43px;
+	padding:0 15px;
+	display:table-cell;
+	white-space:normal;
+	vertical-align:middle;
+	text-align:center;
+
+}
+.list-item div:last-child {
+	border-right:0;
+}
+.item-title {
+	width:25%;
+}
+.item-city {
+	width:20%;
+}
+.item-description {
+	width:34%;
+}
+@media screen and (max-width:980px) {
+	.wrapper-block {
+		width:100%;
+	}
+	.item-number {
+		width:10%;
+	}
+	.item-title {
+		width:25%;
+	}
+	.item-city {
+		width:25%;
+	}
+	.item-description {
+		width:25%;
+	}
+	.item-year {
+		width:10%;
+	}
+	.list-item div {
+		padding:0;
+		text-align:center;
+	}
+}
+@media screen and (max-width:480px) {
+	.list-item div {
+		font:14px Mainfont;
+		line-height:43px;
+	}
+}
