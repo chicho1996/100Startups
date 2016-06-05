@@ -35,19 +35,18 @@ class Editpost extends CI_Controller {
 				'text'=>$this->pro($text),
 				'image'=>$image
 						))){
-				echo "ganaxlda";
-
+				redirect('blog/posts');
 			}
 			else{
 				echo "vera";
 			}
 
 		}else{
-			$this->load->view('vmain');
+			$this->load->view('main');
 		}
 	}
 	else{
-		redirect('login');
+		redirect('blog/login');
 	}
 	}
 	public function pro($str){

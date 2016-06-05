@@ -58,15 +58,15 @@ $this->form_validation->set_rules($rules);
 		$this->form_validation->set_message('min_length','"%s" უნდა შეიცავდეს არანაკლებ %s სიმბოლოს');
 		$this->form_validation->set_message('max_length','"%s" უნდა შეიცავდეს მაქსიმუმ %s სიმბოლოს');
 		if($this->form_validation->run()!=true){
-			$this->load->view('vmain');
+			$this->load->view('main');
 		}
 		else{
 			$mail=$this->session->userdata('email');
-			$rows=$this->db->get_where('users',array('email'=>$mail))->row();
+			$rows=$this->db->get_where('blog_users',array('email'=>$mail))->row();
 						$image=$rows->avatar;
 			if($_FILES['avatar']['name']!=''){
 				$image=time().$_FILES['avatar']['name'];
-				move_uploaded_file($_FILES['avatar']['tmp_name'],"uploads/$image");
+				move_uploaded_file($_FILES['avatar']['tmp_name'],"uploads/users/$image");
 			}
 			$form=array('name'=>$this->input->post('firstname'),
 			'surname'=>$this->input->post('lastname'),

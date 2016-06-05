@@ -4,7 +4,7 @@ class Logedin extends CI_Controller{
 		if($this->session->userdata('email')==""){
 			redirect('login');
 		}else{
-		$this->load->view('vmain');
+		$this->load->view('main');
 		}
 	}
 }

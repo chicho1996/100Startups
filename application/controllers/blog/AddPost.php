@@ -2,6 +2,8 @@
 class AddPost extends CI_Controller{
 	public function index(){
 		if($this->session->userdata('email')!=''){
+			$mail=$this->session->userdata('email');
+				$row=$this->db->get_where('blog_users',array('email'=>$mail))->row();
 			$rules=array(
 				"title"=>array(
 					"field"=>'title',
@@ -17,10 +19,9 @@ class AddPost extends CI_Controller{
 			$this->form_validation->set_rules($rules);
 			$this->form_validation->set_message('required','ველი %s ცარიელია,გთხოვთ შეავსოთ');
 			if($this->form_validation->run()!=true){
-				$this->load->view('vmain');
+				$this->load->view('main');
 			}else{
-				$mail=$this->session->userdata('email');
-				$row=$this->db->get_where('users',array('email'=>$mail))->row();
+
 				
 				$title=$this->pro($this->input->post('title'));
 				$text=$this->pro($_POST['text']);

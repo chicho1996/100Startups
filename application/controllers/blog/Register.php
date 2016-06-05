@@ -3,7 +3,7 @@ class Register extends CI_Controller{
 
 	public function index(){
 		if($this->session->userdata('email')!=''){
-			redirect(base_url());}else{
+			redirect(base_url().'blog');}else{
 		//validation
 		$rules=array(
 			"firstname"=>array(
@@ -79,7 +79,7 @@ class Register extends CI_Controller{
 
 		if($this->form_validation->run()!=true){
 
-			$this->load->view("vmain");
+			$this->load->view("main");
 		}else{
 			$form=array();
 			$form['firstname']=$this->pro($this->input->post('firstname'));
@@ -95,7 +95,7 @@ class Register extends CI_Controller{
 			$image_name=$_FILES['avatar']['name'];
 			$image_tmp=$_FILES['avatar']['tmp_name'];
 			$form['avatar']=time().$image_name;
-			move_uploaded_file($image_tmp,"uploads/".$form['avatar']);
+			move_uploaded_file($image_tmp,"uploads/users/".$form['avatar']);
 			if($this->create_user($form['firstname'],$form['lastname'],$form['password'],$form['idnum'],$form['uni'],$form['prof'],$form['databirth'],$form['email'],$form['mobile'],$form['avatar'])==true){
 				echo "registration succsesfull";
 			}
@@ -104,7 +104,7 @@ class Register extends CI_Controller{
 
 }
 	public function idnum_is_taken($input){
-		$query="SELECT * FROM `users` WHERE `idnum`=?";
+		$query="SELECT * FROM `blog_users` WHERE `idnum`=?";
 		$arg=array($input);
 		$exect=$this->db->query($query,$arg) or die(mysql_error());
 		if($exect->num_rows()>0){
@@ -115,7 +115,7 @@ class Register extends CI_Controller{
 		}
 	}
 	public function mobile_is_taken($input){
-		$query="SELECT * FROM `users` WHERE `mobile`=?";
+		$query="SELECT * FROM `blog_users` WHERE `mobile`=?";
 		$arg=array($input);
 
 		/*$where = array(
@@ -133,7 +133,7 @@ class Register extends CI_Controller{
 
 	}
 	public function email_is_taken($input){
-		$query="SELECT * FROM `users` WHERE `email`=?";
+		$query="SELECT * FROM `blog_users` WHERE `email`=?";
 		$arg=array($input);
 		$exect=$this->db->query($query,$arg) or die(mysql_error());
 		if($exect->num_rows()>0){
@@ -144,7 +144,7 @@ class Register extends CI_Controller{
 		}
 	}
 	public function create_user($name,$surname,$password,$idnum,$uni,$prof,$databirth,$email,$mobile,$avatar){
-		$query="INSERT INTO `users` (`name`,`surname`,`password`,`idnum`,`uni_id`,`prof`,`birthdate`,`email`,`mobile`,`avatar`) VALUES(?,?,?,?,?,?,?,?,?,?)";
+		$query="INSERT INTO `blog_users` (`name`,`surname`,`password`,`idnum`,`uni_id`,`prof`,`birthdate`,`email`,`mobile`,`avatar`) VALUES(?,?,?,?,?,?,?,?,?,?)";
 		$arg=array($name,$surname,$password,$idnum,$uni,$prof,$databirth,$email,$mobile,$avatar);
 		if($this->db->query($query,$arg)==true){
 			return true;

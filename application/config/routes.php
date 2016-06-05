@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'Nav/home';
 
-$route['blog/(:any)'] = 'main/$1';
+$route['blog'] = 'main';
+$route['blog/Login']='Login';
 
 $route['404_override'] = '';
 

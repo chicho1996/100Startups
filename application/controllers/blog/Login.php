@@ -6,18 +6,18 @@ class Login extends CI_Controller{
 			$pass=md5($this->input->post('pass'));
 			$this->check($mail,$pass);
 
-			$this->load->view('vmain');}
+			$this->load->view('main');}
 			else{
-				redirect(base_url());
+				redirect(base_url()."blog");
 			}
 	}
 		public function check($mail,$pass){
-			$query="SELECT * FROM `users` WHERE `email` ='$mail' AND `password`='$pass'";
+			$query="SELECT * FROM `blog_users` WHERE `email` ='$mail' AND `password`='$pass'";
 			$row=$this->db->query($query);
 			if($row->num_rows()>0){
 
 				$this->session->set_userdata('email',$mail);
-				redirect('Logedin');
+				redirect('blog/logedin');
 			}
 
 		}
