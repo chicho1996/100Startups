@@ -28,7 +28,6 @@
 	<div class="Projects">
 		<div class="Center">
 			<div class="All-projects">
-				<div class="row row-margin">
 					<div class="col-lg-4 col-md-6 col-sm-4  col-xs-6 Col-width">
 						<div class="Project-blocks q-animated flipOutY First-active" style="margin-top:50px;" index=0>
 							<div class="Project-image"></div>
@@ -92,11 +91,9 @@
 						</div>
 
 					</div>
-				</div>
 
 			</div>
 			<div class="All-projects">
-				<div class="row row-margin">
 					<div class="col-lg-4 col-md-6 col-sm-4  col-xs-6 Col-width">
 						<div class="Project-blocks q-animated flipOutY First-active" style="margin-top:50px;" index=0>
 							<div class="Project-image"></div>
@@ -160,7 +157,6 @@
 						</div>
 
 					</div>
-				</div>
 			
 			</div>
 

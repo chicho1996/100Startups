@@ -529,18 +529,6 @@ $width-for-Center:565px;
 	line-height: 55px;
 	color:$color;
 	display:none;
-	@include responsive(medium-screens)
-	{
-		display: block;
-	}
-	@include responsive(small-screen)
-	{
-		display: block;
-	}
-	@include responsive(x-small-screen)
-	{
-		display: block;
-	}
 }
 
 
